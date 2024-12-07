@@ -57,6 +57,10 @@
     <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
       <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
@@ -74,6 +78,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -124,6 +129,12 @@
     </Compile>
     <Compile Include="AddEventsForm.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="AttendanceForm.Designer.vb">
       <DependentUpon>AttendanceForm.vb</DependentUpon>
@@ -202,6 +213,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ResetPassword.Designer.vb">
+      <DependentUpon>ResetPassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SubAccount.Designer.vb">
       <DependentUpon>SubAccount.vb</DependentUpon>
     </Compile>
@@ -224,6 +241,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddEventsForm.resx">
       <DependentUpon>AddEventsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AllReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForm.resx">
       <DependentUpon>AttendanceForm.vb</DependentUpon>
@@ -260,6 +281,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetPassword.resx">
+      <DependentUpon>ResetPassword.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubAccount.resx">
       <DependentUpon>SubAccount.vb</DependentUpon>
@@ -373,6 +397,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-menu-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

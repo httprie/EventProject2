@@ -26,16 +26,12 @@ Partial Class EditAccountForm
         Me.Guna2ControlBox3 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Guna2ControlBox4 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnShowPwd = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.btnUpdate = New Guna.UI2.WinForms.Guna2Button()
         Me.btnClearTxt = New Guna.UI2.WinForms.Guna2Button()
-        Me.txtPwd = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtFname = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtUname = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cbRole = New System.Windows.Forms.ComboBox()
@@ -47,7 +43,7 @@ Partial Class EditAccountForm
         Me.Guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
         Me.Guna2ControlBox3.FillColor = System.Drawing.Color.Transparent
         Me.Guna2ControlBox3.IconColor = System.Drawing.Color.White
-        Me.Guna2ControlBox3.Location = New System.Drawing.Point(644, 19)
+        Me.Guna2ControlBox3.Location = New System.Drawing.Point(624, 19)
         Me.Guna2ControlBox3.Name = "Guna2ControlBox3"
         Me.Guna2ControlBox3.Size = New System.Drawing.Size(40, 25)
         Me.Guna2ControlBox3.TabIndex = 57
@@ -57,37 +53,10 @@ Partial Class EditAccountForm
         Me.Guna2ControlBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Guna2ControlBox4.FillColor = System.Drawing.Color.Transparent
         Me.Guna2ControlBox4.IconColor = System.Drawing.Color.White
-        Me.Guna2ControlBox4.Location = New System.Drawing.Point(682, 19)
+        Me.Guna2ControlBox4.Location = New System.Drawing.Point(662, 19)
         Me.Guna2ControlBox4.Name = "Guna2ControlBox4"
         Me.Guna2ControlBox4.Size = New System.Drawing.Size(44, 25)
         Me.Guna2ControlBox4.TabIndex = 56
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(242, 281)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(154, 25)
-        Me.Label2.TabIndex = 70
-        Me.Label2.Text = "Show Password"
-        '
-        'btnShowPwd
-        '
-        Me.btnShowPwd.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnShowPwd.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnShowPwd.CheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.btnShowPwd.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.btnShowPwd.Location = New System.Drawing.Point(187, 283)
-        Me.btnShowPwd.Name = "btnShowPwd"
-        Me.btnShowPwd.Size = New System.Drawing.Size(49, 24)
-        Me.btnShowPwd.TabIndex = 69
-        Me.btnShowPwd.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.btnShowPwd.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.btnShowPwd.UncheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.btnShowPwd.UncheckedState.InnerColor = System.Drawing.Color.White
         '
         'btnUpdate
         '
@@ -100,7 +69,7 @@ Partial Class EditAccountForm
         Me.btnUpdate.FillColor = System.Drawing.Color.White
         Me.btnUpdate.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnUpdate.ForeColor = System.Drawing.Color.Black
-        Me.btnUpdate.Location = New System.Drawing.Point(531, 399)
+        Me.btnUpdate.Location = New System.Drawing.Point(531, 320)
         Me.btnUpdate.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(113, 38)
@@ -118,34 +87,12 @@ Partial Class EditAccountForm
         Me.btnClearTxt.FillColor = System.Drawing.Color.White
         Me.btnClearTxt.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnClearTxt.ForeColor = System.Drawing.Color.Black
-        Me.btnClearTxt.Location = New System.Drawing.Point(411, 399)
+        Me.btnClearTxt.Location = New System.Drawing.Point(411, 320)
         Me.btnClearTxt.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnClearTxt.Name = "btnClearTxt"
         Me.btnClearTxt.Size = New System.Drawing.Size(114, 38)
         Me.btnClearTxt.TabIndex = 67
         Me.btnClearTxt.Text = "Clear"
-        '
-        'txtPwd
-        '
-        Me.txtPwd.AutoRoundedCorners = True
-        Me.txtPwd.BorderRadius = 15
-        Me.txtPwd.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtPwd.DefaultText = ""
-        Me.txtPwd.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txtPwd.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txtPwd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtPwd.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtPwd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtPwd.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPwd.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtPwd.Location = New System.Drawing.Point(184, 241)
-        Me.txtPwd.Margin = New System.Windows.Forms.Padding(7, 8, 7, 8)
-        Me.txtPwd.Name = "txtPwd"
-        Me.txtPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPwd.PlaceholderText = ""
-        Me.txtPwd.SelectedText = ""
-        Me.txtPwd.Size = New System.Drawing.Size(460, 32)
-        Me.txtPwd.TabIndex = 65
         '
         'txtFname
         '
@@ -215,18 +162,6 @@ Partial Class EditAccountForm
         Me.Label3.TabIndex = 60
         Me.Label3.Text = "Full Name:"
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(69, 247)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(104, 25)
-        Me.Label6.TabIndex = 59
-        Me.Label6.Text = "Password:"
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -243,7 +178,7 @@ Partial Class EditAccountForm
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(114, 337)
+        Me.Label5.Location = New System.Drawing.Point(114, 234)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(59, 25)
@@ -256,7 +191,7 @@ Partial Class EditAccountForm
         Me.cbRole.ForeColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         Me.cbRole.FormattingEnabled = True
         Me.cbRole.Items.AddRange(New Object() {"Head Admin", "Sub Admin", "User"})
-        Me.cbRole.Location = New System.Drawing.Point(187, 334)
+        Me.cbRole.Location = New System.Drawing.Point(187, 231)
         Me.cbRole.Name = "cbRole"
         Me.cbRole.Size = New System.Drawing.Size(457, 33)
         Me.cbRole.TabIndex = 71
@@ -266,21 +201,17 @@ Partial Class EditAccountForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(735, 516)
+        Me.ClientSize = New System.Drawing.Size(715, 425)
         Me.Controls.Add(Me.cbRole)
         Me.Controls.Add(Me.Guna2ControlBox3)
         Me.Controls.Add(Me.Guna2ControlBox4)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.btnShowPwd)
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.btnClearTxt)
-        Me.Controls.Add(Me.txtPwd)
         Me.Controls.Add(Me.txtFname)
         Me.Controls.Add(Me.txtUname)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "EditAccountForm"
@@ -294,16 +225,12 @@ Partial Class EditAccountForm
     Friend WithEvents Guna2ControlBox3 As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents Guna2ControlBox4 As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents Guna2Elipse1 As Guna.UI2.WinForms.Guna2Elipse
-    Friend WithEvents Label2 As Label
-    Friend WithEvents btnShowPwd As Guna.UI2.WinForms.Guna2ToggleSwitch
     Friend WithEvents btnUpdate As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents btnClearTxt As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents txtPwd As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txtFname As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txtUname As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents cbRole As ComboBox

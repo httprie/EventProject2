@@ -28,7 +28,7 @@ Partial Class AddEventsForm
         Me.btnAddEvent = New Guna.UI2.WinForms.Guna2Button()
         Me.btnClear = New Guna.UI2.WinForms.Guna2Button()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.dtpEventDate = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        Me.dtpEventStart = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.txtDepartment = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtVenue = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -41,6 +41,16 @@ Partial Class AddEventsForm
         Me.dtpStartTime = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.txtEventName = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.dtpEventEnd = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtFacilitator = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtContactPerson = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtContact = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtContactMessenger = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Guna2ControlBox3
@@ -49,7 +59,7 @@ Partial Class AddEventsForm
         Me.Guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
         Me.Guna2ControlBox3.FillColor = System.Drawing.Color.Transparent
         Me.Guna2ControlBox3.IconColor = System.Drawing.Color.White
-        Me.Guna2ControlBox3.Location = New System.Drawing.Point(479, 12)
+        Me.Guna2ControlBox3.Location = New System.Drawing.Point(776, 12)
         Me.Guna2ControlBox3.Name = "Guna2ControlBox3"
         Me.Guna2ControlBox3.Size = New System.Drawing.Size(40, 25)
         Me.Guna2ControlBox3.TabIndex = 36
@@ -59,7 +69,7 @@ Partial Class AddEventsForm
         Me.Guna2ControlBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Guna2ControlBox4.FillColor = System.Drawing.Color.Transparent
         Me.Guna2ControlBox4.IconColor = System.Drawing.Color.White
-        Me.Guna2ControlBox4.Location = New System.Drawing.Point(517, 12)
+        Me.Guna2ControlBox4.Location = New System.Drawing.Point(814, 12)
         Me.Guna2ControlBox4.Name = "Guna2ControlBox4"
         Me.Guna2ControlBox4.Size = New System.Drawing.Size(44, 25)
         Me.Guna2ControlBox4.TabIndex = 35
@@ -75,10 +85,10 @@ Partial Class AddEventsForm
         Me.btnAddEvent.FillColor = System.Drawing.Color.White
         Me.btnAddEvent.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddEvent.ForeColor = System.Drawing.Color.Black
-        Me.btnAddEvent.Location = New System.Drawing.Point(405, 574)
+        Me.btnAddEvent.Location = New System.Drawing.Point(439, 713)
         Me.btnAddEvent.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnAddEvent.Name = "btnAddEvent"
-        Me.btnAddEvent.Size = New System.Drawing.Size(100, 38)
+        Me.btnAddEvent.Size = New System.Drawing.Size(145, 38)
         Me.btnAddEvent.TabIndex = 34
         Me.btnAddEvent.Text = "ADD"
         '
@@ -93,10 +103,10 @@ Partial Class AddEventsForm
         Me.btnClear.FillColor = System.Drawing.Color.White
         Me.btnClear.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClear.ForeColor = System.Drawing.Color.Black
-        Me.btnClear.Location = New System.Drawing.Point(285, 574)
+        Me.btnClear.Location = New System.Drawing.Point(268, 713)
         Me.btnClear.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(114, 38)
+        Me.btnClear.Size = New System.Drawing.Size(159, 38)
         Me.btnClear.TabIndex = 33
         Me.btnClear.Text = "CLEAR"
         '
@@ -111,28 +121,28 @@ Partial Class AddEventsForm
         Me.Label7.TabIndex = 32
         Me.Label7.Text = "Add New Event"
         '
-        'dtpEventDate
+        'dtpEventStart
         '
-        Me.dtpEventDate.Animated = True
-        Me.dtpEventDate.AutoRoundedCorners = True
-        Me.dtpEventDate.BorderRadius = 19
-        Me.dtpEventDate.Checked = True
-        Me.dtpEventDate.FillColor = System.Drawing.Color.White
-        Me.dtpEventDate.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpEventDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpEventDate.Location = New System.Drawing.Point(72, 301)
-        Me.dtpEventDate.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.dtpEventDate.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
-        Me.dtpEventDate.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
-        Me.dtpEventDate.Name = "dtpEventDate"
-        Me.dtpEventDate.Size = New System.Drawing.Size(376, 40)
-        Me.dtpEventDate.TabIndex = 29
-        Me.dtpEventDate.Value = New Date(2024, 11, 9, 0, 0, 0, 0)
+        Me.dtpEventStart.Animated = True
+        Me.dtpEventStart.AutoRoundedCorners = True
+        Me.dtpEventStart.BorderRadius = 19
+        Me.dtpEventStart.Checked = True
+        Me.dtpEventStart.FillColor = System.Drawing.Color.White
+        Me.dtpEventStart.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpEventStart.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpEventStart.Location = New System.Drawing.Point(54, 290)
+        Me.dtpEventStart.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.dtpEventStart.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
+        Me.dtpEventStart.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
+        Me.dtpEventStart.Name = "dtpEventStart"
+        Me.dtpEventStart.Size = New System.Drawing.Size(376, 40)
+        Me.dtpEventStart.TabIndex = 29
+        Me.dtpEventStart.Value = New Date(2024, 11, 9, 0, 0, 0, 0)
         '
         'txtDepartment
         '
         Me.txtDepartment.AutoRoundedCorners = True
-        Me.txtDepartment.BorderRadius = 21
+        Me.txtDepartment.BorderRadius = 19
         Me.txtDepartment.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtDepartment.DefaultText = ""
         Me.txtDepartment.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -142,19 +152,19 @@ Partial Class AddEventsForm
         Me.txtDepartment.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtDepartment.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDepartment.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtDepartment.Location = New System.Drawing.Point(72, 398)
+        Me.txtDepartment.Location = New System.Drawing.Point(54, 387)
         Me.txtDepartment.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtDepartment.Name = "txtDepartment"
         Me.txtDepartment.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtDepartment.PlaceholderText = ""
         Me.txtDepartment.SelectedText = ""
-        Me.txtDepartment.Size = New System.Drawing.Size(376, 44)
+        Me.txtDepartment.Size = New System.Drawing.Size(376, 40)
         Me.txtDepartment.TabIndex = 28
         '
         'txtVenue
         '
         Me.txtVenue.AutoRoundedCorners = True
-        Me.txtVenue.BorderRadius = 21
+        Me.txtVenue.BorderRadius = 18
         Me.txtVenue.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtVenue.DefaultText = ""
         Me.txtVenue.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -164,13 +174,13 @@ Partial Class AddEventsForm
         Me.txtVenue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtVenue.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtVenue.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtVenue.Location = New System.Drawing.Point(72, 208)
+        Me.txtVenue.Location = New System.Drawing.Point(54, 208)
         Me.txtVenue.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtVenue.Name = "txtVenue"
         Me.txtVenue.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtVenue.PlaceholderText = ""
         Me.txtVenue.SelectedText = ""
-        Me.txtVenue.Size = New System.Drawing.Size(298, 44)
+        Me.txtVenue.Size = New System.Drawing.Size(762, 38)
         Me.txtVenue.TabIndex = 27
         '
         'Label6
@@ -178,7 +188,7 @@ Partial Class AddEventsForm
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(315, 464)
+        Me.Label6.Location = New System.Drawing.Point(446, 610)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(95, 21)
         Me.Label6.TabIndex = 25
@@ -189,7 +199,7 @@ Partial Class AddEventsForm
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(67, 464)
+        Me.Label5.Location = New System.Drawing.Point(56, 606)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(106, 21)
         Me.Label5.TabIndex = 24
@@ -200,7 +210,7 @@ Partial Class AddEventsForm
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(67, 361)
+        Me.Label4.Location = New System.Drawing.Point(49, 350)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(124, 21)
         Me.Label4.TabIndex = 23
@@ -211,7 +221,7 @@ Partial Class AddEventsForm
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(67, 183)
+        Me.Label2.Location = New System.Drawing.Point(49, 183)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 21)
         Me.Label2.TabIndex = 21
@@ -222,7 +232,7 @@ Partial Class AddEventsForm
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(67, 97)
+        Me.Label1.Location = New System.Drawing.Point(49, 97)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(122, 21)
         Me.Label1.TabIndex = 20
@@ -241,13 +251,13 @@ Partial Class AddEventsForm
         Me.dtpEndTime.FillColor = System.Drawing.Color.White
         Me.dtpEndTime.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold)
         Me.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpEndTime.Location = New System.Drawing.Point(319, 493)
+        Me.dtpEndTime.Location = New System.Drawing.Point(450, 635)
         Me.dtpEndTime.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.dtpEndTime.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
         Me.dtpEndTime.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.dtpEndTime.Name = "dtpEndTime"
         Me.dtpEndTime.ShowUpDown = True
-        Me.dtpEndTime.Size = New System.Drawing.Size(194, 45)
+        Me.dtpEndTime.Size = New System.Drawing.Size(365, 45)
         Me.dtpEndTime.TabIndex = 31
         Me.dtpEndTime.Value = New Date(2024, 10, 23, 11, 44, 33, 549)
         '
@@ -261,20 +271,20 @@ Partial Class AddEventsForm
         Me.dtpStartTime.FillColor = System.Drawing.Color.White
         Me.dtpStartTime.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.dtpStartTime.Location = New System.Drawing.Point(72, 493)
+        Me.dtpStartTime.Location = New System.Drawing.Point(61, 635)
         Me.dtpStartTime.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.dtpStartTime.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
         Me.dtpStartTime.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.dtpStartTime.Name = "dtpStartTime"
         Me.dtpStartTime.ShowUpDown = True
-        Me.dtpStartTime.Size = New System.Drawing.Size(194, 45)
+        Me.dtpStartTime.Size = New System.Drawing.Size(368, 45)
         Me.dtpStartTime.TabIndex = 30
         Me.dtpStartTime.Value = New Date(2024, 10, 23, 11, 52, 35, 469)
         '
         'txtEventName
         '
         Me.txtEventName.AutoRoundedCorners = True
-        Me.txtEventName.BorderRadius = 21
+        Me.txtEventName.BorderRadius = 18
         Me.txtEventName.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtEventName.DefaultText = ""
         Me.txtEventName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -284,13 +294,13 @@ Partial Class AddEventsForm
         Me.txtEventName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtEventName.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEventName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtEventName.Location = New System.Drawing.Point(72, 136)
+        Me.txtEventName.Location = New System.Drawing.Point(54, 136)
         Me.txtEventName.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtEventName.Name = "txtEventName"
         Me.txtEventName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtEventName.PlaceholderText = ""
         Me.txtEventName.SelectedText = ""
-        Me.txtEventName.Size = New System.Drawing.Size(376, 44)
+        Me.txtEventName.Size = New System.Drawing.Size(762, 38)
         Me.txtEventName.TabIndex = 26
         '
         'Label3
@@ -298,25 +308,196 @@ Partial Class AddEventsForm
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(67, 273)
+        Me.Label3.Location = New System.Drawing.Point(49, 262)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(58, 21)
+        Me.Label3.Size = New System.Drawing.Size(108, 21)
         Me.Label3.TabIndex = 22
-        Me.Label3.Text = "Date:"
+        Me.Label3.Text = "Start Date:"
+        '
+        'dtpEventEnd
+        '
+        Me.dtpEventEnd.Animated = True
+        Me.dtpEventEnd.AutoRoundedCorners = True
+        Me.dtpEventEnd.BorderRadius = 19
+        Me.dtpEventEnd.Checked = True
+        Me.dtpEventEnd.FillColor = System.Drawing.Color.White
+        Me.dtpEventEnd.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpEventEnd.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpEventEnd.Location = New System.Drawing.Point(451, 290)
+        Me.dtpEventEnd.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.dtpEventEnd.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
+        Me.dtpEventEnd.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
+        Me.dtpEventEnd.Name = "dtpEventEnd"
+        Me.dtpEventEnd.Size = New System.Drawing.Size(365, 40)
+        Me.dtpEventEnd.TabIndex = 37
+        Me.dtpEventEnd.Value = New Date(2024, 11, 9, 0, 0, 0, 0)
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.White
+        Me.Label8.Location = New System.Drawing.Point(435, 262)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(97, 21)
+        Me.Label8.TabIndex = 38
+        Me.Label8.Text = "End Date:"
+        '
+        'txtFacilitator
+        '
+        Me.txtFacilitator.AutoRoundedCorners = True
+        Me.txtFacilitator.BorderRadius = 19
+        Me.txtFacilitator.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtFacilitator.DefaultText = ""
+        Me.txtFacilitator.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtFacilitator.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtFacilitator.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtFacilitator.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtFacilitator.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtFacilitator.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFacilitator.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtFacilitator.Location = New System.Drawing.Point(440, 387)
+        Me.txtFacilitator.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtFacilitator.Name = "txtFacilitator"
+        Me.txtFacilitator.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtFacilitator.PlaceholderText = ""
+        Me.txtFacilitator.SelectedText = ""
+        Me.txtFacilitator.Size = New System.Drawing.Size(376, 40)
+        Me.txtFacilitator.TabIndex = 40
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.White
+        Me.Label9.Location = New System.Drawing.Point(435, 350)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(104, 21)
+        Me.Label9.TabIndex = 39
+        Me.Label9.Text = "Facilitator:"
+        '
+        'txtContactPerson
+        '
+        Me.txtContactPerson.AutoRoundedCorners = True
+        Me.txtContactPerson.BorderRadius = 19
+        Me.txtContactPerson.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtContactPerson.DefaultText = ""
+        Me.txtContactPerson.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtContactPerson.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtContactPerson.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtContactPerson.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtContactPerson.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtContactPerson.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContactPerson.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtContactPerson.Location = New System.Drawing.Point(53, 477)
+        Me.txtContactPerson.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtContactPerson.Name = "txtContactPerson"
+        Me.txtContactPerson.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtContactPerson.PlaceholderText = ""
+        Me.txtContactPerson.SelectedText = ""
+        Me.txtContactPerson.Size = New System.Drawing.Size(446, 40)
+        Me.txtContactPerson.TabIndex = 42
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.White
+        Me.Label10.Location = New System.Drawing.Point(48, 440)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(154, 21)
+        Me.Label10.TabIndex = 41
+        Me.Label10.Text = "Contact Person:"
+        '
+        'txtContact
+        '
+        Me.txtContact.AutoRoundedCorners = True
+        Me.txtContact.BorderRadius = 19
+        Me.txtContact.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtContact.DefaultText = ""
+        Me.txtContact.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtContact.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtContact.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtContact.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtContact.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtContact.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContact.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtContact.Location = New System.Drawing.Point(451, 558)
+        Me.txtContact.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtContact.Name = "txtContact"
+        Me.txtContact.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtContact.PlaceholderText = ""
+        Me.txtContact.SelectedText = ""
+        Me.txtContact.Size = New System.Drawing.Size(365, 40)
+        Me.txtContact.TabIndex = 46
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(446, 521)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(118, 21)
+        Me.Label11.TabIndex = 45
+        Me.Label11.Text = "Contact No:"
+        '
+        'txtContactMessenger
+        '
+        Me.txtContactMessenger.AutoRoundedCorners = True
+        Me.txtContactMessenger.BorderRadius = 19
+        Me.txtContactMessenger.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtContactMessenger.DefaultText = ""
+        Me.txtContactMessenger.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtContactMessenger.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtContactMessenger.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtContactMessenger.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtContactMessenger.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtContactMessenger.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContactMessenger.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtContactMessenger.Location = New System.Drawing.Point(54, 558)
+        Me.txtContactMessenger.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtContactMessenger.Name = "txtContactMessenger"
+        Me.txtContactMessenger.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtContactMessenger.PlaceholderText = ""
+        Me.txtContactMessenger.SelectedText = ""
+        Me.txtContactMessenger.Size = New System.Drawing.Size(376, 40)
+        Me.txtContactMessenger.TabIndex = 44
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.Location = New System.Drawing.Point(49, 521)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(112, 21)
+        Me.Label12.TabIndex = 43
+        Me.Label12.Text = "Messenger:"
         '
         'AddEventsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(573, 652)
+        Me.ClientSize = New System.Drawing.Size(870, 779)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtContact)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.txtContactMessenger)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.txtContactPerson)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.txtFacilitator)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.dtpEventEnd)
         Me.Controls.Add(Me.Guna2ControlBox3)
         Me.Controls.Add(Me.Guna2ControlBox4)
         Me.Controls.Add(Me.btnAddEvent)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.dtpEventDate)
+        Me.Controls.Add(Me.dtpEventStart)
         Me.Controls.Add(Me.txtDepartment)
         Me.Controls.Add(Me.txtVenue)
         Me.Controls.Add(Me.Label6)
@@ -342,7 +523,7 @@ Partial Class AddEventsForm
     Friend WithEvents btnAddEvent As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents btnClear As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label7 As Label
-    Friend WithEvents dtpEventDate As Guna.UI2.WinForms.Guna2DateTimePicker
+    Friend WithEvents dtpEventStart As Guna.UI2.WinForms.Guna2DateTimePicker
     Friend WithEvents txtDepartment As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txtVenue As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label6 As Label
@@ -355,4 +536,14 @@ Partial Class AddEventsForm
     Friend WithEvents dtpStartTime As Guna.UI2.WinForms.Guna2DateTimePicker
     Friend WithEvents txtEventName As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents dtpEventEnd As Guna.UI2.WinForms.Guna2DateTimePicker
+    Friend WithEvents txtContactPerson As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents txtFacilitator As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents txtContact As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents txtContactMessenger As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label12 As Label
 End Class

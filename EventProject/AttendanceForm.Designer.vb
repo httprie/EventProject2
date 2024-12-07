@@ -30,14 +30,19 @@ Partial Class AttendanceForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.pbwebcam = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.AttendanceData = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.timedate = New System.Windows.Forms.Label()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.eventname = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.venue = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.eventdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.starttime = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.edit = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.delete = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.timedate = New System.Windows.Forms.Label()
         CType(Me.pbwebcam, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AttendanceData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -89,7 +94,7 @@ Partial Class AttendanceForm
         Me.AttendanceData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.AttendanceData.ColumnHeadersHeight = 42
         Me.AttendanceData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Me.AttendanceData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.eventname, Me.venue, Me.eventdate, Me.starttime, Me.edit, Me.delete})
+        Me.AttendanceData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.eventname, Me.venue, Me.Column4, Me.Column3, Me.Column2, Me.eventdate, Me.Column1, Me.starttime, Me.edit, Me.delete})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -129,6 +134,27 @@ Partial Class AttendanceForm
         Me.AttendanceData.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.LightBlue
         Me.AttendanceData.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'Timer1
+        '
+        '
+        'timedate
+        '
+        Me.timedate.AutoSize = True
+        Me.timedate.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.timedate.ForeColor = System.Drawing.Color.Black
+        Me.timedate.Location = New System.Drawing.Point(12, 20)
+        Me.timedate.Name = "timedate"
+        Me.timedate.Size = New System.Drawing.Size(150, 25)
+        Me.timedate.TabIndex = 54
+        Me.timedate.Text = "                       "
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "No."
+        Me.Column5.MinimumWidth = 8
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
         'eventname
         '
         Me.eventname.HeaderText = "ID"
@@ -138,17 +164,45 @@ Partial Class AttendanceForm
         '
         'venue
         '
-        Me.venue.HeaderText = "Student"
+        Me.venue.HeaderText = "First Name"
         Me.venue.MinimumWidth = 8
         Me.venue.Name = "venue"
         Me.venue.ReadOnly = True
         '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Last Name"
+        Me.Column4.MinimumWidth = 8
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Department"
+        Me.Column3.MinimumWidth = 8
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Course"
+        Me.Column2.MinimumWidth = 8
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
         'eventdate
         '
-        Me.eventdate.HeaderText = "Year & Sec"
+        Me.eventdate.HeaderText = "Year"
         Me.eventdate.MinimumWidth = 8
         Me.eventdate.Name = "eventdate"
         Me.eventdate.ReadOnly = True
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Section"
+        Me.Column1.MinimumWidth = 8
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
         '
         'starttime
         '
@@ -170,20 +224,6 @@ Partial Class AttendanceForm
         Me.delete.MinimumWidth = 8
         Me.delete.Name = "delete"
         Me.delete.ReadOnly = True
-        '
-        'Timer1
-        '
-        '
-        'timedate
-        '
-        Me.timedate.AutoSize = True
-        Me.timedate.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.timedate.ForeColor = System.Drawing.Color.Black
-        Me.timedate.Location = New System.Drawing.Point(12, 20)
-        Me.timedate.Name = "timedate"
-        Me.timedate.Size = New System.Drawing.Size(150, 25)
-        Me.timedate.TabIndex = 54
-        Me.timedate.Text = "                       "
         '
         'AttendanceForm
         '
@@ -209,12 +249,17 @@ Partial Class AttendanceForm
     Friend WithEvents Label1 As Label
     Friend WithEvents pbwebcam As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents AttendanceData As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents timedate As Label
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents eventname As DataGridViewTextBoxColumn
     Friend WithEvents venue As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents eventdate As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents starttime As DataGridViewTextBoxColumn
     Friend WithEvents edit As DataGridViewTextBoxColumn
     Friend WithEvents delete As DataGridViewTextBoxColumn
-    Friend WithEvents Timer1 As Timer
-    Friend WithEvents timedate As Label
 End Class

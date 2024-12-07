@@ -23,22 +23,19 @@ Partial Class HeadReports
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.timedate = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.cbstudid = New System.Windows.Forms.ComboBox()
-        Me.cbename = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.btnstudinfo = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnename = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnallact = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnstudact = New Guna.UI2.WinForms.Guna2Button()
-        Me.ReportData = New Guna.UI2.WinForms.Guna2DataGridView()
-        CType(Me.ReportData, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cbFilter = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.btnFilter = New Guna.UI2.WinForms.Guna2Button()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.ReportData = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        Me.dtpSearchDate = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.SuspendLayout()
         '
         'timedate
@@ -58,209 +55,179 @@ Partial Class HeadReports
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(383, 100)
+        Me.Label3.Location = New System.Drawing.Point(14, 65)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(102, 21)
         Me.Label3.TabIndex = 36
         Me.Label3.Text = "FILTER BY:"
         '
-        'cbstudid
+        'Timer1
         '
-        Me.cbstudid.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbstudid.ForeColor = System.Drawing.Color.Black
-        Me.cbstudid.FormattingEnabled = True
-        Me.cbstudid.Location = New System.Drawing.Point(12, 125)
-        Me.cbstudid.Name = "cbstudid"
-        Me.cbstudid.Size = New System.Drawing.Size(119, 33)
-        Me.cbstudid.TabIndex = 35
         '
-        'cbename
+        'cbFilter
         '
-        Me.cbename.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbename.ForeColor = System.Drawing.Color.Black
-        Me.cbename.FormattingEnabled = True
-        Me.cbename.Location = New System.Drawing.Point(136, 125)
-        Me.cbename.Name = "cbename"
-        Me.cbename.Size = New System.Drawing.Size(246, 33)
-        Me.cbename.TabIndex = 34
+        Me.cbFilter.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbFilter.ForeColor = System.Drawing.Color.Black
+        Me.cbFilter.FormattingEnabled = True
+        Me.cbFilter.Items.AddRange(New Object() {"STUDENT ID", "FIRST NAME", "LAST NAME", "VENUE", "DEPARTMENT", "FACILITATOR", "EVENT ID", "COURSE", "YEAR", "SECTION", ""})
+        Me.cbFilter.Location = New System.Drawing.Point(19, 90)
+        Me.cbFilter.Name = "cbFilter"
+        Me.cbFilter.Size = New System.Drawing.Size(343, 33)
+        Me.cbFilter.TabIndex = 44
         '
-        'Label2
+        'Label4
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(140, 100)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(126, 21)
-        Me.Label2.TabIndex = 33
-        Me.Label2.Text = "EVENT NAME"
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(284, 159)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(17, 21)
+        Me.Label4.TabIndex = 47
+        Me.Label4.Text = "-"
+        '
+        'btnFilter
+        '
+        Me.btnFilter.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btnFilter.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btnFilter.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btnFilter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btnFilter.FillColor = System.Drawing.Color.White
+        Me.btnFilter.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnFilter.ForeColor = System.Drawing.Color.Black
+        Me.btnFilter.Location = New System.Drawing.Point(832, 90)
+        Me.btnFilter.Name = "btnFilter"
+        Me.btnFilter.Size = New System.Drawing.Size(157, 35)
+        Me.btnFilter.TabIndex = 54
+        Me.btnFilter.Text = "Print"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.Black
+        Me.Label8.Location = New System.Drawing.Point(16, 126)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(120, 21)
+        Me.Label8.TabIndex = 55
+        Me.Label8.Text = "START DATE:"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.Black
+        Me.Label9.Location = New System.Drawing.Point(386, 126)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(105, 21)
+        Me.Label9.TabIndex = 56
+        Me.Label9.Text = "END DATE:"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox1.ForeColor = System.Drawing.Color.Black
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"STUDENT ID", "FIRST NAME", "LAST NAME", "VENUE", "DEPARTMENT", "FACILITATOR", "EVENT ID", "COURSE", "YEAR", "SECTION", ""})
+        Me.ComboBox1.Location = New System.Drawing.Point(390, 90)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(426, 33)
+        Me.ComboBox1.TabIndex = 57
+        '
+        'ReportData
+        '
+        Me.ReportData.ActiveViewIndex = -1
+        Me.ReportData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.ReportData.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ReportData.Location = New System.Drawing.Point(1, 210)
+        Me.ReportData.Name = "ReportData"
+        Me.ReportData.Size = New System.Drawing.Size(1011, 578)
+        Me.ReportData.TabIndex = 58
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(12, 100)
+        Me.Label1.Location = New System.Drawing.Point(368, 159)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(119, 21)
-        Me.Label1.TabIndex = 32
-        Me.Label1.Text = "STUDENT ID"
+        Me.Label1.Size = New System.Drawing.Size(17, 21)
+        Me.Label1.TabIndex = 59
+        Me.Label1.Text = "-"
         '
-        'Timer1
+        'Guna2DateTimePicker1
         '
+        Me.Guna2DateTimePicker1.AutoRoundedCorners = True
+        Me.Guna2DateTimePicker1.BackColor = System.Drawing.SystemColors.Control
+        Me.Guna2DateTimePicker1.BorderColor = System.Drawing.Color.White
+        Me.Guna2DateTimePicker1.BorderRadius = 18
+        Me.Guna2DateTimePicker1.Checked = True
+        Me.Guna2DateTimePicker1.FillColor = System.Drawing.Color.White
+        Me.Guna2DateTimePicker1.Font = New System.Drawing.Font("Ubuntu", 9.0!)
+        Me.Guna2DateTimePicker1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
+        Me.Guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
+        Me.Guna2DateTimePicker1.Location = New System.Drawing.Point(391, 150)
+        Me.Guna2DateTimePicker1.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
+        Me.Guna2DateTimePicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
+        Me.Guna2DateTimePicker1.Name = "Guna2DateTimePicker1"
+        Me.Guna2DateTimePicker1.Size = New System.Drawing.Size(425, 38)
+        Me.Guna2DateTimePicker1.TabIndex = 61
+        Me.Guna2DateTimePicker1.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
         '
-        'btnstudinfo
+        'dtpSearchDate
         '
-        Me.btnstudinfo.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btnstudinfo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btnstudinfo.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btnstudinfo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btnstudinfo.FillColor = System.Drawing.Color.White
-        Me.btnstudinfo.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnstudinfo.ForeColor = System.Drawing.Color.Black
-        Me.btnstudinfo.Image = Global.EventProject.My.Resources.Resources.studentinfo
-        Me.btnstudinfo.Location = New System.Drawing.Point(388, 120)
-        Me.btnstudinfo.Name = "btnstudinfo"
-        Me.btnstudinfo.Size = New System.Drawing.Size(147, 32)
-        Me.btnstudinfo.TabIndex = 42
-        Me.btnstudinfo.Text = "Student Info"
-        '
-        'btnename
-        '
-        Me.btnename.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btnename.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btnename.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btnename.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btnename.FillColor = System.Drawing.Color.White
-        Me.btnename.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnename.ForeColor = System.Drawing.Color.Black
-        Me.btnename.Image = Global.EventProject.My.Resources.Resources.event_name
-        Me.btnename.Location = New System.Drawing.Point(862, 120)
-        Me.btnename.Name = "btnename"
-        Me.btnename.Size = New System.Drawing.Size(137, 32)
-        Me.btnename.TabIndex = 39
-        Me.btnename.Text = "Event Name"
-        '
-        'btnallact
-        '
-        Me.btnallact.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btnallact.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btnallact.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btnallact.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btnallact.FillColor = System.Drawing.Color.White
-        Me.btnallact.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnallact.ForeColor = System.Drawing.Color.Black
-        Me.btnallact.Image = Global.EventProject.My.Resources.Resources.all_act
-        Me.btnallact.Location = New System.Drawing.Point(708, 120)
-        Me.btnallact.Name = "btnallact"
-        Me.btnallact.Size = New System.Drawing.Size(148, 32)
-        Me.btnallact.TabIndex = 38
-        Me.btnallact.Text = "All Activity"
-        '
-        'btnstudact
-        '
-        Me.btnstudact.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btnstudact.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btnstudact.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btnstudact.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btnstudact.FillColor = System.Drawing.Color.White
-        Me.btnstudact.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnstudact.ForeColor = System.Drawing.Color.Black
-        Me.btnstudact.Image = Global.EventProject.My.Resources.Resources.stud_act
-        Me.btnstudact.Location = New System.Drawing.Point(541, 120)
-        Me.btnstudact.Name = "btnstudact"
-        Me.btnstudact.Size = New System.Drawing.Size(161, 32)
-        Me.btnstudact.TabIndex = 37
-        Me.btnstudact.Text = "Student Activity"
-        '
-        'ReportData
-        '
-        Me.ReportData.AllowUserToResizeColumns = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
-        Me.ReportData.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ReportData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
-        Me.ReportData.ColumnHeadersHeight = 42
-        Me.ReportData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ReportData.DefaultCellStyle = DataGridViewCellStyle6
-        Me.ReportData.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.ReportData.Location = New System.Drawing.Point(1, 173)
-        Me.ReportData.Name = "ReportData"
-        Me.ReportData.ReadOnly = True
-        Me.ReportData.RowHeadersVisible = False
-        Me.ReportData.RowHeadersWidth = 62
-        Me.ReportData.RowTemplate.Height = 28
-        Me.ReportData.Size = New System.Drawing.Size(1010, 530)
-        Me.ReportData.TabIndex = 43
-        Me.ReportData.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
-        Me.ReportData.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.ReportData.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.ReportData.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.ReportData.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.ReportData.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.ReportData.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.ReportData.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.White
-        Me.ReportData.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.ReportData.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ReportData.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black
-        Me.ReportData.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Me.ReportData.ThemeStyle.HeaderStyle.Height = 42
-        Me.ReportData.ThemeStyle.ReadOnly = True
-        Me.ReportData.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
-        Me.ReportData.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.ReportData.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ReportData.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.ReportData.ThemeStyle.RowsStyle.Height = 28
-        Me.ReportData.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.LightBlue
-        Me.ReportData.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.dtpSearchDate.AutoRoundedCorners = True
+        Me.dtpSearchDate.BackColor = System.Drawing.SystemColors.Control
+        Me.dtpSearchDate.BorderColor = System.Drawing.Color.White
+        Me.dtpSearchDate.BorderRadius = 18
+        Me.dtpSearchDate.Checked = True
+        Me.dtpSearchDate.FillColor = System.Drawing.Color.White
+        Me.dtpSearchDate.Font = New System.Drawing.Font("Ubuntu", 9.0!)
+        Me.dtpSearchDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
+        Me.dtpSearchDate.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
+        Me.dtpSearchDate.Location = New System.Drawing.Point(12, 150)
+        Me.dtpSearchDate.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
+        Me.dtpSearchDate.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
+        Me.dtpSearchDate.Name = "dtpSearchDate"
+        Me.dtpSearchDate.Size = New System.Drawing.Size(350, 38)
+        Me.dtpSearchDate.TabIndex = 60
+        Me.dtpSearchDate.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
         '
         'HeadReports
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1011, 800)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Guna2DateTimePicker1)
+        Me.Controls.Add(Me.dtpSearchDate)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ReportData)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.btnFilter)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.cbFilter)
         Me.Controls.Add(Me.timedate)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.cbstudid)
-        Me.Controls.Add(Me.cbename)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.btnstudinfo)
-        Me.Controls.Add(Me.btnename)
-        Me.Controls.Add(Me.btnallact)
-        Me.Controls.Add(Me.btnstudact)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "HeadReports"
         Me.Text = "HeadReports"
-        CType(Me.ReportData, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents timedate As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents cbstudid As ComboBox
-    Friend WithEvents cbename As ComboBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents btnstudinfo As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnename As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnallact As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnstudact As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents ReportData As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents cbFilter As ComboBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents btnFilter As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents ReportData As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Guna2DateTimePicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
+    Friend WithEvents dtpSearchDate As Guna.UI2.WinForms.Guna2DateTimePicker
 End Class
