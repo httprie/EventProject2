@@ -23,6 +23,9 @@ Partial Class HeadReports
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.timedate = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -32,10 +35,11 @@ Partial Class HeadReports
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.ReportData = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.dtpSearchDate = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        Me.ReportData = New Guna.UI2.WinForms.Guna2DataGridView()
+        CType(Me.ReportData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'timedate
@@ -134,16 +138,6 @@ Partial Class HeadReports
         Me.ComboBox1.Size = New System.Drawing.Size(426, 33)
         Me.ComboBox1.TabIndex = 57
         '
-        'ReportData
-        '
-        Me.ReportData.ActiveViewIndex = -1
-        Me.ReportData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.ReportData.Cursor = System.Windows.Forms.Cursors.Default
-        Me.ReportData.Location = New System.Drawing.Point(1, 210)
-        Me.ReportData.Name = "ReportData"
-        Me.ReportData.Size = New System.Drawing.Size(1011, 578)
-        Me.ReportData.TabIndex = 58
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -193,15 +187,66 @@ Partial Class HeadReports
         Me.dtpSearchDate.TabIndex = 60
         Me.dtpSearchDate.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
         '
+        'ReportData
+        '
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.ReportData.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ReportData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.ReportData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ReportData.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ReportData.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ReportData.Location = New System.Drawing.Point(12, 228)
+        Me.ReportData.Name = "ReportData"
+        Me.ReportData.RowHeadersVisible = False
+        Me.ReportData.RowHeadersWidth = 62
+        Me.ReportData.RowTemplate.Height = 28
+        Me.ReportData.Size = New System.Drawing.Size(987, 434)
+        Me.ReportData.TabIndex = 62
+        Me.ReportData.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.ReportData.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.ReportData.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.ReportData.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.ReportData.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.ReportData.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.ReportData.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ReportData.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ReportData.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.ReportData.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ReportData.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.ReportData.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ReportData.ThemeStyle.HeaderStyle.Height = 4
+        Me.ReportData.ThemeStyle.ReadOnly = False
+        Me.ReportData.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.ReportData.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.ReportData.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ReportData.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.ReportData.ThemeStyle.RowsStyle.Height = 28
+        Me.ReportData.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.ReportData.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
         'HeadReports
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1011, 800)
         Me.ControlBox = False
+        Me.Controls.Add(Me.ReportData)
         Me.Controls.Add(Me.Guna2DateTimePicker1)
         Me.Controls.Add(Me.dtpSearchDate)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ReportData)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
@@ -213,6 +258,7 @@ Partial Class HeadReports
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "HeadReports"
         Me.Text = "HeadReports"
+        CType(Me.ReportData, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -226,8 +272,8 @@ Partial Class HeadReports
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents ReportData As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents Label1 As Label
     Friend WithEvents Guna2DateTimePicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
     Friend WithEvents dtpSearchDate As Guna.UI2.WinForms.Guna2DateTimePicker
+    Friend WithEvents ReportData As Guna.UI2.WinForms.Guna2DataGridView
 End Class

@@ -7,6 +7,7 @@ Public Class EventsForm
     Private Sub EventsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Enabled = True
         LoadEventsData()
+        LoadPendingEvents()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -54,6 +55,54 @@ Public Class EventsForm
             DataGridViewEvents.Columns.Add(deleteColumn)
 
             DataGridViewEvents.AutoResizeColumns()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
+    Public Sub LoadPendingEvents()
+        Try
+            DataGridViewEvents.Columns.Clear()
+
+            Dim pendingDt As New DataTable()
+            sqlQuery = "SELECT * FROM Events WHERE status = 'Pending'"
+            da = New MySqlDataAdapter(sqlQuery, conn)
+
+            If conn.State = ConnectionState.Closed Then
+                conn.Open()
+            End If
+
+            da.Fill(pendingDt)
+
+            conn.Close()
+
+            DataGridViewEvents.DataSource = pendingDt
+
+            DataGridViewEvents.Columns("requestid").HeaderText = "Request ID"
+            DataGridViewEvents.Columns("eventname").HeaderText = "Event Name"
+            DataGridViewEvents.Columns("venue").HeaderText = "Venue"
+            DataGridViewEvents.Columns("department").HeaderText = "Department"
+            DataGridViewEvents.Columns("startdate").HeaderText = "Start Date"
+            DataGridViewEvents.Columns("enddate").HeaderText = "End Date"
+
+            Dim acceptColumn As New DataGridViewButtonColumn()
+            acceptColumn.Name = "Accept"
+            acceptColumn.HeaderText = "Accept"
+            acceptColumn.Text = "Accept"
+            acceptColumn.UseColumnTextForButtonValue = True
+            DataGridViewEvents.Columns.Add(acceptColumn)
+
+            Dim rejectColumn As New DataGridViewButtonColumn()
+            rejectColumn.Name = "Reject"
+            rejectColumn.HeaderText = "Reject"
+            rejectColumn.Text = "Reject"
+            rejectColumn.UseColumnTextForButtonValue = True
+            DataGridViewEvents.Columns.Add(rejectColumn)
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -127,8 +176,11 @@ Public Class EventsForm
     End Sub
 
     Private Sub btnSearchEvent_Click(sender As Object, e As EventArgs) Handles btnSearchEvent.Click
-        Dim searchText As String = txtSearch.Text.Trim().ToLower()
-        Dim selectedDate As DateTime = dtpSearchDate.Value.Date
+        Dim startDate As DateTime = dtpStartDate.Value
+        Dim endDate As DateTime = dtpEndDate.Value
+        Dim startTime As TimeSpan = dtpStartTime.Value.TimeOfDay
+        Dim endTime As TimeSpan = dtpEndTime.Value.TimeOfDay
+        Dim searchText As String = btnSearchEvent.Text.Trim().ToLower()
 
         If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
             Dim dataView As New DataView(dt)
@@ -137,9 +189,10 @@ Public Class EventsForm
                                                        "venue LIKE '%{0}%' OR " &
                                                        "department LIKE '%{0}%'", searchText)
 
-            If dtpSearchDate.Checked Then
-                filterString &= String.Format(" AND eventdate = #{0}#", selectedDate.ToString("yyyy-MM-dd"))
-            End If
+            filterString &= String.Format(" AND eventdate >= #{0}# AND eventdate <= #{1}#",
+                                           startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"))
+            filterString &= String.Format(" AND starttime >= #{0}# AND endtime <= #{1}#",
+                                           startTime.ToString(), endTime.ToString())
 
             dataView.RowFilter = filterString
             DataGridViewEvents.DataSource = dataView

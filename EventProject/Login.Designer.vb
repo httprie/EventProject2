@@ -26,8 +26,6 @@ Partial Class Login
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Guna2ShadowPanel1 = New Guna.UI2.WinForms.Guna2ShadowPanel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnShow = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.txtPassword = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtUsername = New Guna.UI2.WinForms.Guna2TextBox()
         Me.btnSignIn = New Guna.UI2.WinForms.Guna2GradientButton()
@@ -70,8 +68,6 @@ Partial Class Login
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ShadowPanel1.Controls.Add(Me.Label1)
-        Me.Guna2ShadowPanel1.Controls.Add(Me.btnShow)
         Me.Guna2ShadowPanel1.Controls.Add(Me.txtPassword)
         Me.Guna2ShadowPanel1.Controls.Add(Me.txtUsername)
         Me.Guna2ShadowPanel1.Controls.Add(Me.btnSignIn)
@@ -83,33 +79,6 @@ Partial Class Login
         Me.Guna2ShadowPanel1.ShadowShift = 9
         Me.Guna2ShadowPanel1.Size = New System.Drawing.Size(635, 631)
         Me.Guna2ShadowPanel1.TabIndex = 1
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(123, 325)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(167, 25)
-        Me.Label1.TabIndex = 21
-        Me.Label1.Text = "Show Password"
-        '
-        'btnShow
-        '
-        Me.btnShow.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnShow.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnShow.CheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.btnShow.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.btnShow.Location = New System.Drawing.Point(68, 327)
-        Me.btnShow.Name = "btnShow"
-        Me.btnShow.Size = New System.Drawing.Size(49, 24)
-        Me.btnShow.TabIndex = 20
-        Me.btnShow.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.btnShow.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.btnShow.UncheckedState.InnerBorderColor = System.Drawing.Color.White
-        Me.btnShow.UncheckedState.InnerColor = System.Drawing.Color.White
         '
         'txtPassword
         '
@@ -174,7 +143,7 @@ Partial Class Login
         Me.btnSignIn.FillColor2 = System.Drawing.Color.CornflowerBlue
         Me.btnSignIn.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSignIn.ForeColor = System.Drawing.Color.White
-        Me.btnSignIn.Location = New System.Drawing.Point(150, 400)
+        Me.btnSignIn.Location = New System.Drawing.Point(150, 374)
         Me.btnSignIn.Name = "btnSignIn"
         Me.btnSignIn.Size = New System.Drawing.Size(265, 46)
         Me.btnSignIn.TabIndex = 14
@@ -255,8 +224,6 @@ Partial Class Login
     Friend WithEvents Guna2ShadowPanel1 As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Label3 As Label
     Friend WithEvents btnSignIn As Guna.UI2.WinForms.Guna2GradientButton
-    Friend WithEvents Label1 As Label
-    Friend WithEvents btnShow As Guna.UI2.WinForms.Guna2ToggleSwitch
     Friend WithEvents txtPassword As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txtUsername As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2ControlBox2 As Guna.UI2.WinForms.Guna2ControlBox

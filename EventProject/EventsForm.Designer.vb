@@ -23,12 +23,12 @@ Partial Class EventsForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnSearchEvent = New Guna.UI2.WinForms.Guna2Button()
         Me.btnAddEvent = New Guna.UI2.WinForms.Guna2Button()
         Me.DataGridViewEvents = New Guna.UI2.WinForms.Guna2DataGridView()
@@ -48,13 +48,13 @@ Partial Class EventsForm
         Me.delete = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.timedate = New System.Windows.Forms.Label()
-        Me.dtpSearchDate = New Guna.UI2.WinForms.Guna2DateTimePicker()
-        Me.Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        Me.dtpStartDate = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        Me.dtpEndDate = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.Guna2ComboBox2 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.cbEventFilter = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.cbxEvent = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2DataGridView1 = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -113,27 +113,27 @@ Partial Class EventsForm
         'DataGridViewEvents
         '
         Me.DataGridViewEvents.AllowUserToResizeColumns = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        Me.DataGridViewEvents.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewEvents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
+        Me.DataGridViewEvents.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewEvents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewEvents.ColumnHeadersHeight = 42
         Me.DataGridViewEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Me.DataGridViewEvents.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.eventid, Me.eventname, Me.venue, Me.department, Me.eventdate, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column3, Me.starttime, Me.endtime, Me.edit, Me.delete})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewEvents.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewEvents.DefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridViewEvents.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DataGridViewEvents.Location = New System.Drawing.Point(0, 178)
         Me.DataGridViewEvents.Name = "DataGridViewEvents"
@@ -276,43 +276,43 @@ Partial Class EventsForm
         Me.timedate.TabIndex = 16
         Me.timedate.Text = "                       "
         '
-        'dtpSearchDate
+        'dtpStartDate
         '
-        Me.dtpSearchDate.AutoRoundedCorners = True
-        Me.dtpSearchDate.BackColor = System.Drawing.SystemColors.Control
-        Me.dtpSearchDate.BorderColor = System.Drawing.Color.White
-        Me.dtpSearchDate.BorderRadius = 15
-        Me.dtpSearchDate.Checked = True
-        Me.dtpSearchDate.FillColor = System.Drawing.Color.White
-        Me.dtpSearchDate.Font = New System.Drawing.Font("Ubuntu", 9.0!)
-        Me.dtpSearchDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.dtpSearchDate.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
-        Me.dtpSearchDate.Location = New System.Drawing.Point(11, 129)
-        Me.dtpSearchDate.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
-        Me.dtpSearchDate.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
-        Me.dtpSearchDate.Name = "dtpSearchDate"
-        Me.dtpSearchDate.Size = New System.Drawing.Size(262, 33)
-        Me.dtpSearchDate.TabIndex = 18
-        Me.dtpSearchDate.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
+        Me.dtpStartDate.AutoRoundedCorners = True
+        Me.dtpStartDate.BackColor = System.Drawing.SystemColors.Control
+        Me.dtpStartDate.BorderColor = System.Drawing.Color.White
+        Me.dtpStartDate.BorderRadius = 15
+        Me.dtpStartDate.Checked = True
+        Me.dtpStartDate.FillColor = System.Drawing.Color.White
+        Me.dtpStartDate.Font = New System.Drawing.Font("Ubuntu", 9.0!)
+        Me.dtpStartDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
+        Me.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
+        Me.dtpStartDate.Location = New System.Drawing.Point(11, 129)
+        Me.dtpStartDate.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
+        Me.dtpStartDate.MinDate = New Date(2023, 1, 1, 0, 0, 0, 0)
+        Me.dtpStartDate.Name = "dtpStartDate"
+        Me.dtpStartDate.Size = New System.Drawing.Size(262, 33)
+        Me.dtpStartDate.TabIndex = 18
+        Me.dtpStartDate.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
         '
-        'Guna2DateTimePicker1
+        'dtpEndDate
         '
-        Me.Guna2DateTimePicker1.AutoRoundedCorners = True
-        Me.Guna2DateTimePicker1.BackColor = System.Drawing.SystemColors.Control
-        Me.Guna2DateTimePicker1.BorderColor = System.Drawing.Color.White
-        Me.Guna2DateTimePicker1.BorderRadius = 15
-        Me.Guna2DateTimePicker1.Checked = True
-        Me.Guna2DateTimePicker1.FillColor = System.Drawing.Color.White
-        Me.Guna2DateTimePicker1.Font = New System.Drawing.Font("Ubuntu", 9.0!)
-        Me.Guna2DateTimePicker1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.Guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
-        Me.Guna2DateTimePicker1.Location = New System.Drawing.Point(311, 126)
-        Me.Guna2DateTimePicker1.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
-        Me.Guna2DateTimePicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
-        Me.Guna2DateTimePicker1.Name = "Guna2DateTimePicker1"
-        Me.Guna2DateTimePicker1.Size = New System.Drawing.Size(263, 33)
-        Me.Guna2DateTimePicker1.TabIndex = 19
-        Me.Guna2DateTimePicker1.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
+        Me.dtpEndDate.AutoRoundedCorners = True
+        Me.dtpEndDate.BackColor = System.Drawing.SystemColors.Control
+        Me.dtpEndDate.BorderColor = System.Drawing.Color.White
+        Me.dtpEndDate.BorderRadius = 15
+        Me.dtpEndDate.Checked = True
+        Me.dtpEndDate.FillColor = System.Drawing.Color.White
+        Me.dtpEndDate.Font = New System.Drawing.Font("Ubuntu", 9.0!)
+        Me.dtpEndDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
+        Me.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
+        Me.dtpEndDate.Location = New System.Drawing.Point(311, 126)
+        Me.dtpEndDate.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
+        Me.dtpEndDate.MinDate = New Date(2023, 1, 1, 0, 0, 0, 0)
+        Me.dtpEndDate.Name = "dtpEndDate"
+        Me.dtpEndDate.Size = New System.Drawing.Size(263, 33)
+        Me.dtpEndDate.TabIndex = 19
+        Me.dtpEndDate.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
         '
         'Label9
         '
@@ -347,39 +347,39 @@ Partial Class EventsForm
         Me.Label3.TabIndex = 59
         Me.Label3.Text = "FILTER BY:"
         '
-        'Guna2ComboBox1
+        'cbEventFilter
         '
-        Me.Guna2ComboBox1.AutoRoundedCorners = True
-        Me.Guna2ComboBox1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox1.BorderRadius = 17
-        Me.Guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox1.ItemHeight = 30
-        Me.Guna2ComboBox1.Location = New System.Drawing.Point(16, 65)
-        Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
-        Me.Guna2ComboBox1.Size = New System.Drawing.Size(202, 36)
-        Me.Guna2ComboBox1.TabIndex = 62
+        Me.cbEventFilter.AutoRoundedCorners = True
+        Me.cbEventFilter.BackColor = System.Drawing.Color.Transparent
+        Me.cbEventFilter.BorderRadius = 17
+        Me.cbEventFilter.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.cbEventFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbEventFilter.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cbEventFilter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cbEventFilter.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.cbEventFilter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.cbEventFilter.ItemHeight = 30
+        Me.cbEventFilter.Location = New System.Drawing.Point(16, 65)
+        Me.cbEventFilter.Name = "cbEventFilter"
+        Me.cbEventFilter.Size = New System.Drawing.Size(202, 36)
+        Me.cbEventFilter.TabIndex = 62
         '
-        'Guna2ComboBox2
+        'cbxEvent
         '
-        Me.Guna2ComboBox2.AutoRoundedCorners = True
-        Me.Guna2ComboBox2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox2.BorderRadius = 17
-        Me.Guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.Guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox2.ItemHeight = 30
-        Me.Guna2ComboBox2.Location = New System.Drawing.Point(240, 65)
-        Me.Guna2ComboBox2.Name = "Guna2ComboBox2"
-        Me.Guna2ComboBox2.Size = New System.Drawing.Size(551, 36)
-        Me.Guna2ComboBox2.TabIndex = 63
+        Me.cbxEvent.AutoRoundedCorners = True
+        Me.cbxEvent.BackColor = System.Drawing.Color.Transparent
+        Me.cbxEvent.BorderRadius = 17
+        Me.cbxEvent.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.cbxEvent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbxEvent.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cbxEvent.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cbxEvent.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.cbxEvent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.cbxEvent.ItemHeight = 30
+        Me.cbxEvent.Location = New System.Drawing.Point(240, 65)
+        Me.cbxEvent.Name = "cbxEvent"
+        Me.cbxEvent.Size = New System.Drawing.Size(551, 36)
+        Me.cbxEvent.TabIndex = 63
         '
         'Label1
         '
@@ -396,27 +396,27 @@ Partial Class EventsForm
         'Guna2DataGridView1
         '
         Me.Guna2DataGridView1.AllowUserToResizeColumns = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
-        Me.Guna2DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Guna2DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
+        Me.Guna2DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Guna2DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.Guna2DataGridView1.ColumnHeadersHeight = 42
         Me.Guna2DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Me.Guna2DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.Column1, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.Column2, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Guna2DataGridView1.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Guna2DataGridView1.DefaultCellStyle = DataGridViewCellStyle12
         Me.Guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Guna2DataGridView1.Location = New System.Drawing.Point(0, 579)
         Me.Guna2DataGridView1.Name = "Guna2DataGridView1"
@@ -599,13 +599,13 @@ Partial Class EventsForm
         Me.Controls.Add(Me.dtpStartTime)
         Me.Controls.Add(Me.Guna2DataGridView1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Guna2ComboBox2)
-        Me.Controls.Add(Me.Guna2ComboBox1)
+        Me.Controls.Add(Me.cbxEvent)
+        Me.Controls.Add(Me.cbEventFilter)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Guna2DateTimePicker1)
-        Me.Controls.Add(Me.dtpSearchDate)
+        Me.Controls.Add(Me.dtpEndDate)
+        Me.Controls.Add(Me.dtpStartDate)
         Me.Controls.Add(Me.timedate)
         Me.Controls.Add(Me.DataGridViewEvents)
         Me.Controls.Add(Me.btnAddEvent)
@@ -625,13 +625,13 @@ Partial Class EventsForm
     Friend WithEvents DataGridViewEvents As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents Timer1 As Timer
     Friend WithEvents timedate As Label
-    Friend WithEvents dtpSearchDate As Guna.UI2.WinForms.Guna2DateTimePicker
-    Friend WithEvents Guna2DateTimePicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
+    Friend WithEvents dtpStartDate As Guna.UI2.WinForms.Guna2DateTimePicker
+    Friend WithEvents dtpEndDate As Guna.UI2.WinForms.Guna2DateTimePicker
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents Guna2ComboBox2 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents cbEventFilter As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents cbxEvent As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents eventid As DataGridViewTextBoxColumn
     Friend WithEvents eventname As DataGridViewTextBoxColumn
     Friend WithEvents venue As DataGridViewTextBoxColumn
