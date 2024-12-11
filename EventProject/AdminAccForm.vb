@@ -10,7 +10,6 @@ Public Class AdminAccForm
         Timer1.Enabled = True
         DbConnect()
         LoadAccountsData()
-        DataAccount.Columns("Password").Visible = False
     End Sub
 
     Public Event AccountAdded()
@@ -87,7 +86,6 @@ Public Class AdminAccForm
     Private Sub EditRecord(rowIndex As Integer)
         Dim username As String = DataAccount.Rows(rowIndex).Cells("UserName").Value.ToString()
         Dim fullname As String = DataAccount.Rows(rowIndex).Cells("FullName").Value.ToString()
-        Dim password As String = DataAccount.Rows(rowIndex).Cells("Password").Value.ToString()
         Dim role As String = DataAccount.Rows(rowIndex).Cells("Role").Value.ToString()
 
         Dim editForm As New EditAccountForm()
@@ -97,7 +95,7 @@ Public Class AdminAccForm
 
         If editForm.ShowDialog() = DialogResult.OK Then
 
-            Dim newUsername As String = editForm.txtuname.Text.Trim()
+            Dim newUsername As String = editForm.txtUname.Text.Trim()
             Dim newFullname As String = editForm.txtFname.Text.Trim()
             Dim newRole As String = editForm.cbRole.SelectedItem.ToString()
 
