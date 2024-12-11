@@ -14,7 +14,8 @@ Public Class AddEventsForm
     Public Property ParentFormInstance As EventsForm
     Public Property IsEditMode As Boolean = False
     Public Property EventID As Integer
-
+    Public Property EventStartDate As Date
+    Public Property EventEndDate As Date
     Public EventIDtoEdit As Integer
     Public EventName As String
     Public Venue As String

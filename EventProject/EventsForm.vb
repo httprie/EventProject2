@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+
 Public Class EventsForm
     Dim sqlQuery As String
     Dim da As MySqlDataAdapter
@@ -35,7 +36,8 @@ Public Class EventsForm
             DataGridViewEvents.Columns("eventid").HeaderText = "Event ID"
             DataGridViewEvents.Columns("eventname").HeaderText = "Name"
             DataGridViewEvents.Columns("venue").HeaderText = "Venue"
-            DataGridViewEvents.Columns("eventdate").HeaderText = "Date"
+            DataGridViewEvents.Columns("eventStart_date").HeaderText = "Start Date"
+            DataGridViewEvents.Columns("eventEnd_date").HeaderText = "End Date"
             DataGridViewEvents.Columns("department").HeaderText = "Department"
             DataGridViewEvents.Columns("starttime").HeaderText = "Start Time"
             DataGridViewEvents.Columns("endtime").HeaderText = "End Time"
@@ -83,12 +85,12 @@ Public Class EventsForm
 
             DataGridViewEvents.DataSource = pendingDt
 
-            DataGridViewEvents.Columns("requestid").HeaderText = "Request ID"
+            DataGridViewEvents.Columns("eventid").HeaderText = "Event ID"
             DataGridViewEvents.Columns("eventname").HeaderText = "Event Name"
             DataGridViewEvents.Columns("venue").HeaderText = "Venue"
+            DataGridViewEvents.Columns("eventStart_date").HeaderText = "Start Date"
+            DataGridViewEvents.Columns("eventEnd_date").HeaderText = "End Date"
             DataGridViewEvents.Columns("department").HeaderText = "Department"
-            DataGridViewEvents.Columns("startdate").HeaderText = "Start Date"
-            DataGridViewEvents.Columns("enddate").HeaderText = "End Date"
 
             Dim acceptColumn As New DataGridViewButtonColumn()
             acceptColumn.Name = "Accept"
@@ -131,7 +133,8 @@ Public Class EventsForm
                         .EventID = Convert.ToInt32(selectedRow.Cells("eventid").Value),
                         .EventName = selectedRow.Cells("eventname").Value.ToString(),
                         .Venue = selectedRow.Cells("venue").Value.ToString(),
-                        .EventDate = DateTime.Parse(selectedRow.Cells("eventdate").Value.ToString()),
+                        .EventStartDate = DateTime.Parse(selectedRow.Cells("eventStart_date").Value.ToString()),
+                        .EventEndDate = DateTime.Parse(selectedRow.Cells("eventEnd_date").Value.ToString()),
                         .Department = selectedRow.Cells("department").Value.ToString(),
                         .StartTime = DateTime.Parse(selectedRow.Cells("starttime").Value.ToString()),
                         .EndTime = DateTime.Parse(selectedRow.Cells("endtime").Value.ToString())
@@ -189,7 +192,7 @@ Public Class EventsForm
                                                        "venue LIKE '%{0}%' OR " &
                                                        "department LIKE '%{0}%'", searchText)
 
-            filterString &= String.Format(" AND eventdate >= #{0}# AND eventdate <= #{1}#",
+            filterString &= String.Format(" AND eventStart_date >= #{0}# AND eventEnd_date <= #{1}#",
                                            startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"))
             filterString &= String.Format(" AND starttime >= #{0}# AND endtime <= #{1}#",
                                            startTime.ToString(), endTime.ToString())
