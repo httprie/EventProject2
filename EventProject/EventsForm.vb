@@ -69,7 +69,7 @@ Public Class EventsForm
 
     Public Sub LoadPendingEvents()
         Try
-            DataGridViewEvents.Columns.Clear()
+            Guna2DataGridView1.Columns.Clear()
 
             Dim pendingDt As New DataTable()
             sqlQuery = "SELECT * FROM Events WHERE status = 'Pending'"
@@ -83,28 +83,28 @@ Public Class EventsForm
 
             conn.Close()
 
-            DataGridViewEvents.DataSource = pendingDt
+            Guna2DataGridView1.DataSource = pendingDt
 
-            DataGridViewEvents.Columns("eventid").HeaderText = "Event ID"
-            DataGridViewEvents.Columns("eventname").HeaderText = "Event Name"
-            DataGridViewEvents.Columns("venue").HeaderText = "Venue"
-            DataGridViewEvents.Columns("eventStart_date").HeaderText = "Start Date"
-            DataGridViewEvents.Columns("eventEnd_date").HeaderText = "End Date"
-            DataGridViewEvents.Columns("department").HeaderText = "Department"
+            Guna2DataGridView1.Columns("eventid").HeaderText = "Request ID"
+            Guna2DataGridView1.Columns("eventname").HeaderText = "Event Name"
+            Guna2DataGridView1.Columns("venue").HeaderText = "Venue"
+            Guna2DataGridView1.Columns("department").HeaderText = "Department"
+            Guna2DataGridView1.Columns("eventStart_date").HeaderText = "Start Date"
+            Guna2DataGridView1.Columns("eventEnd_date").HeaderText = "End Date"
 
             Dim acceptColumn As New DataGridViewButtonColumn()
             acceptColumn.Name = "Accept"
             acceptColumn.HeaderText = "Accept"
             acceptColumn.Text = "Accept"
             acceptColumn.UseColumnTextForButtonValue = True
-            DataGridViewEvents.Columns.Add(acceptColumn)
+            Guna2DataGridView1.Columns.Add(acceptColumn)
 
             Dim rejectColumn As New DataGridViewButtonColumn()
             rejectColumn.Name = "Reject"
             rejectColumn.HeaderText = "Reject"
             rejectColumn.Text = "Reject"
             rejectColumn.UseColumnTextForButtonValue = True
-            DataGridViewEvents.Columns.Add(rejectColumn)
+            Guna2DataGridView1.Columns.Add(rejectColumn)
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -178,6 +178,71 @@ Public Class EventsForm
         End Try
     End Sub
 
+    Private Sub DataGridViewPendingEvents_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Guna2DataGridView1.CellContentClick
+        Try
+            If e.RowIndex >= 0 Then
+                Dim selectedRow As DataGridViewRow = Guna2DataGridView1.Rows(e.RowIndex)
+
+                If Guna2DataGridView1.Columns(e.ColumnIndex).Name = "Accept" Then
+                    Dim eventID As Integer = Convert.ToInt32(selectedRow.Cells("eventid").Value)
+                    AcceptEvent(eventID)
+                    LoadPendingEvents()
+
+                ElseIf Guna2DataGridView1.Columns(e.ColumnIndex).Name = "Reject" Then
+                    Dim eventID As Integer = Convert.ToInt32(selectedRow.Cells("eventid").Value)
+                    RejectEvent(eventID)
+                    LoadPendingEvents()
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub AcceptEvent(eventID As Integer)
+        Try
+            If conn IsNot Nothing AndAlso conn.State <> ConnectionState.Open Then
+                conn.Open()
+            End If
+
+            Dim sqlUpdate As String = "UPDATE events SET status = 'Accepted' WHERE eventid = @eventid"
+            Using cmd As New MySqlCommand(sqlUpdate, conn)
+                cmd.Parameters.AddWithValue("@eventid", eventID)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            MessageBox.Show("Event accepted successfully.")
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
+    Private Sub RejectEvent(eventID As Integer)
+        Try
+            If conn IsNot Nothing AndAlso conn.State <> ConnectionState.Open Then
+                conn.Open()
+            End If
+
+            Dim sqlUpdate As String = "UPDATE events SET status = 'Rejected' WHERE eventid = @eventid"
+            Using cmd As New MySqlCommand(sqlUpdate, conn)
+                cmd.Parameters.AddWithValue("@eventid", eventID)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            MessageBox.Show("Event rejected successfully.")
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
     Private Sub btnSearchEvent_Click(sender As Object, e As EventArgs) Handles btnSearchEvent.Click
         Dim startDate As DateTime = dtpStartDate.Value
         Dim endDate As DateTime = dtpEndDate.Value
@@ -192,10 +257,8 @@ Public Class EventsForm
                                                        "venue LIKE '%{0}%' OR " &
                                                        "department LIKE '%{0}%'", searchText)
 
-            filterString &= String.Format(" AND eventStart_date >= #{0}# AND eventEnd_date <= #{1}#",
-                                           startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"))
-            filterString &= String.Format(" AND starttime >= #{0}# AND endtime <= #{1}#",
-                                           startTime.ToString(), endTime.ToString())
+            filterString &= String.Format(" AND eventStart_date >= #{0}# AND eventEnd_date <= #{1}#", startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"))
+            filterString &= String.Format(" AND starttime >= #{0}# AND endtime <= #{1}#", startTime.ToString(), endTime.ToString())
 
             dataView.RowFilter = filterString
             DataGridViewEvents.DataSource = dataView
@@ -207,4 +270,5 @@ Public Class EventsForm
             MessageBox.Show("No data available to search.")
         End If
     End Sub
+
 End Class
