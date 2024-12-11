@@ -33,21 +33,9 @@ Public Class EditAccountForm
     Private Sub ClearTextBoxes()
         txtUname.Text = ""
         txtFname.Text = ""
-        txtPwd.Text = ""
         cbRole.Text = -1
     End Sub
     Private Sub btnClearTxt_Click(sender As Object, e As EventArgs) Handles btnClearTxt.Click
         ClearTextBoxes()
-    End Sub
-
-    Private Sub btnshowpwd_Click(sender As Object, e As EventArgs) Handles btnShowPwd.Click
-        If txtPwd.PasswordChar = "*" Then
-            txtPwd.PasswordChar = ""
-            btnShowPwd.Text = "Hide"
-        Else
-            txtPwd.PasswordChar = "*"
-            btnShowPwd.Text = "Show"
-
-        End If
     End Sub
 End Class

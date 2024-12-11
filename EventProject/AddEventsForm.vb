@@ -32,7 +32,6 @@ Public Class AddEventsForm
 
             txtEventName.Text = EventName
             txtVenue.Text = Venue
-            dtpEventDate.Value = EventDate
             txtDepartment.Text = Department
             dtpStartTime.Value = StartTime
             dtpEndTime.Value = EndTime
@@ -46,7 +45,6 @@ Public Class AddEventsForm
         Dim eventName As String = txtEventName.Text
         Dim venue As String = txtVenue.Text
         Dim department As String = txtDepartment.Text
-        Dim eventDate As DateTime = dtpEventDate.Value
         Dim startTime As DateTime = dtpStartTime.Value
         Dim endTime As DateTime = dtpEndTime.Value
 

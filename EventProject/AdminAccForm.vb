@@ -93,21 +93,18 @@ Public Class AdminAccForm
         Dim editForm As New EditAccountForm()
         editForm.txtUname.Text = username
         editForm.txtFname.Text = fullname
-        editForm.txtPwd.Text = password
         editForm.cbRole.SelectedItem = role
 
         If editForm.ShowDialog() = DialogResult.OK Then
 
             Dim newUsername As String = editForm.txtuname.Text.Trim()
-            Dim newPassword As String = editForm.txtpwd.Text.Trim()
-            Dim newFullname As String = editForm.txtfname.Text.Trim()
+            Dim newFullname As String = editForm.txtFname.Text.Trim()
             Dim newRole As String = editForm.cbRole.SelectedItem.ToString()
 
             Dim query As String = "UPDATE Accounts SET UserName = @UserName, Password = @Password, FullName = @FullName, Role = @Role WHERE UserName = @OldUserName;"
             Dim cmd As New MySqlCommand(query, Module1.conn)
 
             cmd.Parameters.AddWithValue("@UserName", newUsername)
-            cmd.Parameters.AddWithValue("@Password", newPassword)
             cmd.Parameters.AddWithValue("@FullName", newFullname)
             cmd.Parameters.AddWithValue("@Role", newRole)
             cmd.Parameters.AddWithValue("@OldUserName", username)

@@ -1,10 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports MessagingToolkit.QRCode.Codec
-Imports MessagingToolkit.QRCode.Data
 Imports System.IO
 Imports System.Drawing
 Imports System.Text.RegularExpressions
-
 
 Public Class GenerateQR
     Private Sub AddButtonsToDataGridView()
@@ -27,15 +25,20 @@ Public Class GenerateQR
     End Sub
 
     Private Sub btngenerate_Click(sender As Object, e As EventArgs) Handles btngenerate.Click
+        Dim firstname As String = txtFirstName.Text
+        Dim middlename As String = txtMiddleName.Text
+        Dim lastname As String = txtLastName.Text
+        Dim suffix As String = txtExtension.Text
+        Dim messenger As String = txtMessenger.Text
+        Dim contactno As String = txtContact.Text
+        Dim course As String = txtCourse.Text
+        Dim year As String = txtYear.Text
+        Dim section As String = txtSection.Text
+        Dim studID As String = txtStudID.Text
+        Dim email As String = txtEmail.Text
 
-        Dim fullname As String = txtname.Text
-        Dim course As String = txtcourse.Text
-        Dim yrsec As String = txtyrsec.Text
-        Dim studID As String = txtstudID.Text
-        Dim email As String = txtemail.Text
-
-        If String.IsNullOrWhiteSpace(fullname) OrElse String.IsNullOrWhiteSpace(course) OrElse String.IsNullOrWhiteSpace(yrsec) OrElse String.IsNullOrWhiteSpace(studID) Then
-            MessageBox.Show("Please fill in all fields.")
+        If String.IsNullOrWhiteSpace(firstname) OrElse String.IsNullOrWhiteSpace(lastname) OrElse String.IsNullOrWhiteSpace(course) OrElse String.IsNullOrWhiteSpace(year) OrElse String.IsNullOrWhiteSpace(section) OrElse String.IsNullOrWhiteSpace(studID) Then
+            MessageBox.Show("Please fill in all required fields.")
             Return
         End If
 
@@ -44,163 +47,44 @@ Public Class GenerateQR
             Return
         End If
 
-        If EmailExists(email) AndAlso Not isEditing Then
-            MessageBox.Show("This email address already exists. Please use a different email.")
+        If RecordExists("StudentID", studID) OrElse RecordExists("ContactNo", contactno) OrElse RecordExists("Email", email) Then
+            MessageBox.Show("Duplicate Student ID, Contact Number, or Email detected. Cannot generate QR code.")
             Return
         End If
 
+        Dim qrData As String = $"{firstname},{middlename},{lastname},{suffix},{messenger},{contactno},{course},{year},{section},{studID},{email}"
         Dim gen As New QRCodeEncoder()
-        gen.QRCodeScale = 10
-
-
-        Dim qrData As String = $"{fullname},{course},{yrsec},{studID}"
+        gen.QRCodeScale = 6
 
         Try
             Dim qr As Bitmap = gen.Encode(qrData)
-
             If qr IsNot Nothing Then
                 QRCode.Image = qr
-
-                If isEditing Then
-                    UpdateQRCodeInDatabase(fullname, course, yrsec, studID, email, qr)
-                    isEditing = False
-                    editingStudentID = ""
-                Else
-                    SaveQRCodeToDatabase(fullname, course, yrsec, studID, email, qr)
-                End If
+                SaveQRCodeToDatabase(firstname, middlename, lastname, suffix, messenger, contactno, course, year, section, studID, email, qr)
                 LoadStudentInfo()
             Else
                 MessageBox.Show("Failed to generate QR Code.")
             End If
-
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
     End Sub
 
-    Private isEditing As Boolean = False
-    Private editingStudentID As String = ""
+    Private Function IsValidEmail(email As String) As Boolean
+        Dim emailPattern As String = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
+        Return Regex.IsMatch(email, emailPattern)
+    End Function
 
-    Private Sub studentData_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles StudentData.CellContentClick
-        If e.RowIndex < 0 Then Return
-
-        If e.ColumnIndex = StudentData.Columns("Edit").Index Then
-            Dim result As DialogResult = MessageBox.Show("Are you sure you want to edit this student's information?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-            If result = DialogResult.Yes Then
-                txtname.Text = StudentData.Rows(e.RowIndex).Cells("FullName").Value.ToString()
-                txtcourse.Text = StudentData.Rows(e.RowIndex).Cells("Course").Value.ToString()
-                txtyrsec.Text = StudentData.Rows(e.RowIndex).Cells("YearandSection").Value.ToString()
-                txtstudID.Text = StudentData.Rows(e.RowIndex).Cells("StudentID").Value.ToString()
-                txtemail.Text = StudentData.Rows(e.RowIndex).Cells("Email").Value.ToString()
-
-                isEditing = True
-                editingStudentID = StudentData.Rows(e.RowIndex).Cells("StudentID").Value.ToString()
-            End If
-        ElseIf e.ColumnIndex = StudentData.Columns("Delete").Index Then
-            Dim studentID As String = StudentData.Rows(e.RowIndex).Cells("StudentID").Value.ToString()
-
-            Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this student record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
-            If result = DialogResult.Yes Then
-                DeleteStudent(studentID)
-            End If
-        End If
-    End Sub
-
-    Private Sub UpdateQRCodeInDatabase(fullname As String, course As String, yrsec As String, studID As String, email As String, qrImage As Bitmap)
-        Try
-            Using ms As New MemoryStream()
-                qrImage.Save(ms, Imaging.ImageFormat.Png)
-                Dim qrCodeData As Byte() = ms.ToArray()
-
-                Dim sqlQuery As String = "UPDATE StudentInformation SET FullName = @FullName, Course = @Course, YearandSection = @YearandSection, Email = @Email, QRCodeData = @QRCodeData WHERE StudentID = @StudentID"
-                Dim cmd As New MySqlCommand(sqlQuery, conn)
-                cmd.Parameters.AddWithValue("@FullName", fullname)
-                cmd.Parameters.AddWithValue("@Course", course)
-                cmd.Parameters.AddWithValue("@YearandSection", yrsec)
-                cmd.Parameters.AddWithValue("@StudentID", editingStudentID)
-                cmd.Parameters.AddWithValue("@Email", email)
-                cmd.Parameters.AddWithValue("@QRCodeData", qrCodeData)
-
-                conn.Open()
-                cmd.ExecuteNonQuery()
-                conn.Close()
-            End Using
-            MessageBox.Show("Student Information updated successfully!")
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        Finally
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-    End Sub
-    Private Sub DeleteStudent(studentID As String)
-        Try
-            Dim sqlQuery As String = "DELETE FROM StudentInformation WHERE StudentID = @StudentID"
-            Dim cmd As New MySqlCommand(sqlQuery, conn)
-            cmd.Parameters.AddWithValue("@StudentID", studentID)
-
-            conn.Open()
-            cmd.ExecuteNonQuery()
-            conn.Close()
-
-            MessageBox.Show("Student record deleted successfully.")
-            LoadStudentInfo()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        Finally
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-    End Sub
-
-    Private Sub SaveQRCodeToDatabase(fullname As String, course As String, yrsec As String, studID As String, email As String, qrImage As Bitmap)
-        Try
-            If RecordExists(studID) Then
-                MessageBox.Show("A record with this Student already exists.")
-                Return
-            End If
-
-            Using ms As New MemoryStream()
-                qrImage.Save(ms, Imaging.ImageFormat.Png)
-                Dim qrCodeData As Byte() = ms.ToArray()
-
-                Dim sqlQuery As String = "INSERT INTO StudentInformation (FullName, Course, YearandSection, StudentID, Email, QRCodeData) VALUES (@FullName, @Course, @YearandSection, @StudentID, @Email, @QRCodeData)"
-                Dim cmd As New MySqlCommand(sqlQuery, conn)
-                cmd.Parameters.AddWithValue("@FullName", fullname)
-                cmd.Parameters.AddWithValue("@Course", course)
-                cmd.Parameters.AddWithValue("@YearandSection", yrsec)
-                cmd.Parameters.AddWithValue("@StudentID", studID)
-                cmd.Parameters.AddWithValue("@Email", email)
-                cmd.Parameters.AddWithValue("@QRCodeData", qrCodeData)
-
-                conn.Open()
-                cmd.ExecuteNonQuery()
-                conn.Close()
-            End Using
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        Finally
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-    End Sub
-
-    Private Function RecordExists(studentID As String) As Boolean
+    Private Function RecordExists(columnName As String, value As String) As Boolean
         Dim exists As Boolean = False
         Try
-            Dim sqlQuery As String = "SELECT COUNT(*) FROM StudentInformation WHERE StudentID = @StudentID"
+            Dim sqlQuery As String = $"SELECT COUNT(*) FROM StudentInformation WHERE {columnName} = @{columnName}"
             Dim cmd As New MySqlCommand(sqlQuery, conn)
-            cmd.Parameters.AddWithValue("@StudentID", studentID)
+            cmd.Parameters.AddWithValue($"@{columnName}", value)
 
             conn.Open()
             Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
             exists = (count > 0)
-            conn.Close()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
@@ -211,9 +95,45 @@ Public Class GenerateQR
         Return exists
     End Function
 
+    Private Sub SaveQRCodeToDatabase(firstname As String, middlename As String, lastname As String, suffix As String, messenger As String, contactno As String, course As String, year As String, section As String, studID As String, email As String, qrImage As Bitmap)
+        Try
+            Using ms As New MemoryStream()
+                qrImage.Save(ms, Imaging.ImageFormat.Png)
+                Dim qrCodeData As Byte() = ms.ToArray()
+
+                Dim sqlQuery As String = "INSERT INTO StudentInformation (First_Name, Middle_Name, Last_Name, Suffix, MessengerName, ContactNo, Course, Year, Section, StudentID, Email, QRCodeData) VALUES (@First_Name, @Middle_Name, @Last_Name, @Suffix, @MessengerName, @ContactNo, @Course, @Year, @Section, @StudentID, @Email, @QRCodeData)"
+                Dim cmd As New MySqlCommand(sqlQuery, conn)
+                cmd.Parameters.AddWithValue("@First_Name", firstname)
+                cmd.Parameters.AddWithValue("@Middle_Name", middlename)
+                cmd.Parameters.AddWithValue("@Last_Name", lastname)
+                cmd.Parameters.AddWithValue("@Suffix", suffix)
+                cmd.Parameters.AddWithValue("@MessengerName", messenger)
+                cmd.Parameters.AddWithValue("@ContactNo", contactno)
+                cmd.Parameters.AddWithValue("@Course", course)
+                cmd.Parameters.AddWithValue("@Year", year)
+                cmd.Parameters.AddWithValue("@Section", section)
+                cmd.Parameters.AddWithValue("@StudentID", studID)
+                cmd.Parameters.AddWithValue("@Email", email)
+                cmd.Parameters.AddWithValue("@QRCodeData", qrCodeData)
+
+                conn.Open()
+                cmd.ExecuteNonQuery()
+                conn.Close()
+
+                MessageBox.Show("QR Code and student information saved successfully!")
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
     Private Sub LoadStudentInfo()
         Try
-            Dim sqlQuery As String = "SELECT StudNo,  StudentID, FullName, Course, YearandSection, Email FROM StudentInformation"
+            Dim sqlQuery As String = "SELECT StudNo, First_Name, Middle_Name, Last_Name, Suffix, MessengerName, ContactNo, Course, Year, Section, StudentID, Email FROM StudentInformation"
             Dim da As New MySqlDataAdapter(sqlQuery, conn)
             Dim dt As New DataTable()
 
@@ -223,7 +143,6 @@ Public Class GenerateQR
 
             StudentData.DataSource = Nothing
             StudentData.Columns.Clear()
-
 
             StudentData.DataSource = dt
             AddButtonsToDataGridView()
@@ -236,104 +155,8 @@ Public Class GenerateQR
         End Try
     End Sub
 
-
-
-    Private Sub btnsave_Click(sender As Object, e As EventArgs) Handles btnsave.Click
-        Dim fullname As String = txtname.Text
-        Dim course As String = txtcourse.Text
-        Dim yrsec As String = txtyrsec.Text
-        Dim studID As String = txtstudID.Text
-        Dim email As String = txtemail.Text
-
-        If String.IsNullOrWhiteSpace(fullname) OrElse String.IsNullOrWhiteSpace(course) OrElse String.IsNullOrWhiteSpace(yrsec) OrElse String.IsNullOrWhiteSpace(studID) Then
-            MessageBox.Show("Please fill in all fields.")
-            Return
-        End If
-
-        Dim save As New SaveFileDialog()
-
-        save.InitialDirectory = "C:\Users\user\Documents\BASILIO\QRCode"
-        save.FileName = txtname.Text
-        save.Filter = "PNG|*.png"
-
-        If save.ShowDialog() = DialogResult.OK Then
-            If QRCode.Image IsNot Nothing Then
-                QRCode.Image.Save(save.FileName, Imaging.ImageFormat.Png)
-            Else
-                MessageBox.Show("No QR Code Image to save.")
-            End If
-        End If
-    End Sub
-
-    Private Sub btnsendEmail_Click(sender As Object, e As EventArgs) Handles btnsendEmail.Click
-        Dim fullname As String = txtname.Text
-        Dim course As String = txtcourse.Text
-        Dim yrsec As String = txtyrsec.Text
-        Dim studID As String = txtstudID.Text
-        Dim email As String = txtemail.Text
-
-        If String.IsNullOrWhiteSpace(fullname) OrElse String.IsNullOrWhiteSpace(course) OrElse String.IsNullOrWhiteSpace(yrsec) OrElse String.IsNullOrWhiteSpace(studID) Then
-            MessageBox.Show("Please fill in all fields.")
-            Return
-        End If
-
-        Dim obj As New EmailForm
-
-        obj.email = txtemail.Text
-        obj.message = "Attendance QR Code" & vbCrLf &
-               "Name: " & txtname.Text & vbCrLf &
-               "Course: " & txtcourse.Text & vbCrLf &
-               "Year and Section: " & txtyrsec.Text & vbCrLf &
-               "Student ID: " & txtstudID.Text & vbCrLf & vbCrLf &
-               "Please present this at every event you attend. Thank you!"
-
-        obj.Show()
-
-    End Sub
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Dim s As String
-        s = Date.Now.ToString()
-        timedate.Text = s
-    End Sub
-
     Private Sub GenerateQR_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Timer1.Enabled = True
         AddButtonsToDataGridView()
         LoadStudentInfo()
     End Sub
-
-    Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        txtname.Clear()
-        txtcourse.Clear()
-        txtyrsec.Clear()
-        txtstudID.Clear()
-        txtemail.Clear()
-        QRCode.Image = Nothing
-    End Sub
-    Private Function IsValidEmail(email As String) As Boolean
-        Dim emailPattern As String = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
-        Return Regex.IsMatch(email, emailPattern)
-    End Function
-
-    Private Function EmailExists(email As String) As Boolean
-        Dim exists As Boolean = False
-        Try
-            Dim sqlQuery As String = "SELECT COUNT(*) FROM StudentInformation WHERE Email = @Email"
-            Dim cmd As New MySqlCommand(sqlQuery, conn)
-            cmd.Parameters.AddWithValue("@Email", email)
-
-            conn.Open()
-            Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
-            exists = (count > 0)
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        Finally
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-        Return exists
-    End Function
-
 End Class
