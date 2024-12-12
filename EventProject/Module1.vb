@@ -20,8 +20,6 @@ Module Module1
                 MsgBox(ex.Message)
             End Try
         End If
-
-
     End Sub
 
 End Module

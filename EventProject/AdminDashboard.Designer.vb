@@ -23,62 +23,64 @@ Partial Class AdminDashboard
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.timedate = New System.Windows.Forms.Label()
-        Me.pnlrecentevent = New Guna.UI2.WinForms.Guna2ShadowPanel()
-        Me.UpcomingEvents = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pnlUpEvtbl = New Guna.UI2.WinForms.Guna2ShadowPanel()
+        Me.tblUpcomEve = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.pnlrecentatt = New Guna.UI2.WinForms.Guna2ShadowPanel()
-        Me.RecentAttendees = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pnlCurrEvetbl = New Guna.UI2.WinForms.Guna2ShadowPanel()
+        Me.tblCurrEve = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.pnltotalqr = New Guna.UI2.WinForms.Guna2ShadowPanel()
+        Me.pnlPendingReq = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.Guna2PictureBox4 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.lblTotalQR = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lbltotalPend = New System.Windows.Forms.Label()
         Me.pnlupcoming = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.Guna2PictureBox3 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblUpcomingEvents = New System.Windows.Forms.Label()
-        Me.pnltotalatt = New Guna.UI2.WinForms.Guna2ShadowPanel()
+        Me.pnlCurrEveDay = New Guna.UI2.WinForms.Guna2ShadowPanel()
         Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.lblTotalAttendees = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblTotalEvent = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.eveID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.evename = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EventName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.venue = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.startDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.endDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dept = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.startTime = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.endTime = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.facilititator = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
-        Me.pnlrecentevent.SuspendLayout()
-        CType(Me.UpcomingEvents, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlrecentatt.SuspendLayout()
-        CType(Me.RecentAttendees, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnltotalqr.SuspendLayout()
+        Me.pnlUpEvtbl.SuspendLayout()
+        CType(Me.tblUpcomEve, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlCurrEvetbl.SuspendLayout()
+        CType(Me.tblCurrEve, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlPendingReq.SuspendLayout()
         CType(Me.Guna2PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlupcoming.SuspendLayout()
         CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnltotalatt.SuspendLayout()
+        Me.pnlCurrEveDay.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.timedate)
-        Me.Panel1.Controls.Add(Me.pnlrecentevent)
-        Me.Panel1.Controls.Add(Me.pnlrecentatt)
-        Me.Panel1.Controls.Add(Me.pnltotalqr)
+        Me.Panel1.Controls.Add(Me.pnlUpEvtbl)
+        Me.Panel1.Controls.Add(Me.pnlCurrEvetbl)
+        Me.Panel1.Controls.Add(Me.pnlPendingReq)
         Me.Panel1.Controls.Add(Me.pnlupcoming)
-        Me.Panel1.Controls.Add(Me.pnltotalatt)
+        Me.Panel1.Controls.Add(Me.pnlCurrEveDay)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -88,244 +90,189 @@ Partial Class AdminDashboard
         'timedate
         '
         Me.timedate.AutoSize = True
-        Me.timedate.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.timedate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.timedate.Location = New System.Drawing.Point(14, 30)
         Me.timedate.Name = "timedate"
-        Me.timedate.Size = New System.Drawing.Size(150, 25)
+        Me.timedate.Size = New System.Drawing.Size(147, 20)
         Me.timedate.TabIndex = 16
         Me.timedate.Text = "                       "
         '
-        'pnlrecentevent
+        'pnlUpEvtbl
         '
-        Me.pnlrecentevent.BackColor = System.Drawing.Color.Transparent
-        Me.pnlrecentevent.Controls.Add(Me.UpcomingEvents)
-        Me.pnlrecentevent.Controls.Add(Me.Label10)
-        Me.pnlrecentevent.FillColor = System.Drawing.Color.White
-        Me.pnlrecentevent.Location = New System.Drawing.Point(674, 308)
-        Me.pnlrecentevent.Name = "pnlrecentevent"
-        Me.pnlrecentevent.ShadowColor = System.Drawing.Color.Silver
-        Me.pnlrecentevent.ShadowShift = 7
-        Me.pnlrecentevent.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal
-        Me.pnlrecentevent.Size = New System.Drawing.Size(327, 470)
-        Me.pnlrecentevent.TabIndex = 16
+        Me.pnlUpEvtbl.BackColor = System.Drawing.Color.Transparent
+        Me.pnlUpEvtbl.Controls.Add(Me.tblUpcomEve)
+        Me.pnlUpEvtbl.Controls.Add(Me.Label10)
+        Me.pnlUpEvtbl.FillColor = System.Drawing.Color.White
+        Me.pnlUpEvtbl.Location = New System.Drawing.Point(674, 308)
+        Me.pnlUpEvtbl.Name = "pnlUpEvtbl"
+        Me.pnlUpEvtbl.ShadowColor = System.Drawing.Color.Silver
+        Me.pnlUpEvtbl.ShadowShift = 7
+        Me.pnlUpEvtbl.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal
+        Me.pnlUpEvtbl.Size = New System.Drawing.Size(327, 470)
+        Me.pnlUpEvtbl.TabIndex = 16
         '
-        'UpcomingEvents
+        'tblUpcomEve
         '
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
-        Me.UpcomingEvents.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.UpcomingEvents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
-        Me.UpcomingEvents.ColumnHeadersHeight = 42
-        Me.UpcomingEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Me.UpcomingEvents.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.UpcomingEvents.DefaultCellStyle = DataGridViewCellStyle9
-        Me.UpcomingEvents.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.UpcomingEvents.Location = New System.Drawing.Point(3, 76)
-        Me.UpcomingEvents.Name = "UpcomingEvents"
-        Me.UpcomingEvents.ReadOnly = True
-        Me.UpcomingEvents.RowHeadersVisible = False
-        Me.UpcomingEvents.RowHeadersWidth = 62
-        Me.UpcomingEvents.RowTemplate.Height = 28
-        Me.UpcomingEvents.Size = New System.Drawing.Size(311, 391)
-        Me.UpcomingEvents.TabIndex = 13
-        Me.UpcomingEvents.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
-        Me.UpcomingEvents.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.UpcomingEvents.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.UpcomingEvents.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.UpcomingEvents.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.UpcomingEvents.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.UpcomingEvents.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.UpcomingEvents.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.White
-        Me.UpcomingEvents.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.UpcomingEvents.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UpcomingEvents.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black
-        Me.UpcomingEvents.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Me.UpcomingEvents.ThemeStyle.HeaderStyle.Height = 42
-        Me.UpcomingEvents.ThemeStyle.ReadOnly = True
-        Me.UpcomingEvents.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
-        Me.UpcomingEvents.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.UpcomingEvents.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UpcomingEvents.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.UpcomingEvents.ThemeStyle.RowsStyle.Height = 28
-        Me.UpcomingEvents.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.LightBlue
-        Me.UpcomingEvents.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn2.MinimumWidth = 8
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.tblUpcomEve.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.tblUpcomEve.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.tblUpcomEve.ColumnHeadersHeight = 42
+        Me.tblUpcomEve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.tblUpcomEve.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.eveID, Me.evename})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.tblUpcomEve.DefaultCellStyle = DataGridViewCellStyle3
+        Me.tblUpcomEve.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tblUpcomEve.Location = New System.Drawing.Point(3, 76)
+        Me.tblUpcomEve.Name = "tblUpcomEve"
+        Me.tblUpcomEve.ReadOnly = True
+        Me.tblUpcomEve.RowHeadersVisible = False
+        Me.tblUpcomEve.RowHeadersWidth = 62
+        Me.tblUpcomEve.RowTemplate.Height = 28
+        Me.tblUpcomEve.Size = New System.Drawing.Size(311, 391)
+        Me.tblUpcomEve.TabIndex = 13
+        Me.tblUpcomEve.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.tblUpcomEve.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.tblUpcomEve.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.tblUpcomEve.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.tblUpcomEve.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.tblUpcomEve.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.tblUpcomEve.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tblUpcomEve.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.White
+        Me.tblUpcomEve.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.tblUpcomEve.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tblUpcomEve.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black
+        Me.tblUpcomEve.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.tblUpcomEve.ThemeStyle.HeaderStyle.Height = 42
+        Me.tblUpcomEve.ThemeStyle.ReadOnly = True
+        Me.tblUpcomEve.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.tblUpcomEve.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.tblUpcomEve.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tblUpcomEve.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.tblUpcomEve.ThemeStyle.RowsStyle.Height = 28
+        Me.tblUpcomEve.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.LightBlue
+        Me.tblUpcomEve.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Font = New System.Drawing.Font("Ubuntu", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
         Me.Label10.Location = New System.Drawing.Point(6, 21)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(248, 33)
+        Me.Label10.Size = New System.Drawing.Size(216, 29)
         Me.Label10.TabIndex = 12
         Me.Label10.Text = "Upcoming Events"
         '
-        'pnlrecentatt
+        'pnlCurrEvetbl
         '
-        Me.pnlrecentatt.BackColor = System.Drawing.Color.Transparent
-        Me.pnlrecentatt.Controls.Add(Me.RecentAttendees)
-        Me.pnlrecentatt.Controls.Add(Me.Label9)
-        Me.pnlrecentatt.FillColor = System.Drawing.Color.White
-        Me.pnlrecentatt.Location = New System.Drawing.Point(16, 308)
-        Me.pnlrecentatt.Name = "pnlrecentatt"
-        Me.pnlrecentatt.ShadowColor = System.Drawing.Color.Silver
-        Me.pnlrecentatt.ShadowShift = 7
-        Me.pnlrecentatt.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal
-        Me.pnlrecentatt.Size = New System.Drawing.Size(632, 470)
-        Me.pnlrecentatt.TabIndex = 14
+        Me.pnlCurrEvetbl.BackColor = System.Drawing.Color.Transparent
+        Me.pnlCurrEvetbl.Controls.Add(Me.tblCurrEve)
+        Me.pnlCurrEvetbl.Controls.Add(Me.Label9)
+        Me.pnlCurrEvetbl.FillColor = System.Drawing.Color.White
+        Me.pnlCurrEvetbl.Location = New System.Drawing.Point(16, 308)
+        Me.pnlCurrEvetbl.Name = "pnlCurrEvetbl"
+        Me.pnlCurrEvetbl.ShadowColor = System.Drawing.Color.Silver
+        Me.pnlCurrEvetbl.ShadowShift = 7
+        Me.pnlCurrEvetbl.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal
+        Me.pnlCurrEvetbl.Size = New System.Drawing.Size(632, 470)
+        Me.pnlCurrEvetbl.TabIndex = 14
         '
-        'RecentAttendees
+        'tblCurrEve
         '
-        Me.RecentAttendees.AllowUserToResizeColumns = False
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
-        Me.RecentAttendees.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.RecentAttendees.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
-        Me.RecentAttendees.ColumnHeadersHeight = 42
-        Me.RecentAttendees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Me.RecentAttendees.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.RecentAttendees.DefaultCellStyle = DataGridViewCellStyle12
-        Me.RecentAttendees.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RecentAttendees.Location = New System.Drawing.Point(3, 76)
-        Me.RecentAttendees.Name = "RecentAttendees"
-        Me.RecentAttendees.ReadOnly = True
-        Me.RecentAttendees.RowHeadersVisible = False
-        Me.RecentAttendees.RowHeadersWidth = 62
-        Me.RecentAttendees.RowTemplate.Height = 28
-        Me.RecentAttendees.Size = New System.Drawing.Size(619, 391)
-        Me.RecentAttendees.TabIndex = 12
-        Me.RecentAttendees.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
-        Me.RecentAttendees.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.RecentAttendees.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.RecentAttendees.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.RecentAttendees.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.RecentAttendees.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.RecentAttendees.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RecentAttendees.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.White
-        Me.RecentAttendees.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.RecentAttendees.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RecentAttendees.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black
-        Me.RecentAttendees.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Me.RecentAttendees.ThemeStyle.HeaderStyle.Height = 42
-        Me.RecentAttendees.ThemeStyle.ReadOnly = True
-        Me.RecentAttendees.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
-        Me.RecentAttendees.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.RecentAttendees.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RecentAttendees.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.RecentAttendees.ThemeStyle.RowsStyle.Height = 28
-        Me.RecentAttendees.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.LightBlue
-        Me.RecentAttendees.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Event Name"
-        Me.Column1.MinimumWidth = 8
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Venue"
-        Me.Column2.MinimumWidth = 8
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Department"
-        Me.Column3.MinimumWidth = 8
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Start Time"
-        Me.Column4.MinimumWidth = 8
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "End Time"
-        Me.Column5.MinimumWidth = 8
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "Facilitator"
-        Me.Column6.MinimumWidth = 8
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
+        Me.tblCurrEve.AllowUserToOrderColumns = True
+        Me.tblCurrEve.AllowUserToResizeColumns = False
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        Me.tblCurrEve.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.tblCurrEve.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.tblCurrEve.ColumnHeadersHeight = 42
+        Me.tblCurrEve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.tblCurrEve.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EventName, Me.venue, Me.startDate, Me.endDate, Me.dept, Me.startTime, Me.endTime, Me.facilititator})
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.tblCurrEve.DefaultCellStyle = DataGridViewCellStyle6
+        Me.tblCurrEve.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tblCurrEve.Location = New System.Drawing.Point(3, 76)
+        Me.tblCurrEve.Name = "tblCurrEve"
+        Me.tblCurrEve.ReadOnly = True
+        Me.tblCurrEve.RowHeadersVisible = False
+        Me.tblCurrEve.RowHeadersWidth = 62
+        Me.tblCurrEve.RowTemplate.Height = 28
+        Me.tblCurrEve.Size = New System.Drawing.Size(619, 391)
+        Me.tblCurrEve.TabIndex = 12
+        Me.tblCurrEve.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.tblCurrEve.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.tblCurrEve.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.tblCurrEve.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.tblCurrEve.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.tblCurrEve.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.tblCurrEve.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tblCurrEve.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.White
+        Me.tblCurrEve.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.tblCurrEve.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tblCurrEve.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black
+        Me.tblCurrEve.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.tblCurrEve.ThemeStyle.HeaderStyle.Height = 42
+        Me.tblCurrEve.ThemeStyle.ReadOnly = True
+        Me.tblCurrEve.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.tblCurrEve.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.tblCurrEve.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tblCurrEve.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.tblCurrEve.ThemeStyle.RowsStyle.Height = 28
+        Me.tblCurrEve.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.LightBlue
+        Me.tblCurrEve.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Font = New System.Drawing.Font("Ubuntu", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
         Me.Label9.Location = New System.Drawing.Point(17, 21)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(215, 33)
+        Me.Label9.Size = New System.Drawing.Size(184, 29)
         Me.Label9.TabIndex = 11
         Me.Label9.Text = "Current Events"
         '
-        'pnltotalqr
+        'pnlPendingReq
         '
-        Me.pnltotalqr.BackColor = System.Drawing.Color.Transparent
-        Me.pnltotalqr.Controls.Add(Me.Guna2PictureBox4)
-        Me.pnltotalqr.Controls.Add(Me.Label4)
-        Me.pnltotalqr.Controls.Add(Me.lblTotalQR)
-        Me.pnltotalqr.FillColor = System.Drawing.Color.White
-        Me.pnltotalqr.Location = New System.Drawing.Point(731, 104)
-        Me.pnltotalqr.Name = "pnltotalqr"
-        Me.pnltotalqr.ShadowColor = System.Drawing.Color.Silver
-        Me.pnltotalqr.ShadowShift = 7
-        Me.pnltotalqr.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal
-        Me.pnltotalqr.Size = New System.Drawing.Size(270, 135)
-        Me.pnltotalqr.TabIndex = 15
+        Me.pnlPendingReq.BackColor = System.Drawing.Color.Transparent
+        Me.pnlPendingReq.Controls.Add(Me.Guna2PictureBox4)
+        Me.pnlPendingReq.Controls.Add(Me.Label4)
+        Me.pnlPendingReq.Controls.Add(Me.lbltotalPend)
+        Me.pnlPendingReq.FillColor = System.Drawing.Color.White
+        Me.pnlPendingReq.Location = New System.Drawing.Point(731, 104)
+        Me.pnlPendingReq.Name = "pnlPendingReq"
+        Me.pnlPendingReq.ShadowColor = System.Drawing.Color.Silver
+        Me.pnlPendingReq.ShadowShift = 7
+        Me.pnlPendingReq.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal
+        Me.pnlPendingReq.Size = New System.Drawing.Size(270, 135)
+        Me.pnlPendingReq.TabIndex = 15
         '
         'Guna2PictureBox4
         '
@@ -340,29 +287,29 @@ Partial Class AdminDashboard
         Me.Guna2PictureBox4.TabStop = False
         Me.Guna2PictureBox4.UseTransparentBackground = True
         '
-        'Label7
+        'Label4
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.DimGray
-        Me.Label7.Location = New System.Drawing.Point(18, 92)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(239, 25)
-        Me.Label7.TabIndex = 15
-        Me.Label7.Text = "Current Event of the Day"
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.DimGray
+        Me.Label4.Location = New System.Drawing.Point(14, 92)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(136, 20)
+        Me.Label4.TabIndex = 10
+        Me.Label4.Text = "Pending Request"
         '
-        'lblTotalQR
+        'lbltotalPend
         '
-        Me.lblTotalQR.AutoSize = True
-        Me.lblTotalQR.BackColor = System.Drawing.Color.Transparent
-        Me.lblTotalQR.Font = New System.Drawing.Font("Ubuntu", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalQR.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.lblTotalQR.Location = New System.Drawing.Point(21, 32)
-        Me.lblTotalQR.Name = "lblTotalQR"
-        Me.lblTotalQR.Size = New System.Drawing.Size(55, 39)
-        Me.lblTotalQR.TabIndex = 16
-        Me.lblTotalQR.Text = "82"
+        Me.lbltotalPend.AutoSize = True
+        Me.lbltotalPend.BackColor = System.Drawing.Color.Transparent
+        Me.lbltotalPend.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltotalPend.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
+        Me.lbltotalPend.Location = New System.Drawing.Point(21, 32)
+        Me.lbltotalPend.Name = "lbltotalPend"
+        Me.lbltotalPend.Size = New System.Drawing.Size(46, 31)
+        Me.lbltotalPend.TabIndex = 16
+        Me.lbltotalPend.Text = "82"
         '
         'pnlupcoming
         '
@@ -396,11 +343,11 @@ Partial Class AdminDashboard
         '
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.DimGray
         Me.Label5.Location = New System.Drawing.Point(19, 92)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(174, 25)
+        Me.Label5.Size = New System.Drawing.Size(140, 20)
         Me.Label5.TabIndex = 12
         Me.Label5.Text = "Upcoming Events"
         '
@@ -408,28 +355,28 @@ Partial Class AdminDashboard
         '
         Me.lblUpcomingEvents.AutoSize = True
         Me.lblUpcomingEvents.BackColor = System.Drawing.Color.Transparent
-        Me.lblUpcomingEvents.Font = New System.Drawing.Font("Ubuntu", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUpcomingEvents.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUpcomingEvents.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
         Me.lblUpcomingEvents.Location = New System.Drawing.Point(17, 32)
         Me.lblUpcomingEvents.Name = "lblUpcomingEvents"
-        Me.lblUpcomingEvents.Size = New System.Drawing.Size(36, 39)
+        Me.lblUpcomingEvents.Size = New System.Drawing.Size(30, 31)
         Me.lblUpcomingEvents.TabIndex = 13
         Me.lblUpcomingEvents.Text = "9"
         '
-        'pnltotalatt
+        'pnlCurrEveDay
         '
-        Me.pnltotalatt.BackColor = System.Drawing.Color.Transparent
-        Me.pnltotalatt.Controls.Add(Me.Guna2PictureBox2)
-        Me.pnltotalatt.Controls.Add(Me.Label7)
-        Me.pnltotalatt.Controls.Add(Me.lblTotalAttendees)
-        Me.pnltotalatt.FillColor = System.Drawing.Color.White
-        Me.pnltotalatt.Location = New System.Drawing.Point(16, 104)
-        Me.pnltotalatt.Name = "pnltotalatt"
-        Me.pnltotalatt.ShadowColor = System.Drawing.Color.Silver
-        Me.pnltotalatt.ShadowShift = 7
-        Me.pnltotalatt.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal
-        Me.pnltotalatt.Size = New System.Drawing.Size(270, 135)
-        Me.pnltotalatt.TabIndex = 13
+        Me.pnlCurrEveDay.BackColor = System.Drawing.Color.Transparent
+        Me.pnlCurrEveDay.Controls.Add(Me.Guna2PictureBox2)
+        Me.pnlCurrEveDay.Controls.Add(Me.Label7)
+        Me.pnlCurrEveDay.Controls.Add(Me.lblTotalEvent)
+        Me.pnlCurrEveDay.FillColor = System.Drawing.Color.White
+        Me.pnlCurrEveDay.Location = New System.Drawing.Point(16, 104)
+        Me.pnlCurrEveDay.Name = "pnlCurrEveDay"
+        Me.pnlCurrEveDay.ShadowColor = System.Drawing.Color.Silver
+        Me.pnlCurrEveDay.ShadowShift = 7
+        Me.pnlCurrEveDay.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal
+        Me.pnlCurrEveDay.Size = New System.Drawing.Size(270, 135)
+        Me.pnlCurrEveDay.TabIndex = 13
         '
         'Guna2PictureBox2
         '
@@ -444,32 +391,102 @@ Partial Class AdminDashboard
         Me.Guna2PictureBox2.TabStop = False
         Me.Guna2PictureBox2.UseTransparentBackground = True
         '
-        'Label4
+        'Label7
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.DimGray
-        Me.Label4.Location = New System.Drawing.Point(14, 92)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(169, 25)
-        Me.Label4.TabIndex = 10
-        Me.Label4.Text = "Pending Request"
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.DimGray
+        Me.Label7.Location = New System.Drawing.Point(18, 92)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(194, 20)
+        Me.Label7.TabIndex = 15
+        Me.Label7.Text = "Current Event of the Day"
         '
-        'lblTotalAttendees
+        'lblTotalEvent
         '
-        Me.lblTotalAttendees.AutoSize = True
-        Me.lblTotalAttendees.BackColor = System.Drawing.Color.Transparent
-        Me.lblTotalAttendees.Font = New System.Drawing.Font("Ubuntu", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalAttendees.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.lblTotalAttendees.Location = New System.Drawing.Point(17, 32)
-        Me.lblTotalAttendees.Name = "lblTotalAttendees"
-        Me.lblTotalAttendees.Size = New System.Drawing.Size(36, 39)
-        Me.lblTotalAttendees.TabIndex = 10
-        Me.lblTotalAttendees.Text = "5"
+        Me.lblTotalEvent.AutoSize = True
+        Me.lblTotalEvent.BackColor = System.Drawing.Color.Transparent
+        Me.lblTotalEvent.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalEvent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
+        Me.lblTotalEvent.Location = New System.Drawing.Point(17, 32)
+        Me.lblTotalEvent.Name = "lblTotalEvent"
+        Me.lblTotalEvent.Size = New System.Drawing.Size(30, 31)
+        Me.lblTotalEvent.TabIndex = 10
+        Me.lblTotalEvent.Text = "5"
         '
         'Timer1
         '
+        '
+        'eveID
+        '
+        Me.eveID.HeaderText = "ID"
+        Me.eveID.MinimumWidth = 8
+        Me.eveID.Name = "eveID"
+        Me.eveID.ReadOnly = True
+        '
+        'evename
+        '
+        Me.evename.HeaderText = "Name"
+        Me.evename.MinimumWidth = 8
+        Me.evename.Name = "evename"
+        Me.evename.ReadOnly = True
+        '
+        'EventName
+        '
+        Me.EventName.HeaderText = "Event Name"
+        Me.EventName.MinimumWidth = 8
+        Me.EventName.Name = "EventName"
+        Me.EventName.ReadOnly = True
+        '
+        'venue
+        '
+        Me.venue.HeaderText = "Venue"
+        Me.venue.MinimumWidth = 8
+        Me.venue.Name = "venue"
+        Me.venue.ReadOnly = True
+        '
+        'startDate
+        '
+        Me.startDate.HeaderText = "Start Date"
+        Me.startDate.MinimumWidth = 6
+        Me.startDate.Name = "startDate"
+        Me.startDate.ReadOnly = True
+        '
+        'endDate
+        '
+        Me.endDate.HeaderText = "End Date"
+        Me.endDate.MinimumWidth = 6
+        Me.endDate.Name = "endDate"
+        Me.endDate.ReadOnly = True
+        '
+        'dept
+        '
+        Me.dept.HeaderText = "Department"
+        Me.dept.MinimumWidth = 8
+        Me.dept.Name = "dept"
+        Me.dept.ReadOnly = True
+        '
+        'startTime
+        '
+        Me.startTime.HeaderText = "Start Time"
+        Me.startTime.MinimumWidth = 8
+        Me.startTime.Name = "startTime"
+        Me.startTime.ReadOnly = True
+        '
+        'endTime
+        '
+        Me.endTime.HeaderText = "End Time"
+        Me.endTime.MinimumWidth = 8
+        Me.endTime.Name = "endTime"
+        Me.endTime.ReadOnly = True
+        '
+        'facilititator
+        '
+        Me.facilititator.HeaderText = "Facilitator"
+        Me.facilititator.MinimumWidth = 8
+        Me.facilititator.Name = "facilititator"
+        Me.facilititator.ReadOnly = True
         '
         'AdminDashboard
         '
@@ -483,51 +500,53 @@ Partial Class AdminDashboard
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.pnlrecentevent.ResumeLayout(False)
-        Me.pnlrecentevent.PerformLayout()
-        CType(Me.UpcomingEvents, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlrecentatt.ResumeLayout(False)
-        Me.pnlrecentatt.PerformLayout()
-        CType(Me.RecentAttendees, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnltotalqr.ResumeLayout(False)
-        Me.pnltotalqr.PerformLayout()
+        Me.pnlUpEvtbl.ResumeLayout(False)
+        Me.pnlUpEvtbl.PerformLayout()
+        CType(Me.tblUpcomEve, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlCurrEvetbl.ResumeLayout(False)
+        Me.pnlCurrEvetbl.PerformLayout()
+        CType(Me.tblCurrEve, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlPendingReq.ResumeLayout(False)
+        Me.pnlPendingReq.PerformLayout()
         CType(Me.Guna2PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlupcoming.ResumeLayout(False)
         Me.pnlupcoming.PerformLayout()
         CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnltotalatt.ResumeLayout(False)
-        Me.pnltotalatt.PerformLayout()
+        Me.pnlCurrEveDay.ResumeLayout(False)
+        Me.pnlCurrEveDay.PerformLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents pnlrecentevent As Guna.UI2.WinForms.Guna2ShadowPanel
+    Friend WithEvents pnlUpEvtbl As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Label10 As Label
-    Friend WithEvents pnlrecentatt As Guna.UI2.WinForms.Guna2ShadowPanel
+    Friend WithEvents pnlCurrEvetbl As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Label9 As Label
-    Friend WithEvents pnltotalqr As Guna.UI2.WinForms.Guna2ShadowPanel
+    Friend WithEvents pnlPendingReq As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Guna2PictureBox4 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents lblTotalQR As Label
+    Friend WithEvents lbltotalPend As Label
     Friend WithEvents pnlupcoming As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Guna2PictureBox3 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents Label5 As Label
     Friend WithEvents lblUpcomingEvents As Label
-    Friend WithEvents pnltotalatt As Guna.UI2.WinForms.Guna2ShadowPanel
+    Friend WithEvents pnlCurrEveDay As Guna.UI2.WinForms.Guna2ShadowPanel
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents lblTotalAttendees As Label
-    Friend WithEvents UpcomingEvents As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents RecentAttendees As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents lblTotalEvent As Label
+    Friend WithEvents tblUpcomEve As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents tblCurrEve As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents timedate As Label
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents eveID As DataGridViewTextBoxColumn
+    Friend WithEvents evename As DataGridViewTextBoxColumn
+    Friend WithEvents EventName As DataGridViewTextBoxColumn
+    Friend WithEvents venue As DataGridViewTextBoxColumn
+    Friend WithEvents startDate As DataGridViewTextBoxColumn
+    Friend WithEvents endDate As DataGridViewTextBoxColumn
+    Friend WithEvents dept As DataGridViewTextBoxColumn
+    Friend WithEvents startTime As DataGridViewTextBoxColumn
+    Friend WithEvents endTime As DataGridViewTextBoxColumn
+    Friend WithEvents facilititator As DataGridViewTextBoxColumn
 End Class
