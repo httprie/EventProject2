@@ -182,9 +182,6 @@ Partial Class Login
         Me.Guna2ControlBox1.Size = New System.Drawing.Size(55, 35)
         Me.Guna2ControlBox1.TabIndex = 13
         '
-        'Timer1
-        '
-        '
         'timedate
         '
         Me.timedate.AutoSize = True
