@@ -1,6 +1,4 @@
-﻿
 ﻿Imports MySql.Data.MySqlClient
-
 Public Class HeadReports
     Dim sqlQuery As String
     Dim cmd As New MySqlCommand
@@ -35,8 +33,6 @@ Public Class HeadReports
             conn.Close()
         End Try
 
-        cbstudid.DataSource = dt
-        cbstudid.DisplayMember = "StudentID"
     End Sub
 
     Private Sub LoadEventNames()
@@ -48,12 +44,6 @@ Public Class HeadReports
         conn.Open()
         da.Fill(dt)
         conn.Close()
-
-        cbename.DataSource = dt
-        cbename.DisplayMember = "eventname"
-    End Sub
-    Private Sub btnstudinfo_Click(sender As Object, e As EventArgs) Handles btnstudinfo.Click
-        LoadStudentInformation()
     End Sub
     Private Sub LoadStudentInformation()
         sqlQuery = "SELECT * FROM StudentInformation"
@@ -80,13 +70,9 @@ Public Class HeadReports
         timedate.Text = timer
     End Sub
 
-    Private Sub btnstudact_Click(sender As Object, e As EventArgs) Handles btnstudact.Click
-        LoadStudentActivity()
-    End Sub
 
     Private Sub LoadStudentActivity()
         ' Get the selected StudentID
-        Dim selectedStudentID As String = cbstudid.Text
 
         sqlQuery = "
     SELECT 
@@ -110,7 +96,6 @@ WHERE
     s.studentid = @StudentId"
 
         cmd = New MySqlCommand(sqlQuery, conn)
-        cmd.Parameters.AddWithValue("@StudentId", selectedStudentID)
         da = New MySqlDataAdapter(cmd)
         dt = New DataTable()
 
@@ -143,13 +128,7 @@ WHERE
         End If
     End Sub
 
-
-    Private Sub btnename_Click(sender As Object, e As EventArgs) Handles btnename.Click
-        LoadEventAttendees()
-    End Sub
-
     Private Sub LoadEventAttendees()
-        Dim selectedEventName As String = cbename.Text
 
         sqlQuery = "
                     SELECT 
@@ -173,7 +152,6 @@ WHERE
 
 
         cmd = New MySqlCommand(sqlQuery, conn)
-        cmd.Parameters.AddWithValue("@EventName", selectedEventName)
 
         da = New MySqlDataAdapter(cmd)
         dt = New DataTable()
@@ -200,10 +178,6 @@ WHERE
 
 
         ReportData.AutoResizeColumns()
-    End Sub
-
-    Private Sub btnallact_Click(sender As Object, e As EventArgs) Handles btnallact.Click
-        LoadAllActivity()
     End Sub
 
     Private Sub LoadAllActivity()
