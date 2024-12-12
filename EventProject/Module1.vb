@@ -6,7 +6,7 @@ Module Module1
 
         Dim dbname As String = "EventRegistrationSystem"
         Dim uname As String = "root"
-        Dim password As String = "password" 'mysql paswword
+        Dim password As String = "admin" 'mysql paswword
         Dim server As String = "127.0.0.1" 'ip address pc
 
         'check connection 
@@ -22,8 +22,6 @@ Module Module1
                 MsgBox(ex.Message)
             End Try
         End If
-
-
     End Sub
 
 End Module
