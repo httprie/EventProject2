@@ -1,237 +1,131 @@
 ﻿Imports MySql.Data.MySqlClient
+
 Public Class HeadReports
     Dim sqlQuery As String
     Dim cmd As New MySqlCommand
     Dim da As New MySqlDataAdapter
     Dim dt As New DataTable
+
     Private Sub HeadReports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Enabled = True
-        LoadStudentIDs()
-        LoadEventNames()
-    End Sub
-
-    Private Sub LoadStudentIDs()
-        sqlQuery = "SELECT StudentID FROM StudentInformation"
-        cmd = New MySqlCommand(sqlQuery, conn)
-        da = New MySqlDataAdapter(cmd)
-        dt = New DataTable()
-
-        If conn.State = ConnectionState.Closed Then
-            Try
-                conn.Open()
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-                Return
-            End Try
-        End If
-
-        Try
-            da.Fill(dt)
-        Catch ex As Exception
-            MessageBox.Show("Error filling data: " & ex.Message)
-        Finally
-            conn.Close()
-        End Try
-
-    End Sub
-
-    Private Sub LoadEventNames()
-        sqlQuery = "SELECT DISTINCT eventname FROM events"
-        cmd = New MySqlCommand(sqlQuery, conn)
-        da = New MySqlDataAdapter(cmd)
-        dt = New DataTable()
-
-        conn.Open()
-        da.Fill(dt)
-        conn.Close()
-    End Sub
-    Private Sub LoadStudentInformation()
-        sqlQuery = "SELECT * FROM StudentInformation"
-        cmd = New MySqlCommand(sqlQuery, conn)
-        da = New MySqlDataAdapter(cmd)
-        dt = New DataTable()
-
-        Try
-            conn.Open()
-            da.Fill(dt)
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        Finally
-            conn.Close()
-        End Try
-
-        ReportData.DataSource = dt
-        ReportData.ColumnHeadersHeight = 30
+        PopulateFilters()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Dim timer As String
-        timer = Date.Now.ToString()
-        timedate.Text = timer
+        timedate.Text = DateTime.Now.ToString()
     End Sub
 
+    Private Sub PopulateFilters()
+        Dim studentColumns As String() = {"StudentID", "First_Name", "Last_Name", "Department", "Course", "Year", "Section"}
+        Dim eventColumns As String() = {"Venue", "Facilitator", "EventID"}
 
-    Private Sub LoadStudentActivity()
-        ' Get the selected StudentID
+        cbFilter.Items.Clear()
+        cbFilter.Items.AddRange(studentColumns)
+        cbFilter.Items.AddRange(eventColumns)
+    End Sub
 
-        sqlQuery = "
-    SELECT 
-    s.FullName,
-    events.eventname,
-    a.timein_time,
-    a.timeout_time,
-    CASE
-        WHEN a.timein_time IS NOT NULL AND a.timeout_time IS NOT NULL THEN 'Complete'
-        WHEN a.timein_time IS NOT NULL AND a.timeout_time IS NULL THEN 'Not Complete'
-        WHEN a.timein_time IS NOT NULL AND a.timeout_time IS NULL AND a.timein_time > NOW() THEN 'Ongoing'
-        ELSE 'No Data'
-    END AS status
-FROM 
-    attendancelog a
-JOIN 
-    StudentInformation s ON a.studno = s.studentid
-JOIN 
-    events ON a.eventid = events.eventid
-WHERE 
-    s.studentid = @StudentId"
+    Private Sub cbFilter_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFilter.SelectedIndexChanged
+        Dim selectedFilter As String = cbFilter.Text
+        If String.IsNullOrEmpty(selectedFilter) Then Return
 
-        cmd = New MySqlCommand(sqlQuery, conn)
-        da = New MySqlDataAdapter(cmd)
+        Dim sqlQuery As String = $"SELECT DISTINCT {selectedFilter} FROM StudentInformation UNION SELECT DISTINCT {selectedFilter} FROM events"
         dt = New DataTable()
 
         Try
-            conn.Open()
+            cmd = New MySqlCommand(sqlQuery, conn)
+            da = New MySqlDataAdapter(cmd)
+
+            If conn.State = ConnectionState.Closed Then conn.Open()
+
             da.Fill(dt)
+            cbData.Items.Clear()
+
+            For Each row As DataRow In dt.Rows
+                cbData.Items.Add(row(selectedFilter).ToString())
+            Next
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show("Error loading filter data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
+    End Sub
 
-        ' Check if DataTable has columns and data
-        If dt.Columns.Count > 0 Then
-            ' Display the data in DataGridView
+    Private Sub btnStudent_Click(sender As Object, e As EventArgs) Handles btnStudent.Click
+        Dim filterColumn As String = cbFilter.Text
+        Dim filterValue As String = cbData.Text
+
+        If String.IsNullOrEmpty(filterColumn) OrElse String.IsNullOrEmpty(filterValue) Then
+            MessageBox.Show("Please select a filter and a value from the comboboxes.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        sqlQuery = $"SELECT * FROM StudentInformation WHERE {filterColumn} = @FilterValue"
+        dt = New DataTable()
+
+        Try
+            cmd = New MySqlCommand(sqlQuery, conn)
+            cmd.Parameters.AddWithValue("@FilterValue", filterValue)
+
+            da = New MySqlDataAdapter(cmd)
+            If conn.State = ConnectionState.Closed Then conn.Open()
+
+            da.Fill(dt)
             ReportData.DataSource = dt
             ReportData.ColumnHeadersHeight = 30
-
-            ' Set custom column headers
-            ReportData.Columns(0).HeaderText = "Full Name"
-            ReportData.Columns(1).HeaderText = "Event Name"
-            ReportData.Columns(2).HeaderText = "Time In"
-            ReportData.Columns(3).HeaderText = "Time Out"
-            ReportData.Columns(4).HeaderText = "Status"
-
-            ' Optional: Adjust column widths if needed
             ReportData.AutoResizeColumns()
-        Else
-            MessageBox.Show("No data found for the selected student.")
-        End If
-    End Sub
-
-    Private Sub LoadEventAttendees()
-
-        sqlQuery = "
-                    SELECT 
-                        a.FullName,
-                        e.eventname,
-                        a.timein_time,
-                        a.timeout_time,
-                        e.created_by,  
-                        CASE
-                            WHEN a.timein_time IS NOT NULL AND a.timeout_time IS NOT NULL THEN 'Complete'
-                            WHEN a.timein_time IS NOT NULL AND a.timeout_time IS NULL THEN 'Not Complete'
-                            WHEN a.timein_time IS NOT NULL AND a.timeout_time IS NULL AND a.timeout_time > NOW() THEN 'Ongoing'
-                            ELSE 'No Data'
-                        END AS status
-                    FROM 
-                        attendancelog a
-                    JOIN 
-                        events e ON a.eventid = e.eventid
-                    WHERE 
-                        e.eventname = @EventName"
-
-
-        cmd = New MySqlCommand(sqlQuery, conn)
-
-        da = New MySqlDataAdapter(cmd)
-        dt = New DataTable()
-
-        Try
-            conn.Open()
-            da.Fill(dt)
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show("Error loading student information: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
-
-        ReportData.DataSource = dt
-        ReportData.ColumnHeadersHeight = 30
-
-        ReportData.Columns(0).HeaderText = "Full Name"
-        ReportData.Columns(1).HeaderText = "Event Name"
-        ReportData.Columns(2).HeaderText = "Time In"
-        ReportData.Columns(3).HeaderText = "Time Out"
-        ReportData.Columns(4).HeaderText = "Created By" '
-        ReportData.Columns(5).HeaderText = "Status"
-
-
-
-        ReportData.AutoResizeColumns()
     End Sub
 
-    Private Sub LoadAllActivity()
-        sqlQuery = "
+
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        Dim startDate As Date = ReportStart.Value.Date
+        Dim endDate As Date = ReportEnd.Value.Date
+
+        sqlQuery = $"
             SELECT 
-            StudentInformation.FullName, 
-            StudentInformation.course, 
-            StudentInformation.yearandsection, 
-            events.eventname, 
-            events.eventdate, 
-            attendancelog.timein_time , 
-            attendancelog.timeout_time,
-            CASE
-                WHEN attendancelog.timein_time IS NOT NULL AND attendancelog.timeout_time IS NOT NULL THEN 'Complete'
-                WHEN attendancelog.timein_time IS NOT NULL AND attendancelog.timeout_time IS NULL THEN 'Not Complete'
-                WHEN attendancelog.timein_time IS NOT NULL AND attendancelog.timeout_time IS NULL AND attendancelog.timein_time > NOW() THEN 'Ongoing'
-                ELSE 'No Data'
-            END AS status
-        FROM 
-            attendancelog
-        JOIN 
-            StudentInformation ON attendancelog.studno = StudentInformation.studentid
-        JOIN 
-            events ON attendancelog.eventid = events.eventid"
+                events.EventID,
+                events.EventName,
+                events.Venue,
+                events.Facilitator,
+                attendancelog.studno AS StudentID,
+                StudentInformation.First_Name,
+                StudentInformation.Last_Name,
+                StudentInformation.Course,
+                StudentInformation.Year,
+                StudentInformation.Section,
+                attendancelog.timein_time,
+                attendancelog.timeout_time
+            FROM 
+                events
+            LEFT JOIN 
+                attendancelog ON attendancelog.eventid = events.EventID
+            LEFT JOIN 
+                StudentInformation ON attendancelog.studno = StudentInformation.StudentID
+            WHERE 
+                events.eventstart >= @StartDate AND events.eventend <= @EndDate"
 
-        cmd = New MySqlCommand(sqlQuery, conn)
-        da = New MySqlDataAdapter(cmd)
         dt = New DataTable()
 
         Try
-            conn.Open()
+            cmd = New MySqlCommand(sqlQuery, conn)
+            cmd.Parameters.AddWithValue("@StartDate", startDate)
+            cmd.Parameters.AddWithValue("@EndDate", endDate)
+
+            da = New MySqlDataAdapter(cmd)
+            If conn.State = ConnectionState.Closed Then conn.Open()
+
             da.Fill(dt)
+            ReportData.DataSource = dt
+            ReportData.ColumnHeadersHeight = 30
+            ReportData.AutoResizeColumns()
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show("Error loading data for the selected date range: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
-
-        If dt.Columns.Count > 0 Then
-            ReportData.DataSource = dt
-            ReportData.ColumnHeadersHeight = 30
-
-            ReportData.Columns(0).HeaderText = "Full Name"
-            ReportData.Columns(1).HeaderText = "Course"
-            ReportData.Columns(2).HeaderText = "Year & Section"
-            ReportData.Columns(3).HeaderText = "Event Name"
-            ReportData.Columns(4).HeaderText = "Date"
-            ReportData.Columns(5).HeaderText = "Time In"
-            ReportData.Columns(6).HeaderText = "Time Out"
-            ReportData.Columns(7).HeaderText = "Status"
-
-            ReportData.AutoResizeColumns()
-        Else
-            MessageBox.Show("No data found for the selected student.")
-        End If
     End Sub
 End Class

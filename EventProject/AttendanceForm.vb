@@ -44,11 +44,12 @@ Public Class AttendanceForm
         AddHandler cooldownTimer.Tick, AddressOf ClearCooldownStatus
 
     End Sub
+
     Private Sub LoadEventsForToday()
         Try
             Dim currentDate As String = DateTime.Now.ToString("yyyy-MM-dd")
 
-            sqlQuery = "SELECT eventid, eventname FROM events WHERE eventStart = @currentDate"
+            sqlQuery = "SELECT eventid, eventname FROM events WHERE eventStart_Date = @currentDate"
             cmd = New MySqlCommand(sqlQuery, conn)
             cmd.Parameters.AddWithValue("@currentDate", currentDate)
 
@@ -83,7 +84,7 @@ Public Class AttendanceForm
         Try
             conn.Open()
 
-            sqlQuery = "SELECT attendeeid, studno, first_name, department, yr, sc, date, timein_time, timeout_time FROM attendancelog WHERE eventid = @eventid"
+            sqlQuery = "SELECT attendeeid, studno, First_Name, Last_Name, year, Section, eventname, eventdate, timein_time, timeout_time FROM attendancelog WHERE eventid = @eventid"
             cmd = New MySqlCommand(sqlQuery, conn)
             cmd.Parameters.AddWithValue("@eventid", eventID)
 
@@ -131,51 +132,82 @@ Public Class AttendanceForm
         processedStudentIDs.Clear()
     End Sub
 
-    Private Sub SaveAttendanceLog(studno As String, studentName As String, logType As String, currentTime As DateTime)
-        Try
-            conn.Open()
+    Private Sub SaveAttendanceLog(studno As String, first_name As String, Last_Name As String, department As String, course As String, year As String, Section As String,
+                                  eventid As String, eventname As String, eventdate As String, timein As String, timeout As String)
 
-            ' Check if the student has already timed in but not timed out
-            sqlQuery = "SELECT * FROM attendancelog WHERE studno = @studno AND eventid = @eventid AND timein_time IS NOT NULL AND timeout_time IS NULL"
+        conn.Open()
+
+        ' Check if the student has already timed in but not timed out
+        sqlQuery = "SELECT * FROM attendancelog WHERE studno = @studno AND eventid = @eventid AND timein_time IS NOT NULL AND timeout_time IS NULL"
+        cmd = New MySqlCommand(sqlQuery, conn)
+        cmd.Parameters.AddWithValue("@studno", studno)
+        cmd.Parameters.AddWithValue("@eventid", eventid)
+
+        dr = cmd.ExecuteReader()
+
+        If dr.HasRows Then
+            ' Update existing record with timeout
+            dr.Close()
+            sqlQuery = "UPDATE attendancelog SET timeout_time = @timeout_time WHERE studno = @studno AND eventid = @eventid AND timeout_time IS NULL"
+            cmd = New MySqlCommand(sqlQuery, conn)
+            cmd.Parameters.AddWithValue("@timeout_time", timeout)
+            cmd.Parameters.AddWithValue("@studno", studno)
+            cmd.Parameters.AddWithValue("@eventid", eventid)
+            cmd.ExecuteNonQuery()
+
+        Else
+            ' Insert a new record for time-in
+            dr.Close()
+            sqlQuery = "INSERT INTO attendancelog (studno, First_Name, Last_Name, department, course, year, Section, eventid, eventname, eventdate, timein_time) " &
+                   "VALUES (@attendeeid, @studno, @First_Name, @Last_Name, @department, course, @year, @Section, @eventid, @eventname, @eventdate
+, @timein_time)"
+            cmd = New MySqlCommand(sqlQuery, conn)
+
+            cmd.Parameters.AddWithValue("@studno", studno)
+            cmd.Parameters.AddWithValue("@First_Name", first_name)
+            cmd.Parameters.AddWithValue("@Last_Name", Last_Name)
+            cmd.Parameters.AddWithValue("@department", department)
+            cmd.Parameters.AddWithValue("@course", course)
+            cmd.Parameters.AddWithValue("@year", year)
+            cmd.Parameters.AddWithValue("@Sectiontion", Section)
+            cmd.Parameters.AddWithValue("@eventid", eventid)
+            cmd.Parameters.AddWithValue("@eventname", eventname)
+            cmd.Parameters.AddWithValue("@eventdate", eventdate.ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@timein_time", timein)
+            cmd.ExecuteNonQuery()
+        End If
+
+
+        Try
+            ' SQL query to insert attendance log
+            sqlQuery = "INSERT INTO attendancelog (studno, First_name, Last_Name, department, course, year, Section, eventid, eventname, eventdate, timein_time) " &
+                       "VALUES (@studno, @First_Name, @Last_Name, @department, @course, @year, @Section, @eventid, @eventname, @eventdate, @timein_time)"
+
             cmd = New MySqlCommand(sqlQuery, conn)
             cmd.Parameters.AddWithValue("@studno", studno)
-            cmd.Parameters.AddWithValue("@eventid", eventID)
+            cmd.Parameters.AddWithValue("@First_Name", first_name)
+            cmd.Parameters.AddWithValue("@Last_Name", Last_Name)
+            cmd.Parameters.AddWithValue("@department", department)
+            cmd.Parameters.AddWithValue("@course", course)
+            cmd.Parameters.AddWithValue("@year", year)
+            cmd.Parameters.AddWithValue("@Section", Section)
+            cmd.Parameters.AddWithValue("@eventid", eventid)
+            cmd.Parameters.AddWithValue("@eventname", eventname)
+            cmd.Parameters.AddWithValue("@eventdate", eventdate)
+            cmd.Parameters.AddWithValue("@timein_time", timein)
 
-            dr = cmd.ExecuteReader()
+            conn.Open()
+            cmd.ExecuteNonQuery()
+            conn.Close()
 
-            If dr.HasRows Then
-                ' Update existing record with timeout
-                dr.Close()
-                sqlQuery = "UPDATE attendancelog SET timeout_time = @timeout_time WHERE studno = @studno AND eventid = @eventid AND timeout_time IS NULL"
-                cmd = New MySqlCommand(sqlQuery, conn)
-                cmd.Parameters.AddWithValue("@timeout_time", currentTime)
-                cmd.Parameters.AddWithValue("@studno", studno)
-                cmd.Parameters.AddWithValue("@eventid", eventID)
-                cmd.ExecuteNonQuery()
-
-            Else
-                ' Insert a new record for time-in
-                dr.Close()
-                sqlQuery = "INSERT INTO attendancelog (studno, attendeeid, first_name, last_name, department, yr, sc, eventid, date, timein_time) " &
-                       "VALUES (@studno, @attendeeid, @first_name, @last_name, @department, @yr, @sc, @eventid, @date, @timein_time)"
-                cmd = New MySqlCommand(sqlQuery, conn)
-                cmd.Parameters.AddWithValue("@studno", studno)
-                cmd.Parameters.AddWithValue("@attendeeid", attendeeid) ' Replace with the correct value
-                cmd.Parameters.AddWithValue("@first_name", studentName.Split(" "c)(0)) ' Split name into first and last
-                cmd.Parameters.AddWithValue("@last_name", studentName.Split(" "c)(1))  ' Assuming full name is passed
-                cmd.Parameters.AddWithValue("@department", department) ' Pass department correctly
-                cmd.Parameters.AddWithValue("@yr", yr)
-                cmd.Parameters.AddWithValue("@sc", sc)
-                cmd.Parameters.AddWithValue("@eventid", eventID)
-                cmd.Parameters.AddWithValue("@date", currentTime.ToString("yyyy-MM-dd"))
-                cmd.Parameters.AddWithValue("@timein_time", currentTime)
-                cmd.ExecuteNonQuery()
-            End If
+            MessageBox.Show("Attendance successfully logged.")
 
         Catch ex As Exception
-            MessageBox.Show($"Error saving attendance: {ex.Message}")
+            MessageBox.Show("Error saving attendance: " & ex.Message)
         Finally
-            conn.Close()
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
         End Try
     End Sub
 
@@ -204,12 +236,12 @@ Public Class AttendanceForm
                 ' Insert a new attendance record (time-in)
                 dr.Close()
                 sqlQuery = "INSERT INTO attendancelog (attendeeid, studno, first_name, last_name, department, yr, sc, eventid, eventname, date, timein_time) " &
-                       "VALUES (@AttenddeeID, @FirstName, @LastName, @Department, @yr, @sc, @eventid, @eventname, @date, @timein_time)"
+                       "VALUES (@AttenddeeID, @First_Name, @Last_Name, @Department, @yr, @sc, @eventid, @eventname, @date, @timein_time)"
                 cmd = New MySqlCommand(sqlQuery, conn)
                 cmd.Parameters.AddWithValue("@AttenddeeID", attendeeid)
                 cmd.Parameters.AddWithValue("@studno", studno)
-                cmd.Parameters.AddWithValue("@FirstName", first_name)
-                cmd.Parameters.AddWithValue("@LastName", last_name)
+                cmd.Parameters.AddWithValue("@First_Name", first_name)
+                cmd.Parameters.AddWithValue("@Last_Name", last_name)
                 cmd.Parameters.AddWithValue("@Department", department)
                 cmd.Parameters.AddWithValue("@yr", yr)
                 cmd.Parameters.AddWithValue("@sc", sc)
@@ -290,12 +322,47 @@ Public Class AttendanceForm
         End Try
     End Sub
 
+    Private Sub SaveAttendanceLog(studno As String, First_Name As String, Last_Name As String, department As String, course As String, year As Integer, Section As String,
+                              eventid As Integer, eventname As String, eventdate As Date, timein As DateTime)
+        Try
+            ' SQL query to insert attendance log
+            sqlQuery = "INSERT INTO attendancelog (studno, First_Name, Last_Name, department, course, year, Section, eventid, eventname, eventdate, timein_time) " &
+                   "VALUES (@studno, @First_Name, @Last_Name, @department, @course, @year, @Section, @eventid, @eventname, @eventdate, @timein_time)"
+
+            cmd = New MySqlCommand(sqlQuery, conn)
+            cmd.Parameters.AddWithValue("@studno", studno)
+            cmd.Parameters.AddWithValue("@First_Name", First_Name)
+            cmd.Parameters.AddWithValue("@Last_Name", Last_Name)
+            cmd.Parameters.AddWithValue("@department", department)
+            cmd.Parameters.AddWithValue("@course", course)
+            cmd.Parameters.AddWithValue("@year", year)
+            cmd.Parameters.AddWithValue("@Section", Section)
+            cmd.Parameters.AddWithValue("@eventid", eventid)
+            cmd.Parameters.AddWithValue("@eventname", eventname)
+            cmd.Parameters.AddWithValue("@eventdate", eventdate)
+            cmd.Parameters.AddWithValue("@timein_time", timein)
+
+            conn.Open()
+            cmd.ExecuteNonQuery()
+            conn.Close()
+
+            MessageBox.Show("Attendance successfully logged.")
+
+        Catch ex As Exception
+            MessageBox.Show("Error saving attendance: " & ex.Message)
+        Finally
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
     Private Sub ProcessQRCode(qrData As String)
         Try
             conn.Open()
 
             ' Query to get student details
-            sqlQuery = "SELECT attendeeid, first_name, last_name, department, yr, sc FROM StudentInformation WHERE studno = @studno"
+            sqlQuery = "SELECT First_Name, Last_Name, department, course, year, Section FROM StudentInformation WHERE studno = @studno"
             cmd = New MySqlCommand(sqlQuery, conn)
             cmd.Parameters.AddWithValue("@studno", qrData)
 
@@ -303,21 +370,44 @@ Public Class AttendanceForm
 
             If dr.HasRows Then
                 dr.Read()
-                Dim firstName As String = dr("first_name").ToString()
-                Dim lastName As String = dr("last_name").ToString()
-                department = dr("department").ToString()
-                yr = Convert.ToInt32(dr("yr"))
-                sc = Convert.ToInt32(dr("sc"))
+                Dim First_Name As String = dr("First_Name").ToString()
+                Dim Last_Name As String = dr("Last_Name").ToString()
+                Dim department As String = dr("department").ToString()
+                Dim course As String = dr("course").ToString()
+                Dim year As Integer = Convert.ToInt32(dr("year"))
+                Dim Section As String = dr("Section").ToString()
 
-                ' Call the correct overload
-                SaveAttendanceLog(attendeeid, qrData, firstName, lastName, department, yr, sc, DateTime.Now)
+                dr.Close()
+
+                ' Retrieve event details
+                Dim selectedEvent As EventData = CType(cbevent.SelectedItem, EventData)
+
+                If selectedEvent IsNot Nothing Then
+                    Dim eventID As Integer = selectedEvent.ID
+                    Dim eventName As String = selectedEvent.Name
+                    Dim eventDate As Date = DateTime.Now.Date
+
+                    ' Save attendance log
+                    SaveAttendanceLog(qrData, First_Name, Last_Name, department, course, year, Section, eventID, eventName, eventDate, DateTime.Now)
+                Else
+                    MessageBox.Show("Please select an event before scanning QR codes.")
+                End If
+            Else
+                MessageBox.Show("Student record not found.")
             End If
+
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show("Error processing QR code: " & ex.Message)
         Finally
-            dr.Close()
+            If dr IsNot Nothing AndAlso Not dr.IsClosed Then
+                dr.Close()
+            End If
             conn.Close()
         End Try
     End Sub
 
+
+    Private Sub pbwebcam_Click(sender As Object, e As EventArgs) Handles pbwebcam.Click
+
+    End Sub
 End Class

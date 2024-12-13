@@ -29,7 +29,6 @@ Partial Class HomeForm
         Me.btnReport = New Guna.UI2.WinForms.Guna2Button()
         Me.btnSignOut = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.menuicon = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.pnlbuttons = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Me.btnAccount = New Guna.UI2.WinForms.Guna2Button()
         Me.btnEvent = New Guna.UI2.WinForms.Guna2Button()
@@ -39,7 +38,6 @@ Partial Class HomeForm
         Me.pnlHome = New System.Windows.Forms.Panel()
         Me.TimerIncrease = New System.Windows.Forms.Timer(Me.components)
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.menuicon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlbuttons.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -158,22 +156,8 @@ Partial Class HomeForm
         Me.Guna2PictureBox1.TabStop = False
         Me.Guna2PictureBox1.UseTransparentBackground = True
         '
-        'menuicon
-        '
-        Me.menuicon.BackColor = System.Drawing.Color.Transparent
-        Me.menuicon.Image = Global.EventProject.My.Resources.Resources.icons8_menu_96
-        Me.menuicon.ImageRotate = 0!
-        Me.menuicon.Location = New System.Drawing.Point(37, 22)
-        Me.menuicon.Name = "menuicon"
-        Me.menuicon.Size = New System.Drawing.Size(45, 35)
-        Me.menuicon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.menuicon.TabIndex = 1
-        Me.menuicon.TabStop = False
-        Me.menuicon.UseTransparentBackground = True
-        '
         'pnlbuttons
         '
-        Me.pnlbuttons.Controls.Add(Me.menuicon)
         Me.pnlbuttons.Controls.Add(Me.Guna2PictureBox1)
         Me.pnlbuttons.Controls.Add(Me.btnSignOut)
         Me.pnlbuttons.Controls.Add(Me.btnReport)
@@ -327,7 +311,6 @@ Partial Class HomeForm
         Me.Text = "HomeForm"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.menuicon, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlbuttons.ResumeLayout(False)
         Me.pnlbuttons.PerformLayout()
         Me.ResumeLayout(False)
@@ -340,7 +323,6 @@ Partial Class HomeForm
     Friend WithEvents btnReport As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents btnSignOut As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents menuicon As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents pnlbuttons As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents btnAccount As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents btnEvent As Guna.UI2.WinForms.Guna2Button
