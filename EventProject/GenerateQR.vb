@@ -390,4 +390,12 @@ Public Class GenerateQR
         obj.Show()
 
     End Sub
+
+    Private Sub GenerateQR_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub pnlInfo_Paint(sender As Object, e As PaintEventArgs) Handles pnlInfo.Paint
+
+    End Sub
 End Class
