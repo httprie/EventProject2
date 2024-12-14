@@ -33,10 +33,10 @@ Public Class GenerateQR
         Dim suffix As String = txtExtension.Text
         Dim messenger As String = txtMessenger.Text
         Dim contactno As String = txtContact.Text
-        Dim department As String = txtDepartment.Text  ' Added department
-        Dim course As String = txtCourse.Text
-        Dim year As String = txtYear.Text
-        Dim section As String = txtSection.Text
+        Dim department As String = cbDepartment.Text  ' Added department
+        Dim course As String = cbCourse.Text
+        Dim year As String = cbYear.Text
+        Dim section As String = cbSection.Text
         Dim studID As String = txtStudID.Text
         Dim email As String = txtEmail.Text
 
@@ -169,10 +169,10 @@ Public Class GenerateQR
             txtExtension.Text = selectedRow.Cells("Suffix").Value.ToString()
             txtMessenger.Text = selectedRow.Cells("MessengerName").Value.ToString()
             txtContact.Text = selectedRow.Cells("ContactNo").Value.ToString()
-            txtDepartment.Text = selectedRow.Cells("Department").Value.ToString()  ' Added department
-            txtCourse.Text = selectedRow.Cells("Course").Value.ToString()
-            txtYear.Text = selectedRow.Cells("Year").Value.ToString()
-            txtSection.Text = selectedRow.Cells("Section").Value.ToString()
+            cbDepartment.Text = selectedRow.Cells("Department").Value.ToString()  ' Added department
+            cbCourse.Text = selectedRow.Cells("Course").Value.ToString()
+            cbYear.Text = selectedRow.Cells("Year").Value.ToString()
+            cbSection.Text = selectedRow.Cells("Section").Value.ToString()
             txtStudID.Text = selectedRow.Cells("StudentID").Value.ToString()
             txtEmail.Text = selectedRow.Cells("Email").Value.ToString()
         End If
@@ -309,10 +309,10 @@ Public Class GenerateQR
         txtExtension.Clear()
         txtMessenger.Clear()
         txtContact.Clear()
-        txtCourse.Clear()
-        txtDepartment.Clear()
-        txtYear.Clear()
-        txtSection.Clear()
+        cbCourse.Items.Clear()
+        cbDepartment.Items.Clear()
+        cbYear.Items.Clear()
+        cbSection.Items.Clear()
         txtStudID.Clear()
         txtEmail.Clear()
         QRCode.Image = Nothing
@@ -325,10 +325,10 @@ Public Class GenerateQR
         Dim suffix As String = txtExtension.Text
         Dim messenger As String = txtMessenger.Text
         Dim contactno As String = txtContact.Text
-        Dim department As String = txtDepartment.Text  ' Added this line
-        Dim course As String = txtCourse.Text
-        Dim year As String = txtYear.Text
-        Dim section As String = txtSection.Text
+        Dim department As String = cbDepartment.Text  ' Added this line
+        Dim course As String = cbCourse.Text
+        Dim year As String = cbYear.Text
+        Dim section As String = cbSection.Text
         Dim studID As String = txtStudID.Text
         Dim email As String = txtEmail.Text
 
@@ -366,10 +366,10 @@ Public Class GenerateQR
         Dim suffix As String = txtExtension.Text
         Dim messenger As String = txtMessenger.Text
         Dim contactno As String = txtContact.Text
-        Dim department As String = txtDepartment.Text
-        Dim course As String = txtCourse.Text
-        Dim year As String = txtYear.Text
-        Dim section As String = txtSection.Text
+        Dim department As String = cbDepartment.Text
+        Dim course As String = cbCourse.Text
+        Dim year As String = cbYear.Text
+        Dim section As String = cbSection.Text
         Dim studID As String = txtStudID.Text
         Dim email As String = txtEmail.Text
 
@@ -383,8 +383,8 @@ Public Class GenerateQR
         obj.email = txtEmail.Text
         obj.message = "Attendance QR Code" & vbCrLf &
                "Name: " & txtFirstName.Text & txtLastName.Text & vbCrLf &
-               "Course: " & txtCourse.Text & vbCrLf &
-               "Year and Section: " & txtYear.Text & txtSection.Text & vbCrLf &
+               "Course: " & cbCourse.Text & vbCrLf &
+               "Year and Section: " & cbYear.Text & cbSection.Text & vbCrLf &
                "Student ID: " & txtStudID.Text & vbCrLf & vbCrLf &
                "Please present this at every event you attend. Thank you!"
 

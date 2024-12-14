@@ -39,7 +39,6 @@ Public Class AddAccountForm
 
     Private Sub btnAddAccount_Click(sender As Object, e As EventArgs) Handles btnAddAccount.Click
         UserName = txtUname.Text
-        Password = txtPwd.Text
         FullName = txtFname.Text
 
         If cbRole.SelectedItem IsNot Nothing Then
@@ -89,16 +88,8 @@ Public Class AddAccountForm
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub btnShowPwd_CheckedChanged(sender As Object, e As EventArgs) 
-        If btnShowPwd.Checked Then
-            txtPwd.PasswordChar = ""
-        Else
-            txtPwd.PasswordChar = "*"
-        End If
-    End Sub
     Private Sub ClearTextBoxes()
         txtUname.Text = ""
-        txtPwd.Text = ""
         txtFname.Text = ""
         cbRole.SelectedIndex = -1
     End Sub
