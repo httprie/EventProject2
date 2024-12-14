@@ -46,23 +46,23 @@ Partial Class HeadReports
         'timedate
         '
         Me.timedate.AutoSize = True
-        Me.timedate.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.timedate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.timedate.ForeColor = System.Drawing.Color.Black
         Me.timedate.Location = New System.Drawing.Point(13, 26)
         Me.timedate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.timedate.Name = "timedate"
-        Me.timedate.Size = New System.Drawing.Size(150, 25)
+        Me.timedate.Size = New System.Drawing.Size(123, 17)
         Me.timedate.TabIndex = 41
         Me.timedate.Text = "                       "
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(14, 65)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(102, 21)
+        Me.Label3.Size = New System.Drawing.Size(79, 15)
         Me.Label3.TabIndex = 36
         Me.Label3.Text = "FILTER BY:"
         '
@@ -71,23 +71,23 @@ Partial Class HeadReports
         '
         'cbFilter
         '
-        Me.cbFilter.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbFilter.ForeColor = System.Drawing.Color.Black
         Me.cbFilter.FormattingEnabled = True
         Me.cbFilter.Items.AddRange(New Object() {"STUDENT ID", "FIRST NAME", "LAST NAME", "VENUE", "DEPARTMENT", "FACILITATOR", "EVENT ID", "COURSE", "YEAR", "SECTION", ""})
         Me.cbFilter.Location = New System.Drawing.Point(19, 90)
         Me.cbFilter.Name = "cbFilter"
-        Me.cbFilter.Size = New System.Drawing.Size(343, 33)
+        Me.cbFilter.Size = New System.Drawing.Size(343, 24)
         Me.cbFilter.TabIndex = 44
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(284, 159)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(17, 21)
+        Me.Label4.Size = New System.Drawing.Size(12, 15)
         Me.Label4.TabIndex = 47
         Me.Label4.Text = "-"
         '
@@ -98,7 +98,7 @@ Partial Class HeadReports
         Me.btnStudent.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.btnStudent.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.btnStudent.FillColor = System.Drawing.Color.White
-        Me.btnStudent.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnStudent.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnStudent.ForeColor = System.Drawing.Color.Black
         Me.btnStudent.Location = New System.Drawing.Point(832, 90)
         Me.btnStudent.Name = "btnStudent"
@@ -109,44 +109,44 @@ Partial Class HeadReports
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(16, 126)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(120, 21)
+        Me.Label8.Size = New System.Drawing.Size(93, 15)
         Me.Label8.TabIndex = 55
         Me.Label8.Text = "START DATE:"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Black
         Me.Label9.Location = New System.Drawing.Point(386, 126)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(105, 21)
+        Me.Label9.Size = New System.Drawing.Size(79, 15)
         Me.Label9.TabIndex = 56
         Me.Label9.Text = "END DATE:"
         '
         'cbData
         '
-        Me.cbData.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbData.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbData.ForeColor = System.Drawing.Color.Black
         Me.cbData.FormattingEnabled = True
         Me.cbData.Items.AddRange(New Object() {"STUDENT ID", "FIRST NAME", "LAST NAME", "VENUE", "DEPARTMENT", "FACILITATOR", "EVENT ID", "COURSE", "YEAR", "SECTION", ""})
         Me.cbData.Location = New System.Drawing.Point(390, 90)
         Me.cbData.Name = "cbData"
-        Me.cbData.Size = New System.Drawing.Size(426, 33)
+        Me.cbData.Size = New System.Drawing.Size(426, 24)
         Me.cbData.TabIndex = 57
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(368, 159)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(17, 21)
+        Me.Label1.Size = New System.Drawing.Size(12, 15)
         Me.Label1.TabIndex = 59
         Me.Label1.Text = "-"
         '
@@ -158,7 +158,7 @@ Partial Class HeadReports
         Me.ReportEnd.BorderRadius = 18
         Me.ReportEnd.Checked = True
         Me.ReportEnd.FillColor = System.Drawing.Color.White
-        Me.ReportEnd.Font = New System.Drawing.Font("Ubuntu", 9.0!)
+        Me.ReportEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.ReportEnd.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
         Me.ReportEnd.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
         Me.ReportEnd.Location = New System.Drawing.Point(391, 150)
@@ -177,7 +177,7 @@ Partial Class HeadReports
         Me.ReportStart.BorderRadius = 18
         Me.ReportStart.Checked = True
         Me.ReportStart.FillColor = System.Drawing.Color.White
-        Me.ReportStart.Font = New System.Drawing.Font("Ubuntu", 9.0!)
+        Me.ReportStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.ReportStart.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
         Me.ReportStart.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
         Me.ReportStart.Location = New System.Drawing.Point(12, 150)
@@ -247,7 +247,7 @@ Partial Class HeadReports
         Me.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.btnPrint.FillColor = System.Drawing.Color.White
-        Me.btnPrint.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnPrint.ForeColor = System.Drawing.Color.Black
         Me.btnPrint.Location = New System.Drawing.Point(832, 145)
         Me.btnPrint.Name = "btnPrint"

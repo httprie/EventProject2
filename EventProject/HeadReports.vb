@@ -16,9 +16,12 @@ Public Class HeadReports
     End Sub
 
     Private Sub PopulateFilters()
-        Dim studentColumns As String() = {"StudentID", "First_Name", "Last_Name", "Department", "Course", "Year", "Section"}
-        Dim eventColumns As String() = {"Venue", "Facilitator", "EventID"}
+        ' Columns from StudentInformation table
+        Dim studentColumns As String() = {"First_Name", "Last_Name", "Department", "Course", "Year", "Section", "StudentID"}
+        ' Columns from events table
+        Dim eventColumns As String() = {"venue", "facilitator"}
 
+        ' Add valid columns to cbFilter
         cbFilter.Items.Clear()
         cbFilter.Items.AddRange(studentColumns)
         cbFilter.Items.AddRange(eventColumns)
@@ -28,27 +31,45 @@ Public Class HeadReports
         Dim selectedFilter As String = cbFilter.Text
         If String.IsNullOrEmpty(selectedFilter) Then Return
 
-        Dim sqlQuery As String = $"SELECT DISTINCT {selectedFilter} FROM StudentInformation UNION SELECT DISTINCT {selectedFilter} FROM events"
-        dt = New DataTable()
+        Dim sqlQuery As String
+        Dim isStudentColumn As Boolean = {"First_Name", "Last_Name", "Department", "Course", "Year", "Section", "StudentID"}.Contains(selectedFilter)
+        Dim isEventColumn As Boolean = {"venue", "facilitator"}.Contains(selectedFilter)
+
+        If isStudentColumn Then
+            sqlQuery = $"SELECT DISTINCT {selectedFilter} FROM StudentInformation"
+        ElseIf isEventColumn Then
+            sqlQuery = $"SELECT DISTINCT {selectedFilter} FROM events"
+        Else
+            MessageBox.Show("Invalid column selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
 
         Try
             cmd = New MySqlCommand(sqlQuery, conn)
             da = New MySqlDataAdapter(cmd)
+            dt = New DataTable()
 
             If conn.State = ConnectionState.Closed Then conn.Open()
 
             da.Fill(dt)
+
             cbData.Items.Clear()
 
+            If dt.Rows.Count = 0 Then
+                MessageBox.Show("No data found for the selected filter.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End If
+
             For Each row As DataRow In dt.Rows
-                cbData.Items.Add(row(selectedFilter).ToString())
+                cbData.Items.Add(row(0).ToString())
             Next
         Catch ex As Exception
-            MessageBox.Show("Error loading filter data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show($"Error loading filter data: {ex.Message}" & vbCrLf & $"SQL Query: {sqlQuery}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
     End Sub
+
 
     Private Sub btnStudent_Click(sender As Object, e As EventArgs) Handles btnStudent.Click
         Dim filterColumn As String = cbFilter.Text
@@ -80,52 +101,4 @@ Public Class HeadReports
         End Try
     End Sub
 
-
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
-        Dim startDate As Date = ReportStart.Value.Date
-        Dim endDate As Date = ReportEnd.Value.Date
-
-        sqlQuery = $"
-            SELECT 
-                events.EventID,
-                events.EventName,
-                events.Venue,
-                events.Facilitator,
-                attendancelog.studno AS StudentID,
-                StudentInformation.First_Name,
-                StudentInformation.Last_Name,
-                StudentInformation.Course,
-                StudentInformation.Year,
-                StudentInformation.Section,
-                attendancelog.timein_time,
-                attendancelog.timeout_time
-            FROM 
-                events
-            LEFT JOIN 
-                attendancelog ON attendancelog.eventid = events.EventID
-            LEFT JOIN 
-                StudentInformation ON attendancelog.studno = StudentInformation.StudentID
-            WHERE 
-                events.eventstart >= @StartDate AND events.eventend <= @EndDate"
-
-        dt = New DataTable()
-
-        Try
-            cmd = New MySqlCommand(sqlQuery, conn)
-            cmd.Parameters.AddWithValue("@StartDate", startDate)
-            cmd.Parameters.AddWithValue("@EndDate", endDate)
-
-            da = New MySqlDataAdapter(cmd)
-            If conn.State = ConnectionState.Closed Then conn.Open()
-
-            da.Fill(dt)
-            ReportData.DataSource = dt
-            ReportData.ColumnHeadersHeight = 30
-            ReportData.AutoResizeColumns()
-        Catch ex As Exception
-            MessageBox.Show("Error loading data for the selected date range: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            conn.Close()
-        End Try
-    End Sub
 End Class
