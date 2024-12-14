@@ -5,6 +5,7 @@ Imports MySql.Data.MySqlClient
 Imports MessagingToolkit.QRCode.Codec
 
 Public Class GenerateQR
+
     Private Sub AddButtonsToDataGridView()
         If StudentData.Columns.Contains("Edit") Then StudentData.Columns.Remove("Edit")
         If StudentData.Columns.Contains("Delete") Then StudentData.Columns.Remove("Delete")
@@ -317,7 +318,7 @@ Public Class GenerateQR
         QRCode.Image = Nothing
     End Sub
 
-    Private Sub btnsave_Click(sender As Object, e As EventArgs) Handles btnsave.Click
+    Private Sub btnsave_Click(sender As Object, e As EventArgs) 
         Dim firstname As String = txtFirstName.Text
         Dim middlename As String = txtMiddleName.Text
         Dim lastname As String = txtLastName.Text
@@ -357,7 +358,7 @@ Public Class GenerateQR
         End If
     End Sub
 
-    Private Sub btnsendEmail_Click(sender As Object, e As EventArgs) Handles btnsendEmail.Click
+    Private Sub btnsendEmail_Click(sender As Object, e As EventArgs) 
         ' Collect student data from the form
         Dim firstname As String = txtFirstName.Text
         Dim middlename As String = txtMiddleName.Text

@@ -72,6 +72,7 @@ Partial Class EventsForm
         Me.dtpStartTime = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.btnPrintEvent = New Guna.UI2.WinForms.Guna2Button()
         CType(Me.DataGridViewEvents, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -87,16 +88,16 @@ Partial Class EventsForm
         Me.btnSearchEvent.FillColor = System.Drawing.Color.White
         Me.btnSearchEvent.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnSearchEvent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.btnSearchEvent.Location = New System.Drawing.Point(808, 59)
+        Me.btnSearchEvent.Location = New System.Drawing.Point(562, 65)
         Me.btnSearchEvent.Name = "btnSearchEvent"
-        Me.btnSearchEvent.Size = New System.Drawing.Size(168, 36)
+        Me.btnSearchEvent.Size = New System.Drawing.Size(128, 36)
         Me.btnSearchEvent.TabIndex = 2
         Me.btnSearchEvent.Text = "Search"
         '
         'btnAddEvent
         '
         Me.btnAddEvent.AutoRoundedCorners = True
-        Me.btnAddEvent.BorderRadius = 19
+        Me.btnAddEvent.BorderRadius = 17
         Me.btnAddEvent.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.btnAddEvent.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.btnAddEvent.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -104,9 +105,9 @@ Partial Class EventsForm
         Me.btnAddEvent.FillColor = System.Drawing.Color.White
         Me.btnAddEvent.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnAddEvent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.btnAddEvent.Location = New System.Drawing.Point(820, 529)
+        Me.btnAddEvent.Location = New System.Drawing.Point(696, 62)
         Me.btnAddEvent.Name = "btnAddEvent"
-        Me.btnAddEvent.Size = New System.Drawing.Size(168, 41)
+        Me.btnAddEvent.Size = New System.Drawing.Size(168, 37)
         Me.btnAddEvent.TabIndex = 3
         Me.btnAddEvent.Text = "Add New Event"
         '
@@ -135,13 +136,13 @@ Partial Class EventsForm
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewEvents.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewEvents.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataGridViewEvents.Location = New System.Drawing.Point(0, 178)
+        Me.DataGridViewEvents.Location = New System.Drawing.Point(0, 187)
         Me.DataGridViewEvents.Name = "DataGridViewEvents"
         Me.DataGridViewEvents.ReadOnly = True
         Me.DataGridViewEvents.RowHeadersVisible = False
         Me.DataGridViewEvents.RowHeadersWidth = 62
         Me.DataGridViewEvents.RowTemplate.Height = 28
-        Me.DataGridViewEvents.Size = New System.Drawing.Size(1009, 336)
+        Me.DataGridViewEvents.Size = New System.Drawing.Size(1009, 307)
         Me.DataGridViewEvents.TabIndex = 13
         Me.DataGridViewEvents.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
         Me.DataGridViewEvents.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -272,7 +273,7 @@ Partial Class EventsForm
         Me.timedate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.timedate.Location = New System.Drawing.Point(12, 22)
         Me.timedate.Name = "timedate"
-        Me.timedate.Size = New System.Drawing.Size(123, 17)
+        Me.timedate.Size = New System.Drawing.Size(150, 25)
         Me.timedate.TabIndex = 16
         Me.timedate.Text = "                       "
         '
@@ -321,7 +322,7 @@ Partial Class EventsForm
         Me.Label9.ForeColor = System.Drawing.Color.Black
         Me.Label9.Location = New System.Drawing.Point(307, 102)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(70, 15)
+        Me.Label9.Size = New System.Drawing.Size(99, 22)
         Me.Label9.TabIndex = 58
         Me.Label9.Text = "End Date:"
         '
@@ -332,7 +333,7 @@ Partial Class EventsForm
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(7, 105)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(75, 15)
+        Me.Label8.Size = New System.Drawing.Size(107, 22)
         Me.Label8.TabIndex = 57
         Me.Label8.Text = "Start Date:"
         '
@@ -343,7 +344,7 @@ Partial Class EventsForm
         Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(12, 41)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(79, 15)
+        Me.Label3.Size = New System.Drawing.Size(116, 22)
         Me.Label3.TabIndex = 59
         Me.Label3.Text = "FILTER BY:"
         '
@@ -361,7 +362,7 @@ Partial Class EventsForm
         Me.cbEventFilter.ItemHeight = 30
         Me.cbEventFilter.Location = New System.Drawing.Point(16, 65)
         Me.cbEventFilter.Name = "cbEventFilter"
-        Me.cbEventFilter.Size = New System.Drawing.Size(202, 36)
+        Me.cbEventFilter.Size = New System.Drawing.Size(147, 36)
         Me.cbEventFilter.TabIndex = 62
         '
         'cbxEvent
@@ -376,9 +377,9 @@ Partial Class EventsForm
         Me.cbxEvent.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.cbxEvent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.cbxEvent.ItemHeight = 30
-        Me.cbxEvent.Location = New System.Drawing.Point(240, 65)
+        Me.cbxEvent.Location = New System.Drawing.Point(169, 65)
         Me.cbxEvent.Name = "cbxEvent"
-        Me.cbxEvent.Size = New System.Drawing.Size(551, 36)
+        Me.cbxEvent.Size = New System.Drawing.Size(387, 36)
         Me.cbxEvent.TabIndex = 63
         '
         'Label1
@@ -387,9 +388,9 @@ Partial Class EventsForm
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(13, 539)
+        Me.Label1.Location = New System.Drawing.Point(12, 519)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(106, 15)
+        Me.Label1.Size = New System.Drawing.Size(150, 22)
         Me.Label1.TabIndex = 64
         Me.Label1.Text = "Pending Events"
         '
@@ -418,13 +419,13 @@ Partial Class EventsForm
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Guna2DataGridView1.DefaultCellStyle = DataGridViewCellStyle6
         Me.Guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2DataGridView1.Location = New System.Drawing.Point(0, 579)
+        Me.Guna2DataGridView1.Location = New System.Drawing.Point(0, 561)
         Me.Guna2DataGridView1.Name = "Guna2DataGridView1"
         Me.Guna2DataGridView1.ReadOnly = True
         Me.Guna2DataGridView1.RowHeadersVisible = False
         Me.Guna2DataGridView1.RowHeadersWidth = 62
         Me.Guna2DataGridView1.RowTemplate.Height = 28
-        Me.Guna2DataGridView1.Size = New System.Drawing.Size(1009, 190)
+        Me.Guna2DataGridView1.Size = New System.Drawing.Size(1009, 206)
         Me.Guna2DataGridView1.TabIndex = 65
         Me.Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
         Me.Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -573,7 +574,7 @@ Partial Class EventsForm
         Me.Label2.ForeColor = System.Drawing.Color.Black
         Me.Label2.Location = New System.Drawing.Point(804, 102)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(72, 15)
+        Me.Label2.Size = New System.Drawing.Size(101, 22)
         Me.Label2.TabIndex = 69
         Me.Label2.Text = "End Time:"
         '
@@ -584,15 +585,33 @@ Partial Class EventsForm
         Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(629, 101)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(77, 15)
+        Me.Label4.Size = New System.Drawing.Size(109, 22)
         Me.Label4.TabIndex = 68
         Me.Label4.Text = "Start Time:"
+        '
+        'btnPrintEvent
+        '
+        Me.btnPrintEvent.AutoRoundedCorners = True
+        Me.btnPrintEvent.BorderRadius = 17
+        Me.btnPrintEvent.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btnPrintEvent.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btnPrintEvent.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btnPrintEvent.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btnPrintEvent.FillColor = System.Drawing.Color.White
+        Me.btnPrintEvent.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnPrintEvent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
+        Me.btnPrintEvent.Location = New System.Drawing.Point(870, 63)
+        Me.btnPrintEvent.Name = "btnPrintEvent"
+        Me.btnPrintEvent.Size = New System.Drawing.Size(109, 36)
+        Me.btnPrintEvent.TabIndex = 70
+        Me.btnPrintEvent.Text = "Print"
         '
         'EventsForm
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1011, 800)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnPrintEvent)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.dtpEndTime)
@@ -663,4 +682,5 @@ Partial Class EventsForm
     Friend WithEvents dtpStartTime As Guna.UI2.WinForms.Guna2DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents btnPrintEvent As Guna.UI2.WinForms.Guna2Button
 End Class

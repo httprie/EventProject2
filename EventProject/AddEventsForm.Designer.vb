@@ -29,8 +29,6 @@ Partial Class AddEventsForm
         Me.btnClear = New Guna.UI2.WinForms.Guna2Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.dtpEventStart = New Guna.UI2.WinForms.Guna2DateTimePicker()
-        Me.txtDepartment = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.txtVenue = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -51,6 +49,8 @@ Partial Class AddEventsForm
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtContactMessenger = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.Guna2ComboBox2 = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.SuspendLayout()
         '
         'Guna2ControlBox3
@@ -138,50 +138,6 @@ Partial Class AddEventsForm
         Me.dtpEventStart.Size = New System.Drawing.Size(376, 40)
         Me.dtpEventStart.TabIndex = 29
         Me.dtpEventStart.Value = New Date(2024, 11, 9, 0, 0, 0, 0)
-        '
-        'txtDepartment
-        '
-        Me.txtDepartment.AutoRoundedCorners = True
-        Me.txtDepartment.BorderRadius = 19
-        Me.txtDepartment.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtDepartment.DefaultText = ""
-        Me.txtDepartment.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txtDepartment.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txtDepartment.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtDepartment.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtDepartment.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtDepartment.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDepartment.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtDepartment.Location = New System.Drawing.Point(54, 387)
-        Me.txtDepartment.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.txtDepartment.Name = "txtDepartment"
-        Me.txtDepartment.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.txtDepartment.PlaceholderText = ""
-        Me.txtDepartment.SelectedText = ""
-        Me.txtDepartment.Size = New System.Drawing.Size(376, 40)
-        Me.txtDepartment.TabIndex = 28
-        '
-        'txtVenue
-        '
-        Me.txtVenue.AutoRoundedCorners = True
-        Me.txtVenue.BorderRadius = 18
-        Me.txtVenue.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtVenue.DefaultText = ""
-        Me.txtVenue.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txtVenue.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txtVenue.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtVenue.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtVenue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtVenue.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtVenue.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtVenue.Location = New System.Drawing.Point(54, 208)
-        Me.txtVenue.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.txtVenue.Name = "txtVenue"
-        Me.txtVenue.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.txtVenue.PlaceholderText = ""
-        Me.txtVenue.SelectedText = ""
-        Me.txtVenue.Size = New System.Drawing.Size(762, 38)
-        Me.txtVenue.TabIndex = 27
         '
         'Label6
         '
@@ -475,6 +431,40 @@ Partial Class AddEventsForm
         Me.Label12.TabIndex = 43
         Me.Label12.Text = "Messenger:"
         '
+        'Guna2ComboBox1
+        '
+        Me.Guna2ComboBox1.AutoRoundedCorners = True
+        Me.Guna2ComboBox1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ComboBox1.BorderRadius = 17
+        Me.Guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.Guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox1.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.Guna2ComboBox1.ItemHeight = 30
+        Me.Guna2ComboBox1.Location = New System.Drawing.Point(52, 387)
+        Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
+        Me.Guna2ComboBox1.Size = New System.Drawing.Size(366, 36)
+        Me.Guna2ComboBox1.TabIndex = 47
+        '
+        'Guna2ComboBox2
+        '
+        Me.Guna2ComboBox2.AutoRoundedCorners = True
+        Me.Guna2ComboBox2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ComboBox2.BorderRadius = 17
+        Me.Guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.Guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox2.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.Guna2ComboBox2.ItemHeight = 30
+        Me.Guna2ComboBox2.Location = New System.Drawing.Point(53, 207)
+        Me.Guna2ComboBox2.Name = "Guna2ComboBox2"
+        Me.Guna2ComboBox2.Size = New System.Drawing.Size(763, 36)
+        Me.Guna2ComboBox2.TabIndex = 48
+        '
         'AddEventsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -482,6 +472,8 @@ Partial Class AddEventsForm
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(870, 779)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Guna2ComboBox2)
+        Me.Controls.Add(Me.Guna2ComboBox1)
         Me.Controls.Add(Me.txtContact)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtContactMessenger)
@@ -498,8 +490,6 @@ Partial Class AddEventsForm
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.dtpEventStart)
-        Me.Controls.Add(Me.txtDepartment)
-        Me.Controls.Add(Me.txtVenue)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -524,8 +514,6 @@ Partial Class AddEventsForm
     Friend WithEvents btnClear As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label7 As Label
     Friend WithEvents dtpEventStart As Guna.UI2.WinForms.Guna2DateTimePicker
-    Friend WithEvents txtDepartment As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents txtVenue As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
@@ -546,4 +534,6 @@ Partial Class AddEventsForm
     Friend WithEvents Label11 As Label
     Friend WithEvents txtContactMessenger As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label12 As Label
+    Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents Guna2ComboBox2 As Guna.UI2.WinForms.Guna2ComboBox
 End Class

@@ -89,7 +89,7 @@ Public Class AddAccountForm
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub btnShowPwd_CheckedChanged(sender As Object, e As EventArgs) Handles btnShowPwd.CheckedChanged
+    Private Sub btnShowPwd_CheckedChanged(sender As Object, e As EventArgs) 
         If btnShowPwd.Checked Then
             txtPwd.PasswordChar = ""
         Else

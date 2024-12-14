@@ -147,4 +147,8 @@ Public Class EventsForm
             End If
         End Try
     End Sub
+
+    Private Sub btnAddEvent_Click(sender As Object, e As EventArgs) Handles btnAddEvent.Click
+        AddEventsForm.Show()
+    End Sub
 End Class
