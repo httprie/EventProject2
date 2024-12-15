@@ -97,7 +97,7 @@ Partial Class EventsForm
         'btnAddEvent
         '
         Me.btnAddEvent.AutoRoundedCorners = True
-        Me.btnAddEvent.BorderRadius = 17
+        Me.btnAddEvent.BorderRadius = 16
         Me.btnAddEvent.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.btnAddEvent.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.btnAddEvent.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -105,9 +105,9 @@ Partial Class EventsForm
         Me.btnAddEvent.FillColor = System.Drawing.Color.White
         Me.btnAddEvent.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnAddEvent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.btnAddEvent.Location = New System.Drawing.Point(696, 62)
+        Me.btnAddEvent.Location = New System.Drawing.Point(696, 65)
         Me.btnAddEvent.Name = "btnAddEvent"
-        Me.btnAddEvent.Size = New System.Drawing.Size(168, 37)
+        Me.btnAddEvent.Size = New System.Drawing.Size(168, 34)
         Me.btnAddEvent.TabIndex = 3
         Me.btnAddEvent.Text = "Add New Event"
         '
@@ -592,7 +592,7 @@ Partial Class EventsForm
         'btnPrintEvent
         '
         Me.btnPrintEvent.AutoRoundedCorners = True
-        Me.btnPrintEvent.BorderRadius = 17
+        Me.btnPrintEvent.BorderRadius = 16
         Me.btnPrintEvent.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.btnPrintEvent.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.btnPrintEvent.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -600,9 +600,9 @@ Partial Class EventsForm
         Me.btnPrintEvent.FillColor = System.Drawing.Color.White
         Me.btnPrintEvent.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnPrintEvent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
-        Me.btnPrintEvent.Location = New System.Drawing.Point(870, 63)
+        Me.btnPrintEvent.Location = New System.Drawing.Point(870, 65)
         Me.btnPrintEvent.Name = "btnPrintEvent"
-        Me.btnPrintEvent.Size = New System.Drawing.Size(109, 36)
+        Me.btnPrintEvent.Size = New System.Drawing.Size(109, 34)
         Me.btnPrintEvent.TabIndex = 70
         Me.btnPrintEvent.Text = "Print"
         '
