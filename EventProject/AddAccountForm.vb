@@ -48,18 +48,22 @@ Public Class AddAccountForm
             Return
         End If
 
-        If String.IsNullOrWhiteSpace(UserName) OrElse String.IsNullOrWhiteSpace(Password) OrElse String.IsNullOrWhiteSpace(FullName) Then
+        If String.IsNullOrWhiteSpace(UserName) OrElse String.IsNullOrWhiteSpace(FullName) Then
             MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
+        ' Default password, no need to ask the user for it
+        Dim defaultPassword As String = "dyci1234"
+        Dim hashedPassword As String = ComputeHash(defaultPassword)
+
         Try
             With cmd
                 .Connection = conn
-                .CommandText = "INSERT INTO Accounts (Username, Password, Fullname, Role) VALUES (@UserName, @Password, @FullName, @Role)"
+                .CommandText = "INSERT INTO Accounts (UserName, HashedPassword, FullName, Role) VALUES (@UserName, @HashedPassword, @FullName, @Role)"
                 .Parameters.Clear()
                 .Parameters.AddWithValue("@UserName", UserName)
-                .Parameters.AddWithValue("@Password", Password)
+                .Parameters.AddWithValue("@HashedPassword", hashedPassword)
                 .Parameters.AddWithValue("@FullName", FullName)
                 .Parameters.AddWithValue("@Role", Role)
 
@@ -75,19 +79,24 @@ Public Class AddAccountForm
                         Me.Hide()
                         ClearTextBoxes()
                     Else
-                        cmd.CommandText = "DELETE FROM Accounts WHERE Username = @UserName"
+                        cmd.CommandText = "DELETE FROM Accounts WHERE UserName = @UserName"
                         cmd.ExecuteNonQuery()
                         MessageBox.Show("Account addition canceled.", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
                 Else
                     MessageBox.Show("Failed to add account.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
-
             End With
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Function ComputeHash(password As String) As String
+        ' Hash the default password (dyci1234) before storing it
+        Return Convert.ToBase64String(New System.Security.Cryptography.SHA256Managed().ComputeHash(System.Text.Encoding.UTF8.GetBytes(password)))
+    End Function
+
     Private Sub ClearTextBoxes()
         txtUname.Text = ""
         txtFname.Text = ""

@@ -190,7 +190,7 @@ Partial Class AddAccountForm
         Me.cbRole.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbRole.ForeColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         Me.cbRole.FormattingEnabled = True
-        Me.cbRole.Items.AddRange(New Object() {"Head Admin", "Sub Admin", "User"})
+        Me.cbRole.Items.AddRange(New Object() {"Super Admin", "Head Admin", "User"})
         Me.cbRole.Location = New System.Drawing.Point(184, 243)
         Me.cbRole.Name = "cbRole"
         Me.cbRole.Size = New System.Drawing.Size(457, 33)

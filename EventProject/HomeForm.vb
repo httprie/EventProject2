@@ -14,6 +14,8 @@ Public Class HomeForm
         Region = System.Drawing.Region.FromHrgn(roundcorner(0, 0, Width, Height, 20, 20))
         lblUsername.Text = userfullName
         lblRole.Text = userRole
+
+        childform(New AdminDashboard())
     End Sub
 
     Public Sub New(fullName As String, role As String)
@@ -193,9 +195,5 @@ Public Class HomeForm
         clickedButton.Image = My.Resources.hoveratt
 
         childform(New AttendanceForm())
-    End Sub
-
-    Private Sub pnlHome_Paint(sender As Object, e As PaintEventArgs) Handles pnlHome.Paint
-
     End Sub
 End Class
