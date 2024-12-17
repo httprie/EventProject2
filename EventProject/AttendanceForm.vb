@@ -5,22 +5,21 @@ Imports ZXing
 Imports System.Collections.Generic
 
 Public Class AttendanceForm
-    ' Class-level variables
     Private cmd As MySqlCommand
     Private dr As MySqlDataReader
     Private sqlQuery As String
     Private eventID As Integer
 
-    ' Database connection
+    Private lastScanTime As DateTime = DateTime.MinValue
+    Private cooldownPeriod As TimeSpan = TimeSpan.FromSeconds(2)
+
     Dim connectionString As String = "Server=localhost;Database=EventRegistrationSystem;Uid=root;Pwd=admin;"
     Dim conn As New MySqlConnection(connectionString)
 
-    ' Webcam variables
     Private videoSource As VideoCaptureDevice
     Private webcamRunning As Boolean = False
     Private qrReader As New ZXing.BarcodeReader()
 
-    ' Attendance Tracking
     Private attendanceStatus As New Dictionary(Of String, String) ' "in" or "out"
 
     Private Sub Attendance_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -30,7 +29,6 @@ Public Class AttendanceForm
         LoadEventsForToday()
     End Sub
 
-    ' Load Events Happening Today
     Private Sub LoadEventsForToday()
         Try
             Dim currentDate As String = DateTime.Now.ToString("yyyy-MM-dd")
@@ -73,7 +71,6 @@ Public Class AttendanceForm
         End If
     End Sub
 
-    ' Stop Webcam
     Private Sub StopWebcam()
         If webcamRunning Then
             videoSource.SignalToStop()
@@ -83,77 +80,133 @@ Public Class AttendanceForm
         End If
     End Sub
 
-    ' Process Webcam Frame for QR Code
     Private Sub VideoSource_NewFrame(sender As Object, eventArgs As NewFrameEventArgs)
         pbwebcam.Image = DirectCast(eventArgs.Frame.Clone(), Bitmap)
 
-        ' Try to decode QR code from the frame
         Dim result = qrReader.Decode(eventArgs.Frame)
         If result IsNot Nothing Then
             Dim qrData As String = result.Text.Trim()
             ProcessQRCode(qrData)
         End If
     End Sub
-
-    ' Process QR Code Data
     Private Sub ProcessQRCode(qrData As String)
+        If DateTime.Now - lastScanTime < cooldownPeriod Then
+            Return
+        End If
+
+        lastScanTime = DateTime.Now
+
         Dim studentInfo() As String = qrData.Split(","c)
 
-        ' Ensure the QR code has the correct number of parts
-        If studentInfo.Length >= 12 Then
+        If studentInfo.Length >= 11 Then
             Dim studentID As String = studentInfo(8)
-            If cbevent.SelectedItem Is Nothing Then
-                MessageBox.Show("Please select an event first.")
-                Return
-            End If
 
-            Dim selectedEvent As EventData = CType(cbevent.SelectedItem, EventData)
-            eventID = selectedEvent.ID
+            If cbevent.InvokeRequired Then
+                cbevent.Invoke(Sub()
+                                   If cbevent.SelectedItem Is Nothing Then
+                                       MessageBox.Show("Please select an event first.")
+                                       Return
+                                   End If
 
-            ' Handle attendance status
-            If Not attendanceStatus.ContainsKey(studentID) OrElse attendanceStatus(studentID) = "out" Then
-                attendanceStatus(studentID) = "in"
-                AddStudentToDataGridView(studentInfo)
-                SaveTimeInAttendance(studentID)
-            ElseIf attendanceStatus(studentID) = "in" Then
-                attendanceStatus(studentID) = "out"
-                UpdateTimeOutInDataGridView(studentID)
-                SaveTimeOutAttendance(studentID)
+                                   Dim selectedEvent As EventData = CType(cbevent.SelectedItem, EventData)
+                                   eventID = selectedEvent.ID
+
+                                   ' Handle attendance status
+                                   If Not attendanceStatus.ContainsKey(studentID) Then
+                                       ' If not yet checked in, mark as in
+                                       attendanceStatus(studentID) = "in"
+                                       AddStudentToDataGridView(studentInfo)
+                                       SaveTimeInAttendance(studentInfo)
+                                   ElseIf attendanceStatus(studentID) = "in" Then
+                                       ' If student is checked in, process the timeout
+                                       attendanceStatus(studentID) = "out"
+                                       UpdateTimeOutInDataGridView(studentID)
+                                       SaveTimeOutAttendance(studentID)
+                                   ElseIf attendanceStatus(studentID) = "out" Then
+                                       ' If student is already checked out, don't allow checking in again
+                                       MessageBox.Show("This student has already checked out.")
+                                   End If
+                               End Sub)
+            Else
+                If cbevent.SelectedItem Is Nothing Then
+                    MessageBox.Show("Please select an event first.")
+                    Return
+                End If
+
+                Dim selectedEvent As EventData = CType(cbevent.SelectedItem, EventData)
+                eventID = selectedEvent.ID
+
+                If Not attendanceStatus.ContainsKey(studentID) Then
+                    attendanceStatus(studentID) = "in"
+                    AddStudentToDataGridView(studentInfo)
+                    SaveTimeInAttendance(studentInfo)
+                ElseIf attendanceStatus(studentID) = "in" Then
+                    attendanceStatus(studentID) = "out"
+                    UpdateTimeOutInDataGridView(studentID)
+                    SaveTimeOutAttendance(studentID)
+                ElseIf attendanceStatus(studentID) = "out" Then
+                    MessageBox.Show("This student has already checked out.")
+                End If
             End If
         Else
             MessageBox.Show("Invalid QR code format. Please ensure it contains all student details.")
         End If
     End Sub
 
-    ' Add Student Details to DataGridView
+    Private attendeeCounter As Integer = 1
+
     Private Sub AddStudentToDataGridView(studentInfo() As String)
         For Each row As DataGridViewRow In AttendanceData.Rows
-            If row.Cells("AttendeeID").Value.ToString() = studentInfo(8) Then Return
+            If row.Cells(1).Value IsNot Nothing Then
+                If row.Cells(1).Value.ToString() = studentInfo(8) Then
+                    MessageBox.Show("This student has already checked in.")
+                    Return
+                End If
+            End If
         Next
+        AttendanceData.Rows.Add(attendeeCounter, studentInfo(8), studentInfo(0), studentInfo(2), studentInfo(4), studentInfo(5),
+                            studentInfo(6), studentInfo(7), DateTime.Now.ToString("yyyy-MM-dd"),
+                            DateTime.Now.ToString("HH:mm:ss"), Nothing)
 
-        AttendanceData.Rows.Add(studentInfo(8), studentInfo(0), studentInfo(2), studentInfo(3), studentInfo(4), studentInfo(5),
-                                studentInfo(6), studentInfo(7), DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("HH:mm:ss"), Nothing)
+        attendeeCounter += 1
     End Sub
 
-    ' Update Time Out in DataGridView
     Private Sub UpdateTimeOutInDataGridView(studentID As String)
         For Each row As DataGridViewRow In AttendanceData.Rows
-            If row.Cells("AttendeeID").Value.ToString() = studentID Then
-                row.Cells("Time Out").Value = DateTime.Now.ToString("HH:mm:ss")
-                Exit For
+            If row.Cells(1) IsNot Nothing AndAlso row.Cells(1).Value IsNot Nothing Then
+                If row.Cells(1).Value.ToString() = studentID Then
+                    If row.Cells(10) IsNot Nothing Then
+                        row.Cells(10).Value = DateTime.Now.ToString("HH:mm:ss")
+                        Exit For
+                    Else
+                        MessageBox.Show("Time Out column not found.")
+                        Exit For
+                    End If
+                End If
             End If
         Next
     End Sub
 
-    ' Save Time In to Database
-    Private Sub SaveTimeInAttendance(studentID As String)
+    Private Sub SaveTimeInAttendance(studentInfo() As String)
         Try
-            Dim query As String = "INSERT INTO attendancelog (StudNo, eventid, timein_time) VALUES (@StudNo, @eventid, @timein_time)"
+            Dim query As String = "INSERT INTO attendancelog (eventid, eventname, eventdate, StudentID, First_Name, Last_Name, Department, Course, Year, Section, timein_time) " &
+                              "VALUES (@eventid, @eventname, @eventdate, @StudentID, @First_Name, @Last_Name, @Department, @Course, @Year, @Section, @timein_time)"
+
             Using cmd As New MySqlCommand(query, conn)
                 conn.Open()
-                cmd.Parameters.AddWithValue("@StudNo", studentID)
+
                 cmd.Parameters.AddWithValue("@eventid", eventID)
+                cmd.Parameters.AddWithValue("@eventname", cbevent.SelectedItem.ToString())
+                cmd.Parameters.AddWithValue("@eventdate", DateTime.Now.ToString("yyyy-MM-dd"))
+                cmd.Parameters.AddWithValue("@StudentID", studentInfo(8))
+                cmd.Parameters.AddWithValue("@First_Name", studentInfo(0))
+                cmd.Parameters.AddWithValue("@Last_Name", studentInfo(2))
+                cmd.Parameters.AddWithValue("@Department", studentInfo(4))
+                cmd.Parameters.AddWithValue("@Course", studentInfo(5))
+                cmd.Parameters.AddWithValue("@Year", studentInfo(6))
+                cmd.Parameters.AddWithValue("@Section", studentInfo(7))
                 cmd.Parameters.AddWithValue("@timein_time", DateTime.Now)
+
                 cmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
@@ -162,14 +215,12 @@ Public Class AttendanceForm
             conn.Close()
         End Try
     End Sub
-
-    ' Save Time Out to Database
     Private Sub SaveTimeOutAttendance(studentID As String)
         Try
-            Dim query As String = "UPDATE attendancelog SET timeout_time = @timeout_time WHERE StudNo = @StudNo AND eventid = @eventid AND timeout_time IS NULL"
+            Dim query As String = "UPDATE attendancelog SET timeout_time = @timeout_time WHERE StudentID = @StudentID AND eventid = @eventid AND timeout_time IS NULL"
             Using cmd As New MySqlCommand(query, conn)
                 conn.Open()
-                cmd.Parameters.AddWithValue("@StudNo", studentID)
+                cmd.Parameters.AddWithValue("@StudentID", studentID)
                 cmd.Parameters.AddWithValue("@eventid", eventID)
                 cmd.Parameters.AddWithValue("@timeout_time", DateTime.Now)
                 cmd.ExecuteNonQuery()
@@ -181,12 +232,10 @@ Public Class AttendanceForm
         End Try
     End Sub
 
-    ' Update Clock Timer
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         timedate.Text = DateTime.Now.ToString()
     End Sub
 
-    ' Stop Webcam When Form Hidden
     Private Sub AttendanceForm_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Not Me.Visible Then StopWebcam()
     End Sub
@@ -198,7 +247,6 @@ Public Class AttendanceForm
     End Sub
 End Class
 
-' EventData class for ComboBox
 Public Class EventData
     Public Property ID As Integer
     Public Property Name As String
