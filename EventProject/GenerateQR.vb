@@ -138,6 +138,9 @@ Public Class GenerateQR
 
             MessageBox.Show("Record updated successfully!")
             saveData()
+
+            sendEmailUpdate()
+
             LoadStudentInfo()
 
             ' Exit edit mode
@@ -168,6 +171,7 @@ Public Class GenerateQR
         btngenerate.Text = "Generate"
         isEditMode = False
         editingStudentID = ""
+        QRCode.Image = Nothing
     End Sub
 
     ' Get input data and assign to class variables
@@ -488,27 +492,23 @@ Public Class GenerateQR
         ' Retrieve user Input
         GetInputData()
 
-        ' Validate user input
         If Not ValidateInput() Then Return
 
-        Dim saveFolder As String = "C:\Users\jeyde\source\repos\httprie\EventProject2\QRCode"
+        Dim saveFolder As String = "C:\Users\user\source\repos\httprie\ERS-FinalProject\EventProject\ERS-QRCode"
         Dim fileName As String = txtStudID.Text & ".png"
         Dim filePath As String = Path.Combine(saveFolder, fileName)
 
         Try
-            ' Ensure the directory exists
             If Not Directory.Exists(saveFolder) Then
                 Directory.CreateDirectory(saveFolder)
             End If
 
-            ' If in edit mode, delete the existing file before saving
             If isEditMode Then
                 If File.Exists(filePath) Then
                     File.Delete(filePath) ' Delete the file to avoid locking issues
                 End If
             End If
 
-            ' Save the QR Code image
             If QRCode.Image IsNot Nothing Then
                 Using bmp As New Bitmap(QRCode.Image)
                     bmp.Save(filePath, Imaging.ImageFormat.Png)
@@ -524,7 +524,6 @@ Public Class GenerateQR
     End Sub
 
     Private Sub sendEmail()
-        ' Collect student data from the form
         GetInputData()
 
         If String.IsNullOrWhiteSpace(firstname) OrElse String.IsNullOrWhiteSpace(course) OrElse String.IsNullOrWhiteSpace(year) OrElse String.IsNullOrWhiteSpace(studID) Then
@@ -532,20 +531,77 @@ Public Class GenerateQR
             Return
         End If
 
-        Dim obj As New EmailForm
+        Try
+            Using mail As New MailMessage()
+                mail.From = New MailAddress("dyci.eventreg@gmail.com")
+                mail.To.Add(email)
+                mail.Subject = "Attendance QR Code"
+                mail.Body = "Attendance QR Code" & vbCrLf &
+                       "Name: " & firstname & " " & lastname & vbCrLf &
+                       "Course: " & course & vbCrLf &
+                       "Year and Section: " & year & section & vbCrLf &
+                       "Student ID: " & studID & vbCrLf & vbCrLf &
+                       "Please present this at every event you attend. Thank you!"
 
-        obj.email = txtEmail.Text
-        obj.message = "Attendance QR Code" & vbCrLf &
-               "Name: " & txtFirstName.Text & txtLastName.Text & vbCrLf &
-               "Course: " & cbCourse.Text & vbCrLf &
-               "Year and Section: " & cbYear.Text & cbSection.Text & vbCrLf &
-               "Student ID: " & txtStudID.Text & vbCrLf & vbCrLf &
-               "Please present this at every event you attend. Thank you!"
+                Dim saveFolder As String = "C:\Users\user\source\repos\httprie\ERS-FinalProject\EventProject\ERS-QRCode"
+                Dim fileName As String = studID & ".png"
+                Dim filePath As String = Path.Combine(saveFolder, fileName)
 
-        obj.Show()
+                If File.Exists(filePath) Then
+                    mail.Attachments.Add(New Attachment(filePath))
+                End If
 
+                Using smtpServer As New SmtpClient("smtp.gmail.com")
+                    smtpServer.Port = 587
+                    smtpServer.Credentials = New NetworkCredential("dyci.eventreg@gmail.com", "qxfc xvqr amsy wyxe")
+                    smtpServer.EnableSsl = True
+
+                    smtpServer.Send(mail)
+                    MessageBox.Show("QR Code sent successfully to " & email)
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Error sending email: " & ex.Message)
+        End Try
     End Sub
 
+    Private Sub sendEmailUpdate()
+        Try
+            Using mail As New MailMessage()
+                mail.From = New MailAddress("dyci.eventreg@gmail.com")
+                mail.To.Add(email)
+                mail.Subject = "Updated Attendance QR Code"
+                mail.Body = "Your Updated Attendance QR Code" & vbCrLf &
+                       "Name: " & firstname & " " & lastname & vbCrLf &
+                       "Course: " & course & vbCrLf &
+                       "Year and Section: " & year & section & vbCrLf &
+                       "Student ID: " & studID & vbCrLf & vbCrLf &
+                       "Your QR Code has been updated. Please use this new QR Code for future events. Thank you!"
+
+                ' Attach updated QR code
+                Dim saveFolder As String = "C:\Users\user\source\repos\httprie\ERS-FinalProject\EventProject\ERS-QRCode"
+                Dim fileName As String = studID & ".png"
+                Dim filePath As String = Path.Combine(saveFolder, fileName)
+
+                If File.Exists(filePath) Then
+                    mail.Attachments.Add(New Attachment(filePath))
+                End If
+
+                Using smtpServer As New SmtpClient("smtp.gmail.com")
+                    smtpServer.Port = 587
+                    smtpServer.Credentials = New NetworkCredential("dyci.eventreg@gmail.com", "qxfc xvqr amsy wyxe")
+                    smtpServer.EnableSsl = True
+                    smtpServer.Send(mail)
+                End Using
+
+                MessageBox.Show("Updated QR Code sent successfully to " & email)
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Error sending update email: " & ex.Message)
+        End Try
+    End Sub
     Private Sub populateComboBoxStudentID()
         ' Populate Department ComboBox
         Dim sqlQuery As String = "SELECT StudentID FROM StudentInformation"
