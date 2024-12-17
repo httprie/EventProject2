@@ -32,34 +32,34 @@ Partial Class AttendanceForm
         Me.AttendanceData = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.timedate = New System.Windows.Forms.Label()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.eventname = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.venue = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.eventdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.starttime = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.edit = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.delete = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.attendeeID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.studID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.firstName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lastName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dept = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.course = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.year = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.section = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dateScanned = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.timein = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.timeout = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.pbwebcam, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AttendanceData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbevent
         '
-        Me.cbevent.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbevent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbevent.ForeColor = System.Drawing.Color.Black
         Me.cbevent.FormattingEnabled = True
         Me.cbevent.Location = New System.Drawing.Point(88, 410)
         Me.cbevent.Name = "cbevent"
-        Me.cbevent.Size = New System.Drawing.Size(359, 33)
+        Me.cbevent.Size = New System.Drawing.Size(359, 28)
         Me.cbevent.TabIndex = 30
         '
         'Label1
         '
-        Me.Label1.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(12, 415)
         Me.Label1.Name = "Label1"
@@ -86,7 +86,7 @@ Partial Class AttendanceForm
         Me.AttendanceData.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -94,7 +94,7 @@ Partial Class AttendanceForm
         Me.AttendanceData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.AttendanceData.ColumnHeadersHeight = 42
         Me.AttendanceData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Me.AttendanceData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.eventname, Me.venue, Me.Column4, Me.Column3, Me.Column2, Me.eventdate, Me.Column1, Me.starttime, Me.edit, Me.delete})
+        Me.AttendanceData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.attendeeID, Me.studID, Me.firstName, Me.lastName, Me.dept, Me.course, Me.year, Me.section, Me.dateScanned, Me.timein, Me.timeout})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -121,14 +121,14 @@ Partial Class AttendanceForm
         Me.AttendanceData.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.AttendanceData.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.White
         Me.AttendanceData.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.AttendanceData.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AttendanceData.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AttendanceData.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black
         Me.AttendanceData.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Me.AttendanceData.ThemeStyle.HeaderStyle.Height = 42
         Me.AttendanceData.ThemeStyle.ReadOnly = True
         Me.AttendanceData.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
         Me.AttendanceData.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.AttendanceData.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AttendanceData.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AttendanceData.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
         Me.AttendanceData.ThemeStyle.RowsStyle.Height = 28
         Me.AttendanceData.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.LightBlue
@@ -140,90 +140,90 @@ Partial Class AttendanceForm
         'timedate
         '
         Me.timedate.AutoSize = True
-        Me.timedate.Font = New System.Drawing.Font("Ubuntu", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.timedate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.timedate.ForeColor = System.Drawing.Color.Black
         Me.timedate.Location = New System.Drawing.Point(12, 20)
         Me.timedate.Name = "timedate"
-        Me.timedate.Size = New System.Drawing.Size(150, 25)
+        Me.timedate.Size = New System.Drawing.Size(147, 20)
         Me.timedate.TabIndex = 54
         Me.timedate.Text = "                       "
         '
-        'Column5
+        'attendeeID
         '
-        Me.Column5.HeaderText = "No."
-        Me.Column5.MinimumWidth = 8
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
+        Me.attendeeID.HeaderText = "Attendee ID"
+        Me.attendeeID.MinimumWidth = 8
+        Me.attendeeID.Name = "attendeeID"
+        Me.attendeeID.ReadOnly = True
         '
-        'eventname
+        'studID
         '
-        Me.eventname.HeaderText = "ID"
-        Me.eventname.MinimumWidth = 8
-        Me.eventname.Name = "eventname"
-        Me.eventname.ReadOnly = True
+        Me.studID.HeaderText = "Student ID"
+        Me.studID.MinimumWidth = 8
+        Me.studID.Name = "studID"
+        Me.studID.ReadOnly = True
         '
-        'venue
+        'firstName
         '
-        Me.venue.HeaderText = "First Name"
-        Me.venue.MinimumWidth = 8
-        Me.venue.Name = "venue"
-        Me.venue.ReadOnly = True
+        Me.firstName.HeaderText = "First Name"
+        Me.firstName.MinimumWidth = 8
+        Me.firstName.Name = "firstName"
+        Me.firstName.ReadOnly = True
         '
-        'Column4
+        'lastName
         '
-        Me.Column4.HeaderText = "Last Name"
-        Me.Column4.MinimumWidth = 8
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
+        Me.lastName.HeaderText = "Last Name"
+        Me.lastName.MinimumWidth = 8
+        Me.lastName.Name = "lastName"
+        Me.lastName.ReadOnly = True
         '
-        'Column3
+        'dept
         '
-        Me.Column3.HeaderText = "Department"
-        Me.Column3.MinimumWidth = 8
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
+        Me.dept.HeaderText = "Department"
+        Me.dept.MinimumWidth = 8
+        Me.dept.Name = "dept"
+        Me.dept.ReadOnly = True
         '
-        'Column2
+        'course
         '
-        Me.Column2.HeaderText = "Course"
-        Me.Column2.MinimumWidth = 8
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
+        Me.course.HeaderText = "Course"
+        Me.course.MinimumWidth = 8
+        Me.course.Name = "course"
+        Me.course.ReadOnly = True
         '
-        'eventdate
+        'year
         '
-        Me.eventdate.HeaderText = "Year"
-        Me.eventdate.MinimumWidth = 8
-        Me.eventdate.Name = "eventdate"
-        Me.eventdate.ReadOnly = True
+        Me.year.HeaderText = "Year"
+        Me.year.MinimumWidth = 8
+        Me.year.Name = "year"
+        Me.year.ReadOnly = True
         '
-        'Column1
+        'section
         '
-        Me.Column1.HeaderText = "Section"
-        Me.Column1.MinimumWidth = 8
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
+        Me.section.HeaderText = "Section"
+        Me.section.MinimumWidth = 8
+        Me.section.Name = "section"
+        Me.section.ReadOnly = True
         '
-        'starttime
+        'dateScanned
         '
-        Me.starttime.HeaderText = "Date"
-        Me.starttime.MinimumWidth = 8
-        Me.starttime.Name = "starttime"
-        Me.starttime.ReadOnly = True
+        Me.dateScanned.HeaderText = "Date"
+        Me.dateScanned.MinimumWidth = 8
+        Me.dateScanned.Name = "dateScanned"
+        Me.dateScanned.ReadOnly = True
         '
-        'edit
+        'timein
         '
-        Me.edit.HeaderText = "Time In"
-        Me.edit.MinimumWidth = 8
-        Me.edit.Name = "edit"
-        Me.edit.ReadOnly = True
+        Me.timein.HeaderText = "Time In"
+        Me.timein.MinimumWidth = 8
+        Me.timein.Name = "timein"
+        Me.timein.ReadOnly = True
         '
-        'delete
+        'timeout
         '
-        Me.delete.HeaderText = "Time Out"
-        Me.delete.MinimumWidth = 8
-        Me.delete.Name = "delete"
-        Me.delete.ReadOnly = True
+        Me.timeout.HeaderText = "Time Out"
+        Me.timeout.MinimumWidth = 8
+        Me.timeout.Name = "timeout"
+        Me.timeout.ReadOnly = True
         '
         'AttendanceForm
         '
@@ -251,15 +251,15 @@ Partial Class AttendanceForm
     Friend WithEvents AttendanceData As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents Timer1 As Timer
     Friend WithEvents timedate As Label
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents eventname As DataGridViewTextBoxColumn
-    Friend WithEvents venue As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents eventdate As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents starttime As DataGridViewTextBoxColumn
-    Friend WithEvents edit As DataGridViewTextBoxColumn
-    Friend WithEvents delete As DataGridViewTextBoxColumn
+    Friend WithEvents attendeeID As DataGridViewTextBoxColumn
+    Friend WithEvents studID As DataGridViewTextBoxColumn
+    Friend WithEvents firstName As DataGridViewTextBoxColumn
+    Friend WithEvents lastName As DataGridViewTextBoxColumn
+    Friend WithEvents dept As DataGridViewTextBoxColumn
+    Friend WithEvents course As DataGridViewTextBoxColumn
+    Friend WithEvents year As DataGridViewTextBoxColumn
+    Friend WithEvents section As DataGridViewTextBoxColumn
+    Friend WithEvents dateScanned As DataGridViewTextBoxColumn
+    Friend WithEvents timein As DataGridViewTextBoxColumn
+    Friend WithEvents timeout As DataGridViewTextBoxColumn
 End Class
