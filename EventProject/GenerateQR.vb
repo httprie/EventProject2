@@ -82,6 +82,8 @@ Public Class GenerateQR
                     sendEmail()
                     ' Reload the student information
                     LoadStudentInfo()
+
+                    clearTextfield()
                 Else
                     MessageBox.Show("Failed to generate QR Code.")
                 End If
@@ -228,39 +230,52 @@ Public Class GenerateQR
                                department As String, course As String, year As String,
                                section As String, studID As String, email As String,
                                qrImage As Bitmap)
-
         Try
             Using ms As New MemoryStream()
                 qrImage.Save(ms, Imaging.ImageFormat.Png)
                 Dim qrCodeData As Byte() = ms.ToArray()
 
-                Dim sqlQuery As String = "INSERT INTO StudentInformation (First_Name, Middle_Name, Last_Name, " &
-                         "Suffix, Department, Course, Year, Section, StudentID, Email, ContactNo, Messenger, QRCodeData) " &
-                         "VALUES (@First_Name, @Middle_Name, @Last_Name, @Suffix, @Department, @Course, " &
-                         "@Year, @Section, @StudentID, @Email, @ContactNo, @Messenger, @QRCodeData)"
+                ' Modified INSERT query to match exact database schema
+                Dim sqlQuery As String = "INSERT INTO StudentInformation (" &
+                                   "First_Name, Middle_Name, Last_Name, Suffix, " &
+                                   "Department, Course, Year, Section, StudentID, " &
+                                   "Email, ContactNo, Messenger, QRCodeData) " &
+                                   "VALUES (" &
+                                   "@First_Name, @Middle_Name, @Last_Name, @Suffix, " &
+                                   "@Department, @Course, @Year, @Section, @StudentID, " &
+                                   "@Email, @ContactNo, @Messenger, @QRCodeData)"
 
-                Dim cmd As New MySqlCommand(sqlQuery, conn)
-                cmd.Parameters.AddWithValue("@First_Name", firstname)
-                cmd.Parameters.AddWithValue("@Middle_Name", middlename)
-                cmd.Parameters.AddWithValue("@Last_Name", lastname)
-                cmd.Parameters.AddWithValue("@Suffix", suffix)
-                cmd.Parameters.AddWithValue("@Department", department)
-                cmd.Parameters.AddWithValue("@Course", course)
-                cmd.Parameters.AddWithValue("@Year", year)
-                cmd.Parameters.AddWithValue("@Section", section)
-                cmd.Parameters.AddWithValue("@StudentID", studID)
-                cmd.Parameters.AddWithValue("@Email", email)
-                cmd.Parameters.AddWithValue("@ContactNo", contactno)
-                cmd.Parameters.AddWithValue("@Messenger", messenger)
-                cmd.Parameters.AddWithValue("@QRCodeData", qrCodeData)
+                Using cmd As New MySqlCommand(sqlQuery, conn)
+                    ' Parameters with correct data types and lengths
+                    cmd.Parameters.AddWithValue("@First_Name", If(firstname.Length > 20, firstname.Substring(0, 20), firstname))
+                    cmd.Parameters.AddWithValue("@Middle_Name", If(String.IsNullOrEmpty(middlename), DBNull.Value, If(middlename.Length > 20, middlename.Substring(0, 20), middlename)))
+                    cmd.Parameters.AddWithValue("@Last_Name", If(lastname.Length > 20, lastname.Substring(0, 20), lastname))
+                    cmd.Parameters.AddWithValue("@Suffix", If(String.IsNullOrEmpty(suffix), DBNull.Value, If(suffix.Length > 20, suffix.Substring(0, 20), suffix)))
+                    cmd.Parameters.AddWithValue("@Department", If(department.Length > 50, department.Substring(0, 50), department))
+                    cmd.Parameters.AddWithValue("@Course", If(course.Length > 10, course.Substring(0, 10), course))
+                    cmd.Parameters.AddWithValue("@Year", If(year.Length > 20, year.Substring(0, 20), year))
+                    cmd.Parameters.AddWithValue("@Section", If(section.Length > 20, section.Substring(0, 20), section))
+                    cmd.Parameters.AddWithValue("@StudentID", If(String.IsNullOrEmpty(studID), DBNull.Value, If(studID.Length > 50, studID.Substring(0, 50), studID)))
+                    cmd.Parameters.AddWithValue("@Email", If(String.IsNullOrEmpty(email), DBNull.Value, If(email.Length > 60, email.Substring(0, 60), email)))
+                    cmd.Parameters.AddWithValue("@ContactNo", If(contactno.Length > 20, contactno.Substring(0, 20), contactno))
+                    cmd.Parameters.AddWithValue("@Messenger", If(String.IsNullOrEmpty(messenger), DBNull.Value, If(messenger.Length > 50, messenger.Substring(0, 50), messenger)))
+                    cmd.Parameters.AddWithValue("@QRCodeData", qrCodeData)
 
-                conn.Open()
-                cmd.ExecuteNonQuery()
-                saveData()
-                conn.Close()
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+                    conn.Close()
 
-                MessageBox.Show("QR Code And student information saved successfully!")
+                    ' Save the QR code image file
+                    saveData()
+
+                    ' Reload the student information grid
+                    LoadStudentInfo()
+
+                    MessageBox.Show("QR Code and student information saved successfully!")
+                End Using
             End Using
+        Catch ex As MySqlException When ex.Number = 1406
+            MessageBox.Show("One or more fields exceed the maximum allowed length. Please check your input.")
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
@@ -269,7 +284,6 @@ Public Class GenerateQR
             End If
         End Try
     End Sub
-
     ' Load student data into DataGridView
     Private Sub LoadStudentInfo()
         Try
@@ -477,6 +491,10 @@ Public Class GenerateQR
         txtMiddleName.Clear()
         txtLastName.Clear()
         txtExtension.Clear()
+        cbDepartment.SelectedIndex = -1
+        cbCourse.SelectedIndex = -1
+        cbYear.SelectedIndex = -1
+        cbSection.SelectedIndex = -1
         txtMessenger.Clear()
         txtContact.Clear()
         cbCourse.Items.Clear()
