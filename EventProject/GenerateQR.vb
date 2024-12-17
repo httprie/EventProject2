@@ -380,7 +380,7 @@ Public Class GenerateQR
             conn.Close()
 
             ' Step 2: Delete the associated QR code image from the folder
-            Dim saveFolder As String = "C:\Users\jeyde\source\repos\httprie\EventProject2\QRCode"
+            Dim saveFolder As String = "C:\Users\user\source\repos\httprie\ERS-FinalProject\EventProject\ERS-QRCode"
             Dim fileName As String = txtStudID.Text & ".png"
             Dim filePath As String = Path.Combine(saveFolder, fileName)
 
@@ -411,7 +411,7 @@ Public Class GenerateQR
         populateComboBoxCourses()
 
         ' Populate Year
-        cbYear.Items.AddRange(New String() {"1st", "2nd", "3rd", "4th"})
+        cbYear.Items.AddRange(New String() {"1", "2", "3", "4", "5"})
 
         ' Populate Section
         cbSection.Items.AddRange(New String() {"A", "B", "C", "D", "E"})

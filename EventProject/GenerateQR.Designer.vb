@@ -65,15 +65,15 @@ Partial Class GenerateQR
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.pnlQRCode = New Guna.UI2.WinForms.Guna2Panel()
         Me.pnlInfo = New Guna.UI2.WinForms.Guna2Panel()
-        Me.cbSection = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.cbYear = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.cbCourse = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.cbDepartment = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.cbCourse = New System.Windows.Forms.ComboBox()
+        Me.cbSection = New System.Windows.Forms.ComboBox()
+        Me.cbYear = New System.Windows.Forms.ComboBox()
+        Me.cbDepartment = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cbStudentID = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.lblStudID = New System.Windows.Forms.Label()
         Me.btnSearch = New Guna.UI2.WinForms.Guna2Button()
         Me.btnPrintGen = New Guna.UI2.WinForms.Guna2Button()
+        Me.cbStudentID = New System.Windows.Forms.ComboBox()
         CType(Me.QRCode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StudentData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlQRCode.SuspendLayout()
@@ -107,7 +107,7 @@ Partial Class GenerateQR
         Me.txtMiddleName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.txtMiddleName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtMiddleName.Location = New System.Drawing.Point(324, 36)
-        Me.txtMiddleName.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMiddleName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtMiddleName.Name = "txtMiddleName"
         Me.txtMiddleName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtMiddleName.PlaceholderText = "Middle Name"
@@ -129,7 +129,7 @@ Partial Class GenerateQR
         Me.txtLastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.txtLastName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtLastName.Location = New System.Drawing.Point(34, 73)
-        Me.txtLastName.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtLastName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtLastName.Name = "txtLastName"
         Me.txtLastName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtLastName.PlaceholderText = "Last Name"
@@ -151,7 +151,7 @@ Partial Class GenerateQR
         Me.txtExtension.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.txtExtension.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtExtension.Location = New System.Drawing.Point(324, 74)
-        Me.txtExtension.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtExtension.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtExtension.Name = "txtExtension"
         Me.txtExtension.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtExtension.PlaceholderText = "Suffix"
@@ -167,7 +167,7 @@ Partial Class GenerateQR
         Me.lblSection.ForeColor = System.Drawing.Color.Black
         Me.lblSection.Location = New System.Drawing.Point(332, 168)
         Me.lblSection.Name = "lblSection"
-        Me.lblSection.Size = New System.Drawing.Size(62, 18)
+        Me.lblSection.Size = New System.Drawing.Size(75, 22)
         Me.lblSection.TabIndex = 59
         Me.lblSection.Text = "Section:"
         '
@@ -185,7 +185,7 @@ Partial Class GenerateQR
         Me.txtMessenger.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMessenger.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtMessenger.Location = New System.Drawing.Point(131, 324)
-        Me.txtMessenger.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMessenger.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtMessenger.Name = "txtMessenger"
         Me.txtMessenger.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtMessenger.PlaceholderText = ""
@@ -201,7 +201,7 @@ Partial Class GenerateQR
         Me.lblMessenger.ForeColor = System.Drawing.Color.Black
         Me.lblMessenger.Location = New System.Drawing.Point(54, 333)
         Me.lblMessenger.Name = "lblMessenger"
-        Me.lblMessenger.Size = New System.Drawing.Size(86, 18)
+        Me.lblMessenger.Size = New System.Drawing.Size(103, 22)
         Me.lblMessenger.TabIndex = 56
         Me.lblMessenger.Text = "Messenger:"
         '
@@ -219,7 +219,7 @@ Partial Class GenerateQR
         Me.txtContact.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContact.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtContact.Location = New System.Drawing.Point(131, 286)
-        Me.txtContact.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtContact.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtContact.Name = "txtContact"
         Me.txtContact.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtContact.PlaceholderText = ""
@@ -235,7 +235,7 @@ Partial Class GenerateQR
         Me.lblContact.ForeColor = System.Drawing.Color.Black
         Me.lblContact.Location = New System.Drawing.Point(70, 295)
         Me.lblContact.Name = "lblContact"
-        Me.lblContact.Size = New System.Drawing.Size(64, 18)
+        Me.lblContact.Size = New System.Drawing.Size(77, 22)
         Me.lblContact.TabIndex = 54
         Me.lblContact.Text = "Contact:"
         '
@@ -247,7 +247,7 @@ Partial Class GenerateQR
         Me.lblYear.ForeColor = System.Drawing.Color.Black
         Me.lblYear.Location = New System.Drawing.Point(99, 168)
         Me.lblYear.Name = "lblYear"
-        Me.lblYear.Size = New System.Drawing.Size(42, 18)
+        Me.lblYear.Size = New System.Drawing.Size(53, 22)
         Me.lblYear.TabIndex = 53
         Me.lblYear.Text = "Year:"
         '
@@ -259,7 +259,7 @@ Partial Class GenerateQR
         Me.lblName.ForeColor = System.Drawing.Color.Black
         Me.lblName.Location = New System.Drawing.Point(13, 7)
         Me.lblName.Name = "lblName"
-        Me.lblName.Size = New System.Drawing.Size(79, 18)
+        Me.lblName.Size = New System.Drawing.Size(96, 22)
         Me.lblName.TabIndex = 33
         Me.lblName.Text = "Full Name:"
         '
@@ -416,7 +416,7 @@ Partial Class GenerateQR
         Me.txtStudID.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.txtStudID.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtStudID.Location = New System.Drawing.Point(131, 205)
-        Me.txtStudID.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtStudID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtStudID.Name = "txtStudID"
         Me.txtStudID.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtStudID.PlaceholderText = ""
@@ -442,7 +442,7 @@ Partial Class GenerateQR
         Me.txtFirstName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.txtFirstName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtFirstName.Location = New System.Drawing.Point(34, 36)
-        Me.txtFirstName.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtFirstName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFirstName.Name = "txtFirstName"
         Me.txtFirstName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtFirstName.PlaceholderText = "First Name"
@@ -458,7 +458,7 @@ Partial Class GenerateQR
         Me.lblCourse.ForeColor = System.Drawing.Color.Black
         Me.lblCourse.Location = New System.Drawing.Point(334, 121)
         Me.lblCourse.Name = "lblCourse"
-        Me.lblCourse.Size = New System.Drawing.Size(61, 18)
+        Me.lblCourse.Size = New System.Drawing.Size(73, 22)
         Me.lblCourse.TabIndex = 35
         Me.lblCourse.Text = "Course:"
         '
@@ -487,7 +487,7 @@ Partial Class GenerateQR
         Me.lblEmail.ForeColor = System.Drawing.Color.Black
         Me.lblEmail.Location = New System.Drawing.Point(86, 252)
         Me.lblEmail.Name = "lblEmail"
-        Me.lblEmail.Size = New System.Drawing.Size(49, 18)
+        Me.lblEmail.Size = New System.Drawing.Size(59, 22)
         Me.lblEmail.TabIndex = 39
         Me.lblEmail.Text = "Email:"
         '
@@ -499,7 +499,7 @@ Partial Class GenerateQR
         Me.lblStudentID.ForeColor = System.Drawing.Color.Black
         Me.lblStudentID.Location = New System.Drawing.Point(54, 214)
         Me.lblStudentID.Name = "lblStudentID"
-        Me.lblStudentID.Size = New System.Drawing.Size(80, 18)
+        Me.lblStudentID.Size = New System.Drawing.Size(99, 22)
         Me.lblStudentID.TabIndex = 32
         Me.lblStudentID.Text = "Student ID:"
         '
@@ -510,7 +510,7 @@ Partial Class GenerateQR
         Me.timedate.ForeColor = System.Drawing.Color.Black
         Me.timedate.Location = New System.Drawing.Point(8, 9)
         Me.timedate.Name = "timedate"
-        Me.timedate.Size = New System.Drawing.Size(147, 20)
+        Me.timedate.Size = New System.Drawing.Size(150, 25)
         Me.timedate.TabIndex = 57
         Me.timedate.Text = "                       "
         '
@@ -528,7 +528,7 @@ Partial Class GenerateQR
         Me.txtEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtEmail.Location = New System.Drawing.Point(131, 243)
-        Me.txtEmail.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtEmail.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtEmail.PlaceholderText = ""
@@ -561,7 +561,7 @@ Partial Class GenerateQR
         Me.lblQRCode.ForeColor = System.Drawing.Color.Black
         Me.lblQRCode.Location = New System.Drawing.Point(144, 17)
         Me.lblQRCode.Name = "lblQRCode"
-        Me.lblQRCode.Size = New System.Drawing.Size(96, 24)
+        Me.lblQRCode.Size = New System.Drawing.Size(110, 26)
         Me.lblQRCode.TabIndex = 48
         Me.lblQRCode.Text = "QR Code"
         '
@@ -582,9 +582,9 @@ Partial Class GenerateQR
         Me.pnlInfo.BackColor = System.Drawing.SystemColors.ControlLight
         Me.pnlInfo.BorderColor = System.Drawing.Color.Gray
         Me.pnlInfo.BorderThickness = 1
+        Me.pnlInfo.Controls.Add(Me.cbCourse)
         Me.pnlInfo.Controls.Add(Me.cbSection)
         Me.pnlInfo.Controls.Add(Me.cbYear)
-        Me.pnlInfo.Controls.Add(Me.cbCourse)
         Me.pnlInfo.Controls.Add(Me.cbDepartment)
         Me.pnlInfo.Controls.Add(Me.Label1)
         Me.pnlInfo.Controls.Add(Me.txtMiddleName)
@@ -610,73 +610,41 @@ Partial Class GenerateQR
         Me.pnlInfo.Size = New System.Drawing.Size(606, 426)
         Me.pnlInfo.TabIndex = 59
         '
+        'cbCourse
+        '
+        Me.cbCourse.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCourse.FormattingEnabled = True
+        Me.cbCourse.Location = New System.Drawing.Point(412, 119)
+        Me.cbCourse.Name = "cbCourse"
+        Me.cbCourse.Size = New System.Drawing.Size(141, 28)
+        Me.cbCourse.TabIndex = 74
+        '
         'cbSection
         '
-        Me.cbSection.AutoRoundedCorners = True
-        Me.cbSection.BackColor = System.Drawing.Color.Transparent
-        Me.cbSection.BorderRadius = 17
-        Me.cbSection.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.cbSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSection.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbSection.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbSection.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSection.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.cbSection.ItemHeight = 30
-        Me.cbSection.Location = New System.Drawing.Point(412, 153)
+        Me.cbSection.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSection.FormattingEnabled = True
+        Me.cbSection.Location = New System.Drawing.Point(412, 166)
         Me.cbSection.Name = "cbSection"
-        Me.cbSection.Size = New System.Drawing.Size(141, 36)
-        Me.cbSection.TabIndex = 70
+        Me.cbSection.Size = New System.Drawing.Size(141, 28)
+        Me.cbSection.TabIndex = 73
         '
         'cbYear
         '
-        Me.cbYear.AutoRoundedCorners = True
-        Me.cbYear.BackColor = System.Drawing.Color.Transparent
-        Me.cbYear.BorderRadius = 17
-        Me.cbYear.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbYear.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbYear.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbYear.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.cbYear.ItemHeight = 30
-        Me.cbYear.Location = New System.Drawing.Point(162, 153)
+        Me.cbYear.Font = New System.Drawing.Font("Ubuntu", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbYear.FormattingEnabled = True
+        Me.cbYear.Location = New System.Drawing.Point(162, 166)
         Me.cbYear.Name = "cbYear"
-        Me.cbYear.Size = New System.Drawing.Size(141, 36)
-        Me.cbYear.TabIndex = 69
-        '
-        'cbCourse
-        '
-        Me.cbCourse.AutoRoundedCorners = True
-        Me.cbCourse.BackColor = System.Drawing.Color.Transparent
-        Me.cbCourse.BorderRadius = 17
-        Me.cbCourse.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.cbCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbCourse.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbCourse.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbCourse.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.cbCourse.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.cbCourse.ItemHeight = 30
-        Me.cbCourse.Location = New System.Drawing.Point(412, 111)
-        Me.cbCourse.Name = "cbCourse"
-        Me.cbCourse.Size = New System.Drawing.Size(141, 36)
-        Me.cbCourse.TabIndex = 68
+        Me.cbYear.Size = New System.Drawing.Size(141, 28)
+        Me.cbYear.TabIndex = 72
         '
         'cbDepartment
         '
-        Me.cbDepartment.AutoRoundedCorners = True
-        Me.cbDepartment.BackColor = System.Drawing.Color.Transparent
-        Me.cbDepartment.BorderRadius = 17
-        Me.cbDepartment.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.cbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDepartment.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbDepartment.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbDepartment.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.cbDepartment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.cbDepartment.ItemHeight = 30
-        Me.cbDepartment.Location = New System.Drawing.Point(162, 111)
+        Me.cbDepartment.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbDepartment.FormattingEnabled = True
+        Me.cbDepartment.Location = New System.Drawing.Point(162, 119)
         Me.cbDepartment.Name = "cbDepartment"
-        Me.cbDepartment.Size = New System.Drawing.Size(141, 36)
-        Me.cbDepartment.TabIndex = 67
+        Me.cbDepartment.Size = New System.Drawing.Size(141, 29)
+        Me.cbDepartment.TabIndex = 71
         '
         'Label1
         '
@@ -684,28 +652,11 @@ Partial Class GenerateQR
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(43, 121)
+        Me.Label1.Location = New System.Drawing.Point(68, 121)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(89, 18)
+        Me.Label1.Size = New System.Drawing.Size(108, 22)
         Me.Label1.TabIndex = 66
         Me.Label1.Text = "Department:"
-        '
-        'cbStudentID
-        '
-        Me.cbStudentID.AutoRoundedCorners = True
-        Me.cbStudentID.BackColor = System.Drawing.Color.Transparent
-        Me.cbStudentID.BorderRadius = 17
-        Me.cbStudentID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.cbStudentID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbStudentID.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbStudentID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cbStudentID.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.cbStudentID.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.cbStudentID.ItemHeight = 30
-        Me.cbStudentID.Location = New System.Drawing.Point(110, 490)
-        Me.cbStudentID.Name = "cbStudentID"
-        Me.cbStudentID.Size = New System.Drawing.Size(214, 36)
-        Me.cbStudentID.TabIndex = 71
         '
         'lblStudID
         '
@@ -715,7 +666,7 @@ Partial Class GenerateQR
         Me.lblStudID.ForeColor = System.Drawing.Color.Black
         Me.lblStudID.Location = New System.Drawing.Point(5, 498)
         Me.lblStudID.Name = "lblStudID"
-        Me.lblStudID.Size = New System.Drawing.Size(80, 18)
+        Me.lblStudID.Size = New System.Drawing.Size(99, 22)
         Me.lblStudID.TabIndex = 71
         Me.lblStudID.Text = "Student ID:"
         '
@@ -753,15 +704,24 @@ Partial Class GenerateQR
         Me.btnPrintGen.TabIndex = 72
         Me.btnPrintGen.Text = "Print"
         '
+        'cbStudentID
+        '
+        Me.cbStudentID.Font = New System.Drawing.Font("Ubuntu", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbStudentID.FormattingEnabled = True
+        Me.cbStudentID.Location = New System.Drawing.Point(66, 496)
+        Me.cbStudentID.Name = "cbStudentID"
+        Me.cbStudentID.Size = New System.Drawing.Size(266, 29)
+        Me.cbStudentID.TabIndex = 74
+        '
         'GenerateQR
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1011, 800)
         Me.ControlBox = False
+        Me.Controls.Add(Me.cbStudentID)
         Me.Controls.Add(Me.btnPrintGen)
         Me.Controls.Add(Me.btnSearch)
         Me.Controls.Add(Me.lblStudID)
-        Me.Controls.Add(Me.cbStudentID)
         Me.Controls.Add(Me.StudentData)
         Me.Controls.Add(Me.timedate)
         Me.Controls.Add(Me.pnlQRCode)
@@ -821,12 +781,12 @@ Partial Class GenerateQR
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents Column11 As DataGridViewTextBoxColumn
     Friend WithEvents Label1 As Label
-    Friend WithEvents cbSection As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents cbYear As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents cbCourse As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents cbDepartment As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents btnSearch As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents lblStudID As Label
-    Friend WithEvents cbStudentID As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents btnPrintGen As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents cbStudentID As ComboBox
+    Friend WithEvents cbCourse As ComboBox
+    Friend WithEvents cbSection As ComboBox
+    Friend WithEvents cbYear As ComboBox
+    Friend WithEvents cbDepartment As ComboBox
 End Class

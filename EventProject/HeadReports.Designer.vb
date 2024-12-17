@@ -31,7 +31,7 @@ Partial Class HeadReports
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.cbFilter = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.btnStudent = New Guna.UI2.WinForms.Guna2Button()
+        Me.btnSearchRep = New Guna.UI2.WinForms.Guna2Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cbData = New System.Windows.Forms.ComboBox()
@@ -51,7 +51,7 @@ Partial Class HeadReports
         Me.timedate.Location = New System.Drawing.Point(13, 26)
         Me.timedate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.timedate.Name = "timedate"
-        Me.timedate.Size = New System.Drawing.Size(123, 17)
+        Me.timedate.Size = New System.Drawing.Size(150, 25)
         Me.timedate.TabIndex = 41
         Me.timedate.Text = "                       "
         '
@@ -62,7 +62,7 @@ Partial Class HeadReports
         Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(14, 65)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(79, 15)
+        Me.Label3.Size = New System.Drawing.Size(116, 22)
         Me.Label3.TabIndex = 36
         Me.Label3.Text = "FILTER BY:"
         '
@@ -77,7 +77,7 @@ Partial Class HeadReports
         Me.cbFilter.Items.AddRange(New Object() {"STUDENT ID", "FIRST NAME", "LAST NAME", "VENUE", "DEPARTMENT", "FACILITATOR", "EVENT ID", "COURSE", "YEAR", "SECTION", ""})
         Me.cbFilter.Location = New System.Drawing.Point(19, 90)
         Me.cbFilter.Name = "cbFilter"
-        Me.cbFilter.Size = New System.Drawing.Size(343, 24)
+        Me.cbFilter.Size = New System.Drawing.Size(343, 33)
         Me.cbFilter.TabIndex = 44
         '
         'Label4
@@ -87,24 +87,24 @@ Partial Class HeadReports
         Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(284, 159)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(12, 15)
+        Me.Label4.Size = New System.Drawing.Size(17, 22)
         Me.Label4.TabIndex = 47
         Me.Label4.Text = "-"
         '
-        'btnStudent
+        'btnSearchRep
         '
-        Me.btnStudent.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btnStudent.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btnStudent.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btnStudent.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btnStudent.FillColor = System.Drawing.Color.White
-        Me.btnStudent.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.btnStudent.ForeColor = System.Drawing.Color.Black
-        Me.btnStudent.Location = New System.Drawing.Point(832, 90)
-        Me.btnStudent.Name = "btnStudent"
-        Me.btnStudent.Size = New System.Drawing.Size(157, 35)
-        Me.btnStudent.TabIndex = 54
-        Me.btnStudent.Text = "Search"
+        Me.btnSearchRep.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btnSearchRep.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btnSearchRep.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btnSearchRep.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btnSearchRep.FillColor = System.Drawing.Color.White
+        Me.btnSearchRep.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnSearchRep.ForeColor = System.Drawing.Color.Black
+        Me.btnSearchRep.Location = New System.Drawing.Point(832, 90)
+        Me.btnSearchRep.Name = "btnSearchRep"
+        Me.btnSearchRep.Size = New System.Drawing.Size(157, 35)
+        Me.btnSearchRep.TabIndex = 54
+        Me.btnSearchRep.Text = "Search"
         '
         'Label8
         '
@@ -113,7 +113,7 @@ Partial Class HeadReports
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(16, 126)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(93, 15)
+        Me.Label8.Size = New System.Drawing.Size(141, 22)
         Me.Label8.TabIndex = 55
         Me.Label8.Text = "START DATE:"
         '
@@ -124,7 +124,7 @@ Partial Class HeadReports
         Me.Label9.ForeColor = System.Drawing.Color.Black
         Me.Label9.Location = New System.Drawing.Point(386, 126)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(79, 15)
+        Me.Label9.Size = New System.Drawing.Size(116, 22)
         Me.Label9.TabIndex = 56
         Me.Label9.Text = "END DATE:"
         '
@@ -136,7 +136,7 @@ Partial Class HeadReports
         Me.cbData.Items.AddRange(New Object() {"STUDENT ID", "FIRST NAME", "LAST NAME", "VENUE", "DEPARTMENT", "FACILITATOR", "EVENT ID", "COURSE", "YEAR", "SECTION", ""})
         Me.cbData.Location = New System.Drawing.Point(390, 90)
         Me.cbData.Name = "cbData"
-        Me.cbData.Size = New System.Drawing.Size(426, 24)
+        Me.cbData.Size = New System.Drawing.Size(426, 33)
         Me.cbData.TabIndex = 57
         '
         'Label1
@@ -146,7 +146,7 @@ Partial Class HeadReports
         Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(368, 159)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(12, 15)
+        Me.Label1.Size = New System.Drawing.Size(17, 22)
         Me.Label1.TabIndex = 59
         Me.Label1.Text = "-"
         '
@@ -268,7 +268,7 @@ Partial Class HeadReports
         Me.Controls.Add(Me.cbData)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.btnStudent)
+        Me.Controls.Add(Me.btnSearchRep)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.cbFilter)
         Me.Controls.Add(Me.timedate)
@@ -286,7 +286,7 @@ Partial Class HeadReports
     Friend WithEvents Timer1 As Timer
     Friend WithEvents cbFilter As ComboBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents btnStudent As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents btnSearchRep As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents cbData As ComboBox

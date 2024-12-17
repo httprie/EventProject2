@@ -71,7 +71,7 @@ Public Class HeadReports
     End Sub
 
 
-    Private Sub btnStudent_Click(sender As Object, e As EventArgs) Handles btnStudent.Click
+    Private Sub btnSearchRep_Click(sender As Object, e As EventArgs) Handles btnSearchRep.Click
         Dim filterColumn As String = cbFilter.Text
         Dim filterValue As String = cbData.Text
 
@@ -80,7 +80,28 @@ Public Class HeadReports
             Return
         End If
 
-        sqlQuery = $"SELECT * FROM StudentInformation WHERE {filterColumn} = @FilterValue"
+        ' Initialize the query and target table
+        Dim sqlQuery As String = ""
+        Dim targetTable As String = ""
+
+        ' Check if the filter is from the StudentInformation table
+        Dim studentColumns As String() = {"First_Name", "Last_Name", "Department", "Course", "Year", "Section", "StudentID"}
+        If studentColumns.Contains(filterColumn) Then
+            targetTable = "StudentInformation"
+            sqlQuery = $"SELECT * FROM {targetTable} WHERE {filterColumn} = @FilterValue"
+
+            ' Check if the filter is from the events table
+        ElseIf filterColumn = "venue" OrElse filterColumn = "facilitator" Then
+            targetTable = "events"
+            sqlQuery = $"SELECT * FROM {targetTable} WHERE {filterColumn} = @FilterValue"
+
+            ' If the filter is invalid
+        Else
+            MessageBox.Show("Invalid filter selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        ' Execute the query
         dt = New DataTable()
 
         Try
@@ -88,14 +109,18 @@ Public Class HeadReports
             cmd.Parameters.AddWithValue("@FilterValue", filterValue)
 
             da = New MySqlDataAdapter(cmd)
+
             If conn.State = ConnectionState.Closed Then conn.Open()
 
             da.Fill(dt)
+
+            ' Set the data source for the report grid
             ReportData.DataSource = dt
             ReportData.ColumnHeadersHeight = 30
             ReportData.AutoResizeColumns()
+
         Catch ex As Exception
-            MessageBox.Show("Error loading student information: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error loading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
