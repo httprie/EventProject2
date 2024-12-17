@@ -77,7 +77,7 @@ Public Class GenerateQR
                 If qr IsNot Nothing Then
                     QRCode.Image = qr
                     ' Save QR code and data to the database
-                    SaveQRCodeToDatabase(firstname, middlename, lastname, suffix, department, course, year, section, studID, email, messenger, contactno, qr)
+                    SaveQRCodeToDatabase(firstname, middlename, lastname, suffix, department, course, year, section, studID, email, contactno, messenger, qr)
                     ' Send an email notification
                     sendEmail()
                     ' Reload the student information
@@ -146,7 +146,7 @@ Public Class GenerateQR
             LoadStudentInfo()
 
             ' Exit edit mode
-            ResetForm()
+            clearTextfield()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
@@ -224,11 +224,9 @@ Public Class GenerateQR
         Return False
     End Function
 
-    ' Save QR code and student data to the database
     Private Sub SaveQRCodeToDatabase(firstname As String, middlename As String, lastname As String,
-                               suffix As String, messenger As String, contactno As String,
-                               department As String, course As String, year As String,
-                               section As String, studID As String, email As String,
+                               suffix As String, department As String, course As String, year As String,
+                               section As String, studID As String, email As String, contactno As String, messenger As String,
                                qrImage As Bitmap)
         Try
             Using ms As New MemoryStream()
