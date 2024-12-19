@@ -1,5 +1,4 @@
 ﻿Imports MySql.Data.MySqlClient
-
 Public Class HeadReports
     Dim sqlQuery As String
     Dim cmd As New MySqlCommand
@@ -32,13 +31,19 @@ Public Class HeadReports
         If String.IsNullOrEmpty(selectedFilter) Then Return
 
         Dim sqlQuery As String
-        Dim isStudentColumn As Boolean = {"First_Name", "Last_Name", "Department", "Course", "Year", "Section", "StudentID"}.Contains(selectedFilter)
+        Dim isStudentColumn As Boolean = {"First_Name", "Last_Name", "Course", "Year", "Section", "StudentID"}.Contains(selectedFilter)
         Dim isEventColumn As Boolean = {"venue", "facilitator", "eventname"}.Contains(selectedFilter)
+        Dim isDepartmentColumn As Boolean = selectedFilter = "Department"
 
         If isStudentColumn Then
+            ' Make sure the query selects from StudentInformation table based on the selected column
             sqlQuery = $"SELECT DISTINCT {selectedFilter} FROM StudentInformation"
         ElseIf isEventColumn Then
             sqlQuery = $"SELECT DISTINCT {selectedFilter} FROM events"
+        ElseIf isDepartmentColumn Then
+            ' Handle the case where the filter is "Department" and join StudentInformation and events
+            sqlQuery = $"SELECT DISTINCT si.{selectedFilter} FROM StudentInformation si " &
+                   "INNER JOIN events e ON si.StudentID = e.StudentID"
         Else
             MessageBox.Show("Invalid column selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
@@ -49,28 +54,29 @@ Public Class HeadReports
             da = New MySqlDataAdapter(cmd)
             dt = New DataTable()
 
+            ' Open the connection if it's not already open
             If conn.State = ConnectionState.Closed Then conn.Open()
 
             da.Fill(dt)
 
             cbData.Items.Clear()
 
+            ' Check if the query returned any results
             If dt.Rows.Count = 0 Then
                 MessageBox.Show("No data found for the selected filter.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Return
             End If
 
+            ' Populate the combobox with the distinct values from the query result
             For Each row As DataRow In dt.Rows
-                cbData.Items.Add(row(0).ToString())
+                cbData.Items.Add(row(0).ToString()) ' Add the first column value to cbData
             Next
         Catch ex As Exception
-            MessageBox.Show($"Error loading filter data: {ex.Message}" & vbCrLf & $"SQL Query: {sqlQuery}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show($"Error loading filter data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             conn.Close()
         End Try
     End Sub
-
-
     Private Sub btnSearchRep_Click(sender As Object, e As EventArgs) Handles btnSearchRep.Click
         Dim filterColumn As String = cbFilter.Text
         Dim filterValue As String = cbData.Text
@@ -83,6 +89,7 @@ Public Class HeadReports
         ' Initialize the query and target table
         Dim sqlQuery As String = ""
         Dim targetTable As String = ""
+        Dim hasDateRange As Boolean = False ' Flag to check if date range is set
 
         ' Check if the filter is from the StudentInformation table
         Dim studentColumns As String() = {"First_Name", "Last_Name", "Department", "Course", "Year", "Section", "StudentID"}
@@ -94,11 +101,28 @@ Public Class HeadReports
         ElseIf filterColumn = "venue" OrElse filterColumn = "facilitator" OrElse filterColumn = "eventname" Then
             targetTable = "events"
             sqlQuery = $"SELECT * FROM {targetTable} WHERE {filterColumn} = @FilterValue"
-
-            ' If the filter is invalid
         Else
             MessageBox.Show("Invalid filter selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
+        End If
+
+        ' Check if the date pickers have values (only then apply date filtering)
+        If Not ReportStart.Value = Nothing AndAlso Not ReportEnd.Value = Nothing Then
+            hasDateRange = True
+            If targetTable = "events" Then
+                ' If filtering on events, apply the date range directly
+                sqlQuery = $"SELECT * FROM events WHERE (eventStart_date BETWEEN @StartDate AND @EndDate) " &
+                       "OR (eventEnd_date BETWEEN @StartDate AND @EndDate) " &
+                       "OR (eventStart_date <= @StartDate AND eventEnd_date >= @EndDate)"
+            ElseIf targetTable = "StudentInformation" Then
+                ' If filtering on StudentInformation, join with the attendancelog table and events table to apply the date range filter
+                sqlQuery &= " AND EXISTS (SELECT 1 FROM attendancelog al " &
+                        "INNER JOIN events e ON al.eventid = e.eventid " &
+                        "WHERE al.StudentID = StudentInformation.StudentID " &
+                        "AND (e.eventStart_date BETWEEN @StartDate AND @EndDate " &
+                        "OR e.eventEnd_date BETWEEN @StartDate AND @EndDate " &
+                        "OR e.eventStart_date <= @StartDate AND e.eventEnd_date >= @EndDate))"
+            End If
         End If
 
         ' Execute the query
@@ -107,6 +131,12 @@ Public Class HeadReports
         Try
             cmd = New MySqlCommand(sqlQuery, conn)
             cmd.Parameters.AddWithValue("@FilterValue", filterValue)
+
+            ' If date range is specified, add parameters for the start and end date
+            If hasDateRange Then
+                cmd.Parameters.AddWithValue("@StartDate", ReportStart.Value)
+                cmd.Parameters.AddWithValue("@EndDate", ReportEnd.Value)
+            End If
 
             da = New MySqlDataAdapter(cmd)
 
@@ -125,6 +155,7 @@ Public Class HeadReports
             conn.Close()
         End Try
     End Sub
+
 
     Private Sub btnAttendance_Click(sender As Object, e As EventArgs) Handles btnAttendance.Click
         Dim filterColumn As String = cbFilter.Text
@@ -212,5 +243,11 @@ Public Class HeadReports
         Finally
             conn.Close()
         End Try
+    End Sub
+
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        Dim reportForm As New GenerateReport()
+        reportForm.ReportPath = "C:\Users\user\source\repos\httprie\ERS-FinalProject\EventProject\ERSReport.rpt"
+        reportForm.ShowDialog()
     End Sub
 End Class

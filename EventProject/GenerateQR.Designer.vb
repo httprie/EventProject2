@@ -26,7 +26,6 @@ Partial Class GenerateQR
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.QRCode = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.txtMiddleName = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtLastName = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtExtension = New Guna.UI2.WinForms.Guna2TextBox()
@@ -75,24 +74,12 @@ Partial Class GenerateQR
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.QRCode, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.QRCode = New Guna.UI2.WinForms.Guna2PictureBox()
         CType(Me.StudentData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlQRCode.SuspendLayout()
         Me.pnlInfo.SuspendLayout()
+        CType(Me.QRCode, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'QRCode
-        '
-        Me.QRCode.BackColor = System.Drawing.Color.Transparent
-        Me.QRCode.FillColor = System.Drawing.Color.Transparent
-        Me.QRCode.ImageRotate = 0!
-        Me.QRCode.Location = New System.Drawing.Point(13, 62)
-        Me.QRCode.Name = "QRCode"
-        Me.QRCode.Size = New System.Drawing.Size(376, 302)
-        Me.QRCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.QRCode.TabIndex = 36
-        Me.QRCode.TabStop = False
-        Me.QRCode.UseTransparentBackground = True
         '
         'txtMiddleName
         '
@@ -721,6 +708,19 @@ Partial Class GenerateQR
         Me.Column11.Name = "Column11"
         Me.Column11.ReadOnly = True
         '
+        'QRCode
+        '
+        Me.QRCode.BackColor = System.Drawing.Color.Transparent
+        Me.QRCode.FillColor = System.Drawing.Color.Transparent
+        Me.QRCode.ImageRotate = 0!
+        Me.QRCode.Location = New System.Drawing.Point(13, 62)
+        Me.QRCode.Name = "QRCode"
+        Me.QRCode.Size = New System.Drawing.Size(376, 302)
+        Me.QRCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.QRCode.TabIndex = 36
+        Me.QRCode.TabStop = False
+        Me.QRCode.UseTransparentBackground = True
+        '
         'GenerateQR
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -738,12 +738,12 @@ Partial Class GenerateQR
         Me.Name = "GenerateQR"
         Me.Text = "GenerateQR"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.QRCode, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.StudentData, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlQRCode.ResumeLayout(False)
         Me.pnlQRCode.PerformLayout()
         Me.pnlInfo.ResumeLayout(False)
         Me.pnlInfo.PerformLayout()
+        CType(Me.QRCode, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

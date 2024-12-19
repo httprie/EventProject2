@@ -146,7 +146,7 @@ Partial Class HeadReports
         Me.ReportEnd.Name = "ReportEnd"
         Me.ReportEnd.Size = New System.Drawing.Size(425, 38)
         Me.ReportEnd.TabIndex = 61
-        Me.ReportEnd.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
+        Me.ReportEnd.Value = New Date(2024, 12, 31, 0, 0, 0, 0)
         '
         'ReportStart
         '
@@ -165,7 +165,7 @@ Partial Class HeadReports
         Me.ReportStart.Name = "ReportStart"
         Me.ReportStart.Size = New System.Drawing.Size(350, 38)
         Me.ReportStart.TabIndex = 60
-        Me.ReportStart.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
+        Me.ReportStart.Value = New Date(2024, 12, 1, 0, 0, 0, 0)
         '
         'ReportData
         '
