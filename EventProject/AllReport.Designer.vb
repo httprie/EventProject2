@@ -23,6 +23,7 @@ Partial Class AllReport
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.CrystalReportViewer3 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.Guna2ControlBox1 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.SuspendLayout()
         '
         'CrystalReportViewer3
@@ -35,6 +36,17 @@ Partial Class AllReport
         Me.CrystalReportViewer3.Size = New System.Drawing.Size(1309, 726)
         Me.CrystalReportViewer3.TabIndex = 3
         '
+        'Guna2ControlBox1
+        '
+        Me.Guna2ControlBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2ControlBox1.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2ControlBox1.ForeColor = System.Drawing.Color.White
+        Me.Guna2ControlBox1.IconColor = System.Drawing.Color.White
+        Me.Guna2ControlBox1.Location = New System.Drawing.Point(1244, 12)
+        Me.Guna2ControlBox1.Name = "Guna2ControlBox1"
+        Me.Guna2ControlBox1.Size = New System.Drawing.Size(55, 35)
+        Me.Guna2ControlBox1.TabIndex = 15
+        '
         'AllReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -42,6 +54,7 @@ Partial Class AllReport
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(133, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1311, 815)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Guna2ControlBox1)
         Me.Controls.Add(Me.CrystalReportViewer3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "AllReport"
@@ -52,4 +65,5 @@ Partial Class AllReport
     End Sub
 
     Friend WithEvents CrystalReportViewer3 As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents Guna2ControlBox1 As Guna.UI2.WinForms.Guna2ControlBox
 End Class
