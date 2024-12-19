@@ -19,7 +19,7 @@ Public Class AddEventsForm
     Public EventIDtoEdit As Integer
     Public EventName As String
     Public Venue As String
-    Public Department As String
+    Public EventDepartment As String
     Public Facilitator As String
     Public StartTime As DateTime
     Public EndTime As DateTime
@@ -40,7 +40,7 @@ Public Class AddEventsForm
             dtpEventEnd.Value = EventEndDate
             txtEventName.Text = EventName
             txtVenue.Text = Venue
-            cbDepartmentEvent.Text = Department
+            cbDepartmentEvent.Text = EventDepartment
             txtFacilitator.Text = Facilitator
             txtContactPerson.Text = ContactPerson
             txtContactMessenger.Text = ContactMessenger
@@ -77,7 +77,7 @@ Public Class AddEventsForm
         EventName = txtEventName.Text
         Venue = txtVenue.Text
         Facilitator = txtFacilitator.Text
-        Department = cbDepartmentEvent.Text
+        EventDepartment = cbDepartmentEvent.Text
         ContactPerson = txtContactPerson.Text
         ContactMessenger = txtContactMessenger.Text
         ContactNo = txtContact.Text
@@ -91,7 +91,7 @@ Public Class AddEventsForm
         Else
             Dim confirmAdd As DialogResult = MessageBox.Show("Do you want to add this event?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If confirmAdd = DialogResult.Yes Then
-                If String.IsNullOrWhiteSpace(EventName) OrElse String.IsNullOrWhiteSpace(Venue) OrElse String.IsNullOrWhiteSpace(Department) Then
+                If String.IsNullOrWhiteSpace(EventName) OrElse String.IsNullOrWhiteSpace(Venue) OrElse String.IsNullOrWhiteSpace(EventDepartment) Then
                     MessageBox.Show("All fields are required. Please fill them out.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Return
                 End If
@@ -100,14 +100,14 @@ Public Class AddEventsForm
                     conn.Open()
 
                     ' Insert the new event into the database with status "Pending"
-                    sqlQuery = "INSERT INTO Events (eventname, venue, eventStart_date, eventEnd_date, starttime, endtime, department, facilitator, contactPerson, ConP_messenger, ConP_contactNo, event_Status) 
-                            VALUES (@EventName, @Venue, @EventStartDate, @EventEndDate, @StartTime, @EndTime, @Department, @Facilitator, @ContactPerson, @ContactMessenger, @ContactNo, 'Pending')"
+                    sqlQuery = "INSERT INTO Events (eventname, venue, eventStart_date, eventEnd_date, starttime, endtime, eventdepartment, facilitator, contactPerson, ConP_messenger, ConP_contactNo, event_Status) 
+                            VALUES (@EventName, @Venue, @EventStartDate, @EventEndDate, @StartTime, @EndTime, @EventDepartment, @Facilitator, @ContactPerson, @ContactMessenger, @ContactNo, 'Pending')"
                     cmd = New MySqlCommand(sqlQuery, conn)
                     cmd.Parameters.AddWithValue("@EventName", EventName)
                     cmd.Parameters.AddWithValue("@Venue", Venue)
                     cmd.Parameters.AddWithValue("@EventStartDate", EventStartDate)  ' Correct column name
                     cmd.Parameters.AddWithValue("@EventEndDate", EventEndDate)  ' Correct column name
-                    cmd.Parameters.AddWithValue("@Department", Department)
+                    cmd.Parameters.AddWithValue("@EventDepartment", EventDepartment)
                     cmd.Parameters.AddWithValue("@Facilitator", Facilitator)
                     cmd.Parameters.AddWithValue("@StartTime", StartTime.TimeOfDay)
                     cmd.Parameters.AddWithValue("@EndTime", EndTime.TimeOfDay)

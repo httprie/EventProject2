@@ -72,7 +72,7 @@ Public Class AdminDashboard
             dt = New DataTable()
 
             ' Define the query
-            Dim sqlQuery As String = "SELECT eventname AS 'EventName', venue AS 'Venue', department AS 'Dept', " &
+            Dim sqlQuery As String = "SELECT eventname AS 'EventName', venue AS 'Venue', eventdepartment AS 'Dept', " &
                                       "eventStart_date AS 'startDate', eventEnd_date AS 'endDate', starttime AS 'StartTime', endtime AS 'EndTime', facilitator AS 'Facilitator' FROM events"
 
             ' Set up the data adapter

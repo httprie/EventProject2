@@ -277,7 +277,7 @@ Partial Class EventsForm
         Me.dtpStartDate.Name = "dtpStartDate"
         Me.dtpStartDate.Size = New System.Drawing.Size(262, 33)
         Me.dtpStartDate.TabIndex = 18
-        Me.dtpStartDate.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
+        Me.dtpStartDate.Value = New Date(2024, 12, 1, 0, 0, 0, 0)
         '
         'dtpEndDate
         '
@@ -296,7 +296,7 @@ Partial Class EventsForm
         Me.dtpEndDate.Name = "dtpEndDate"
         Me.dtpEndDate.Size = New System.Drawing.Size(263, 33)
         Me.dtpEndDate.TabIndex = 19
-        Me.dtpEndDate.Value = New Date(2024, 11, 8, 16, 4, 40, 702)
+        Me.dtpEndDate.Value = New Date(2024, 12, 31, 0, 0, 0, 0)
         '
         'Label9
         '
@@ -349,7 +349,7 @@ Partial Class EventsForm
         Me.dtpEndTime.ShowUpDown = True
         Me.dtpEndTime.Size = New System.Drawing.Size(171, 33)
         Me.dtpEndTime.TabIndex = 67
-        Me.dtpEndTime.Value = New Date(2024, 10, 23, 11, 44, 33, 549)
+        Me.dtpEndTime.Value = New Date(2024, 12, 19, 0, 0, 0, 0)
         '
         'dtpStartTime
         '
@@ -370,7 +370,7 @@ Partial Class EventsForm
         Me.dtpStartTime.ShowUpDown = True
         Me.dtpStartTime.Size = New System.Drawing.Size(158, 33)
         Me.dtpStartTime.TabIndex = 66
-        Me.dtpStartTime.Value = New Date(2024, 10, 23, 11, 52, 35, 469)
+        Me.dtpStartTime.Value = New Date(2024, 12, 19, 6, 0, 0, 0)
         '
         'Label2
         '

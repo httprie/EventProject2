@@ -26,7 +26,7 @@ Public Class EventsForm
 
             ' Main events DataTable
             dtMain = New DataTable()
-            sqlQuery = "SELECT eventID, eventName, venue, eventStart_date, eventEnd_date, starttime, endtime, department, facilitator, contactPerson, ConP_messenger, ConP_contactNo, " &
+            sqlQuery = "SELECT eventID, eventName, venue, eventStart_date, eventEnd_date, starttime, endtime, eventdepartment, facilitator, contactPerson, ConP_messenger, ConP_contactNo, " &
                        "CASE " &
                            "WHEN event_Status = 'Cancelled' THEN 'Cancelled' " &
                            "WHEN NOW() BETWEEN CONCAT(eventStart_date, ' ', starttime) AND CONCAT(eventEnd_date, ' ', endtime) THEN 'In Progress' " &
@@ -158,7 +158,7 @@ Public Class EventsForm
                     editForm.EndTime = DateTime.MinValue
                 End If
 
-                editForm.Department = dt.Rows(0)("department").ToString()
+                editForm.EventDepartment = dt.Rows(0)("department").ToString()
                 editForm.Facilitator = dt.Rows(0)("facilitator").ToString()
                 editForm.ContactPerson = dt.Rows(0)("contactPerson").ToString()
                 editForm.ContactMessenger = dt.Rows(0)("ConP_messenger").ToString()
@@ -178,7 +178,9 @@ Public Class EventsForm
 
     Private Sub LoadEventFilters()
         cbEventFilter.Items.Clear()
-        cbEventFilter.Items.AddRange(New String() {"eventname", "venue", "department", "facilitator", "contactPerson", "ConP_messenger", "ConP_contactNo"})
+        ' Add filters from both StudentInformation and events tables
+        cbEventFilter.Items.AddRange(New String() {"StudentID", "First_Name", "Last_Name", "Department", "Course", "Year", "Section", "eventname", "venue", "eventdepartment", "facilitator",
+                                     "contactPerson", "ConP_messenger", "ConP_contactNo"})
         cbEventFilter.SelectedIndex = -1
     End Sub
 
@@ -213,13 +215,23 @@ Public Class EventsForm
 
     Private Sub LoadComboBoxValues(selectedColumn As String)
         Try
-            sqlQuery = $"SELECT DISTINCT {selectedColumn} FROM events WHERE {selectedColumn} IS NOT NULL"
-            Dim dt As New DataTable()
-            da = New MySqlDataAdapter(sqlQuery, conn)
+            Dim tableName As String = "events" ' Default table
 
-            conn.Open()
-            da.Fill(dt)
-            conn.Close()
+            ' Check if the selected column is from StudentInformation table
+            Dim studentColumns As String() = {"StudentID", "First_Name", "Last_Name", "Department", "Course", "Year", "Section"}
+            If studentColumns.Contains(selectedColumn) Then
+                tableName = "StudentInformation"
+            End If
+
+            sqlQuery = $"SELECT DISTINCT {selectedColumn} FROM {tableName} WHERE {selectedColumn} IS NOT NULL"
+            Dim dt As New DataTable()
+
+            Using cmd As New MySqlCommand(sqlQuery, conn)
+                da = New MySqlDataAdapter(cmd)
+                conn.Open()
+                da.Fill(dt)
+                conn.Close()
+            End Using
 
             cbEventData.Items.Clear()
             For Each row As DataRow In dt.Rows
@@ -233,6 +245,7 @@ Public Class EventsForm
         End Try
     End Sub
 
+
     Private Sub btnAddEvent_Click(sender As Object, e As EventArgs) Handles btnAddEvent.Click
         Dim addEventForm As New AddEventsForm()
         addEventForm.ParentFormInstance = Me
@@ -240,7 +253,6 @@ Public Class EventsForm
     End Sub
 
     Private Sub btnSearchEvent_Click(sender As Object, e As EventArgs) Handles btnSearchEvent.Click
-        ' Validate user input
         If cbEventFilter.SelectedItem Is Nothing OrElse cbEventData.SelectedItem Is Nothing Then
             MessageBox.Show("Please select both a filter column and a value.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -248,36 +260,66 @@ Public Class EventsForm
 
         Dim selectedColumn As String = cbEventFilter.SelectedItem.ToString()
         Dim selectedValue As String = cbEventData.SelectedItem.ToString()
-
-        Dim query As String = $"SELECT * FROM events WHERE {selectedColumn} = @value"
         Dim dt As New DataTable()
 
-        Try
-            ' Use MySqlConnection for MySQL databases
-            Using conn As New MySqlConnection()
-                conn.Open()
-                Using cmd As New MySqlCommand(query, conn)
-                    ' Add parameter to prevent SQL injection
-                    cmd.Parameters.AddWithValue("@value", selectedValue)
+        ' Check if the selected column is from StudentInformation table
+        Dim studentColumns As String() = {"StudentID", "First_Name", "Last_Name", "Department", "Course", "Year", "Section"}
+        Dim isStudentInfo As Boolean = studentColumns.Contains(selectedColumn)
 
-                    ' Execute query and fill the DataTable
-                    Using adapter As New MySqlDataAdapter(cmd)
-                        adapter.Fill(dt)
-                    End Using
-                End Using
+        Try
+            Dim query As String = ""
+
+            If isStudentInfo Then
+                ' Query for StudentInformation table
+                query = "SELECT StudentID, First_Name, Last_Name, Department, Course, Year, Section, Email, ContactNo, Messenger, QRCodeData " &
+                   "FROM StudentInformation " &
+                   "WHERE " & selectedColumn & " = @value"
+            Else
+                ' Query for events table
+                query = "SELECT eventID, eventName, venue, eventStart_date, eventEnd_date, " &
+                   "starttime, endtime, eventdepartment, facilitator, " &
+                   "contactPerson, ConP_messenger, ConP_contactNo, " &
+                   "CASE " &
+                   "    WHEN event_Status = 'Cancelled' THEN 'Cancelled' " &
+                   "    WHEN NOW() BETWEEN CONCAT(eventStart_date, ' ', starttime) AND CONCAT(eventEnd_date, ' ', endtime) THEN 'In Progress' " &
+                   "    WHEN NOW() > CONCAT(eventEnd_date, ' ', endtime) THEN 'Completed' " &
+                   "    ELSE 'Scheduled' " &
+                   "END AS event_Status " &
+                   "FROM events WHERE " & selectedColumn & " = @value"
+            End If
+
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@value", selectedValue)
+                da = New MySqlDataAdapter(cmd)
+                conn.Open()
+                da.Fill(dt)
+                conn.Close()
             End Using
 
-            ' Bind the filtered results to the DataGridView
+            ' Clear existing columns and data
+            dgvEvents.DataSource = Nothing
+            dgvEvents.Columns.Clear()
+
+            ' Set new data source
             dgvEvents.DataSource = dt
-            dgvEvents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+
+            ' Only add button columns if we're showing events
+            If Not isStudentInfo Then
+                AddButtonColumn("Edit", "Edit")
+                AddButtonColumn("Delete", "Delete")
+                AddButtonColumn("Cancel", "Cancel")
+            End If
 
             If dt.Rows.Count = 0 Then
-                MessageBox.Show("No matching events found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("No matching records found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
-            MessageBox.Show("Error filtering events: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error filtering data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If conn.State = ConnectionState.Open Then conn.Close()
         End Try
     End Sub
+
 
     Private Sub btnPrintEvent_Click(sender As Object, e As EventArgs) Handles btnPrintEvent.Click
         Dim reportForm As New EventReport()
